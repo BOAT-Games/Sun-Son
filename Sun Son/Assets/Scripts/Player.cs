@@ -112,4 +112,16 @@ public class Player : MonoBehaviour
 
         _controller.Move(_moveDirection * Time.deltaTime * _dashSpeed);
     }
+
+    void OnTriggerEnter(Collider coll)
+    {
+        if (coll.gameObject.CompareTag("Light"))
+        {
+            if (_currentLightPoints != _maxLightPoints)
+            {
+                _currentLightPoints = _maxLightPoints;
+                _lightBar.SetLightPoints(_currentLightPoints);
+            }
+        }
+    }
 }
