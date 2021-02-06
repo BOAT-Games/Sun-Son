@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
 
     private float _nextDashAvailable;
     private bool _dashed = false;
+
+    public Animator anim;
     
     // Start is called before the first frame update
     void Start()
@@ -43,6 +45,8 @@ public class Player : MonoBehaviour
         transform.forward = _mainCamera.transform.right;
 
         _currentDashTime = _maxDashTime;
+
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -71,6 +75,11 @@ public class Player : MonoBehaviour
         if (_moveDirection != Vector3.zero)
         {
             transform.forward = _moveDirection.normalized;
+            anim.SetBool("IsWalking", true);
+        }
+        else
+        {
+            anim.SetBool("IsWalking", false);
         }
 
         _controller.Move(_moveDirection * Time.deltaTime * _playerSpeed);
