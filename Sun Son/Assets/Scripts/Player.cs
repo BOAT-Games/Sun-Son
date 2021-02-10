@@ -19,15 +19,15 @@ public class Player : MonoBehaviour
     [SerializeField] LightBar _lightBar;
 
     [SerializeField] TrailRenderer _trailRenderer; 
-
-    private int _currentLightPoints;
     private CharacterController _controller;
+    private int _currentLightPoints;
     private Vector3 _playerVelocity;
     private bool _grounded;
     private float _gravityValue = Physics.gravity.y;
     private Camera _mainCamera;
     private Vector3 _moveDirection = Vector3.zero;
     private float _currentDashTime;
+    private bool _isDashCooldown;
 
     private float _nextDashAvailable;
     private bool _dashed = false;
@@ -111,6 +111,7 @@ public class Player : MonoBehaviour
         {
             if ((Input.GetKeyDown("left shift") || Input.GetKey("left shift")) && !_dashed && _moveDirection != Vector3.zero)
             {
+                _isDashCooldown = true;
                 _currentDashTime = 0.0f;
                 _dashed = true;
                 _currentLightPoints -= _dashCost;
@@ -118,9 +119,9 @@ public class Player : MonoBehaviour
                 _lightBar.SetLightPoints(_currentLightPoints);
                 _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
                 _nextDashAvailable = Time.time + _dashDelay;
+                //Debug.Log(_nextDashAvailable);
             }
         }
-
         if(Input.GetKeyUp("left shift") || !Input.GetKey("left shift"))
             _dashed = false;
 
@@ -191,4 +192,10 @@ public class Player : MonoBehaviour
             }
         }
     }
-}
+
+    public int getMaxLightPoints() {return _maxLightPoints;}
+    public int getCurrentLightPoints() {return _currentLightPoints;}
+    public float getDashDelay() {return _dashDelay;}
+    public bool getIsDashCooldown() {return _isDashCooldown;}
+    public void setIsDashCooldown(bool cooldown) {_isDashCooldown = cooldown;}
+ }
