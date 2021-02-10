@@ -44,7 +44,7 @@ public class RatController : MonoBehaviour
             {
                 transform.position -= new Vector3(_speed, 0, 0);
             }
-            else if (lockedOn && targetPos != new Vector3(0,0,0))
+            else if (lockedOn)
             {
                 targetPos = new Vector3(targetPos.x, transform.position.y, targetPos.z);
                 transform.position = Vector3.MoveTowards(transform.position, targetPos, _speed); 
