@@ -1595,7 +1595,7 @@ PrefabInstance:
     - target: {fileID: 9124380256118898853, guid: 3ecdc64d9732f45bf939fdb798bb5908,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.06
+      value: -12.5
       objectReference: {fileID: 0}
     - target: {fileID: 9124380256118898853, guid: 3ecdc64d9732f45bf939fdb798bb5908,
         type: 3}
@@ -1652,5 +1652,10 @@ PrefabInstance:
       propertyPath: _pointLight
       value: 
       objectReference: {fileID: 2078548764}
+    - target: {fileID: 9124380256118898855, guid: 3ecdc64d9732f45bf939fdb798bb5908,
+        type: 3}
+      propertyPath: _targetRange
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ecdc64d9732f45bf939fdb798bb5908, type: 3}

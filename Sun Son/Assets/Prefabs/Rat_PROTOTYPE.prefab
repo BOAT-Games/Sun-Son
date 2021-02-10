@@ -202,6 +202,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxLightPoints: 100
   _damageCost: 5
+  _targetRange: 5
+  _speed: 0.02
   _pointLight: {fileID: 0}
   _lightBar: {fileID: 0}
 --- !u!135 &9124380256118898854

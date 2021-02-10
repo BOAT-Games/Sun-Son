@@ -114,6 +114,7 @@ public class Player : MonoBehaviour
                 _isDashCooldown = true;
                 _currentDashTime = 0.0f;
                 _dashed = true;
+                _currentLightPoints = _lightBar.GetLightPoints();
                 _currentLightPoints -= _dashCost;
                 _trailRenderer.enabled = true;
                 _lightBar.SetLightPoints(_currentLightPoints);
