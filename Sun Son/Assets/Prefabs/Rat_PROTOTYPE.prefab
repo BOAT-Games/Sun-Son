@@ -200,12 +200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f224cb7b7d54d178ed4c0bd66828d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxLightPoints: 100
   _damageCost: 5
   _targetRange: 5
   _speed: 0.02
-  _pointLight: {fileID: 0}
-  _lightBar: {fileID: 0}
 --- !u!135 &9124380256118898854
 SphereCollider:
   m_ObjectHideFlags: 0
