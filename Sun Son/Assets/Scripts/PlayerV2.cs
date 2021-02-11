@@ -28,6 +28,8 @@ public class PlayerV2 : MonoBehaviour
 
     // Fields for double jump
     [SerializeField] int _doubleJumpCost = 10;
+    [SerializeField] int _maxJumps = 2;
+    private int _currentJumps;
     private bool _canDoubleJump;
     private bool _hasDoubleJumped;
     
@@ -49,7 +51,7 @@ public class PlayerV2 : MonoBehaviour
     private int _isWalkingHash;
     private int _isRunningHash;
     private int _isJumpingHash;
-    private int _isFallingHash;
+    private int _isAirborneHash;
     private int _isDashingHash;
     private int _isShieldingHash;
     private int _isFiringRangedHash;
@@ -105,7 +107,7 @@ public class PlayerV2 : MonoBehaviour
         _isWalkingHash = Animator.StringToHash("isWalking");
         _isRunningHash = Animator.StringToHash("isRunning");
         _isJumpingHash = Animator.StringToHash("isJumping");
-        _isFallingHash = Animator.StringToHash("isFalling");
+        _isAirborneHash = Animator.StringToHash("isAirborne");
         _isDashingHash = Animator.StringToHash("isDashing");
         _isShieldingHash = Animator.StringToHash("isShielding");
         _isFiringRangedHash = Animator.StringToHash("isFiringRanged");
@@ -125,20 +127,25 @@ public class PlayerV2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bool isAirborne = _anim.GetBool(_isAirborneHash);
+        if (!isAirborne && !_grounded)
+        {
+            _anim.SetBool(_isAirborneHash, true);
+        }
+        else if(isAirborne && _grounded)
+        {
+            _anim.SetBool(_isAirborneHash, false);
+        }
     }
 
     private void FixedUpdate()
     {
-
         _grounded = _controller.isGrounded;
+
         if (_grounded && _playerVelocity.y < 0)
         {
             _playerVelocity.y = 0f;
-            _anim.SetBool(_isFallingHash, false);
-        }
-        else if(!_grounded && _playerVelocity.y < 0)
-        {
-            _anim.SetBool(_isFallingHash, true);
+            _currentJumps = 0;
         }
         if (_grounded) {
             Debug.Log("here");
@@ -202,33 +209,34 @@ public class PlayerV2 : MonoBehaviour
 
     void handleJumping()
     {
-        // Brad: "I'm not sure why it has to be done this way. 
-        // But apparently with the new input system, double jump is finicky and can't be done
-        // The same as way as with the standard unity input system
-        // If the both if statements used the same variable, double jumping wouldn't work.
-        // https://answers.unity.com/questions/1750687/implementing-jump-w-new-input-system.html
-        if (_jumpPressed)
+        if (_jumpPressed && _grounded)
         {
-            if(_grounded)
-            {
-                Jump();
-            }
-            if (_input.CharacterControls.Jump.triggered && !_grounded && !_hasDoubleJumped && _canDoubleJump) 
-            {
-                Jump();
-                _currentLightPoints -= _doubleJumpCost;
-                _hasDoubleJumped = true;
-                _lightBar.SetLightPoints(_currentLightPoints);
-                _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
-            }
-
+            ExecuteJump();
         }
+
+        if (_jumpPressed && !_grounded && _currentJumps < _maxJumps && _canDoubleJump) 
+        {
+            ExecuteJump();
+            _currentLightPoints -= _doubleJumpCost;
+            _lightBar.SetLightPoints(_currentLightPoints);
+            _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
+            _hasDoubleJumped = true;
+        }
+
     }
 
-    void Jump() 
+    void ExecuteJump() 
     {
+        if (!_grounded)
+            _playerVelocity.y = 0;
+
         _playerVelocity.y += Mathf.Sqrt(_jumpHeight * -3.5f * _gravityValue);
         _anim.SetTrigger(_isJumpingHash);
+        _currentJumps++;
+
+        // At the end of the Jump execution we tell the player that jump is no longer pressed, the next time
+        // that jump can be set to true is after a full release and then re-pressing of the jump button
+        _jumpPressed = false;
     }
 
 

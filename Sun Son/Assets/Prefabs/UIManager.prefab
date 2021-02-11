@@ -48,8 +48,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f06e37bd442d5a34298f978e4b327934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 4743982200065333441, guid: 2b8896715792a654b975359657c760ae, type: 3}
-  _powerups: {fileID: 5336214796076383494, guid: 66be8e051df34d5429401d6d8e3e227e,
-    type: 3}
-  _lightBar: {fileID: 3542853210130817868, guid: 8cec7a88aff1b5c40b7659d950434106,
-    type: 3}
+  _player: {fileID: 0}
+  _powerups: {fileID: 0}
+  _lightBar: {fileID: 0}
