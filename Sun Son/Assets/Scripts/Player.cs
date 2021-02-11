@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
@@ -18,7 +19,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] LightBar _lightBar;
 
-    [SerializeField] TrailRenderer _trailRenderer; 
+    [SerializeField] TrailRenderer _trailRenderer;
+
     private CharacterController _controller;
     private int _currentLightPoints;
     private Vector3 _playerVelocity;
@@ -37,7 +39,7 @@ public class Player : MonoBehaviour
     private bool _gAttack = false;
 
     public Animator anim;
-    
+
     // Start is called before the first frame update
     void Start()
     {
