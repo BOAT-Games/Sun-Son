@@ -56,7 +56,7 @@ public class RatController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.name == "SunCharacterV2")
+        if (other.CompareTag("Player"))
         {
             if (damageTimer <= 0)
             {
@@ -76,7 +76,7 @@ public class RatController : MonoBehaviour
 
         foreach (Collider col in array)
         {
-            if (col.gameObject.name == "SunCharacterV2")
+            if (col.gameObject.CompareTag("Player"))
             { 
                 lockedOn = true;
                 return col.transform.position;
