@@ -249,10 +249,8 @@ public class PlayerV2 : MonoBehaviour
                 _anim.SetTrigger(_isDashingHash);
                 _isDashCooldown = true;
                 _currentDashTime = 0.0f;
-                _currentLightPoints -= _dashCost;
+                TakeDamage(_dashCost);
                 _trailRenderer.enabled = true;
-                _lightBar.SetLightPoints(_currentLightPoints);
-                _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
                 _nextDashAvailable = Time.time + _dashDelay;
             }
         }
@@ -279,6 +277,13 @@ public class PlayerV2 : MonoBehaviour
                 _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
             }
         }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        _currentLightPoints -= damage;
+        _lightBar.SetLightPoints(_currentLightPoints);
+        _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
     }
 
 

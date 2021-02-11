@@ -15,4 +15,9 @@ public class LightBar : MonoBehaviour
     {
         slider.value = lightPoints;
     }
+
+    public int GetLightPoints()
+    {
+        return (int)slider.value;
+    }
 }
