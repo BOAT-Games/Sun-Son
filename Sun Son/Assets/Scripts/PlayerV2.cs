@@ -220,6 +220,7 @@ public class PlayerV2 : MonoBehaviour
             _currentLightPoints -= _doubleJumpCost;
             _lightBar.SetLightPoints(_currentLightPoints);
             _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
+            _hasDoubleJumped = true;
         }
 
     }

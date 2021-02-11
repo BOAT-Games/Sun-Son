@@ -766,6 +766,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59113a5f8da68e2458f02b16d0cf1b9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 0}
   _dashCooldownImage: {fileID: 8648491269499361841}
-  _player: {fileID: 4743982200065333441, guid: 2b8896715792a654b975359657c760ae, type: 3}
-  doubleJump: {fileID: 0}
+  _doubleJumpImage: {fileID: 215876543226452196}
+  _doubleJumpCooldownImage: {fileID: 2057749586596099012}
+  _doubleJumpText: {fileID: 2853639189279642487}
+  _doubleJump: {fileID: 0}
