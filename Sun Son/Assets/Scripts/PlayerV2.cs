@@ -56,6 +56,19 @@ public class PlayerV2 : MonoBehaviour
     // Fields for UI Elements
     [SerializeField] LightBar _lightBar;
 
+    //Fields for SoundFX
+    [SerializeField] AudioClip _walkSound;
+    [SerializeField] AudioClip _runSound;
+    [SerializeField] AudioClip _jumpSound;
+    [SerializeField] AudioClip _dashSound;
+    [SerializeField] AudioClip _shieldSound;
+    [SerializeField] AudioClip _fireSound;
+    [SerializeField] AudioClip _meleeSound;
+    private bool _wasWalking = false;
+    private bool _wasRunning = false;
+    private bool _wasFalling = false;
+    private AudioSource _audio;
+
     // Main Camera
     private Camera _mainCamera;
 
@@ -92,6 +105,9 @@ public class PlayerV2 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _audio = GetComponent<AudioSource>();
+        if (_audio == null) _audio = gameObject.AddComponent<AudioSource>();
+
         _anim = GetComponent<Animator>();
         _controller = GetComponent<CharacterController>();
         _mainCamera = Camera.main;
@@ -112,7 +128,6 @@ public class PlayerV2 : MonoBehaviour
         _lightBar.SetLightPoints(_maxLightPoints);
         _pointLight.GetComponent<LightPower>().SetMaxLightPoints(_currentLightPoints);
         _pointLight.GetComponent<LightPower>().SetLightPoints(_maxLightPoints);
-
     }
 
     // Update is called once per frame
@@ -138,6 +153,7 @@ public class PlayerV2 : MonoBehaviour
         handleGroundMovement();
         handleJumping();
         handleDashing();
+        handleSounds();
 
         _playerVelocity.y += _gravityValue * Time.deltaTime;
         _controller.Move(_playerVelocity * Time.deltaTime);
@@ -222,6 +238,83 @@ public class PlayerV2 : MonoBehaviour
         }
 
         _controller.Move(_moveDirection * Time.deltaTime * _dashSpeed);
+    }
+
+    void handleSounds()
+    {
+        bool isRunning = _anim.GetBool(_isRunningHash);
+        bool isWalking = _anim.GetBool(_isWalkingHash);
+        bool isFalling = _anim.GetBool(_isFallingHash);
+        bool isDashing = _anim.GetBool(_isDashingHash);
+        bool isShielding = _anim.GetBool(_isShieldingHash);
+        bool isFiring = _anim.GetBool(_isFallingHash);
+        bool isMeleeing = _anim.GetBool(_isMeleeingHash);
+
+        //walking audio
+        if ((isWalking && !isRunning) && !_wasWalking && _grounded)
+        {
+            _audio.clip = _walkSound;
+            _audio.loop = true;
+
+            _wasWalking = true;
+            _wasRunning = false;
+
+            _audio.Play();
+        }
+        //running audio
+        else if (isRunning && !_wasRunning && _grounded)
+        {
+            _audio.clip = _runSound;
+            _audio.loop = true;
+
+            _wasRunning = true;
+            _wasWalking = false;
+            _audio.Play();
+        }
+        //no audio
+        else if ((!isWalking && !isRunning) || !_grounded)
+        {
+            _audio.Stop();
+            _wasWalking = false;
+            _wasRunning = false;
+        }
+
+        //landing audio
+        if (isFalling)
+        {
+            _wasFalling = true;
+        }
+        else if (_wasFalling && !isFalling)
+        {
+
+            _wasFalling = false;
+
+            _audio.PlayOneShot(_jumpSound);
+        }
+
+        //dashing audio
+        if (isDashing)
+        {
+            _audio.PlayOneShot(_dashSound);
+        }
+
+        //sheilding audio
+        if (isShielding)
+        {
+            _audio.PlayOneShot(_shieldSound);
+        }
+
+        //firing audio
+        if (isFiring)
+        {
+            _audio.PlayOneShot(_fireSound);
+        }
+
+        //melee audio
+        if (isMeleeing)
+        {
+            _audio.PlayOneShot(_meleeSound);
+        }
     }
 
     void OnTriggerEnter(Collider coll)
