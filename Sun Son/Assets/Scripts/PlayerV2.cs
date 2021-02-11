@@ -95,6 +95,7 @@ public class PlayerV2 : MonoBehaviour
         _anim = GetComponent<Animator>();
         _controller = GetComponent<CharacterController>();
         _mainCamera = Camera.main;
+        
 
         _isWalkingHash = Animator.StringToHash("isWalking");
         _isRunningHash = Animator.StringToHash("isRunning");
@@ -112,6 +113,7 @@ public class PlayerV2 : MonoBehaviour
         _lightBar.SetLightPoints(_maxLightPoints);
         _pointLight.GetComponent<LightPower>().SetMaxLightPoints(_currentLightPoints);
         _pointLight.GetComponent<LightPower>().SetLightPoints(_maxLightPoints);
+        _mainCamera.GetComponent<GlowComposite>().Intensity = (float)_currentLightPoints / (float)_maxLightPoints;
 
     }
 
@@ -242,6 +244,7 @@ public class PlayerV2 : MonoBehaviour
         _currentLightPoints -= damage;
         _lightBar.SetLightPoints(_currentLightPoints);
         _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
+        _mainCamera.GetComponent<GlowComposite>().Intensity = (float)_currentLightPoints / (float)_maxLightPoints;
     }
 
     public int getMaxLightPoints() { return _maxLightPoints; }

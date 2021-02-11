@@ -1304,6 +1304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4908526365814493377}
   - component: {fileID: 4908526365828186593}
+  - component: {fileID: 1288182528}
   m_Layer: 0
   m_Name: Head 1 Male Hair 1
   m_TagString: Untagged
@@ -1417,6 +1418,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000000044703484, y: 0.64899635, z: 0.05043216}
     m_Extent: {x: 0.095285095, y: 0.18995878, z: 0.12861483}
   m_DirtyAABB: 0
+--- !u!114 &1288182528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4908526365814590689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f86ced136ca64b458064259ddd2b05f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlowColor: {r: 0.9137255, g: 0.8745098, b: 0, a: 1}
+  LerpFactor: 10
 --- !u!1 &4908526365814590697
 GameObject:
   m_ObjectHideFlags: 0
@@ -2113,6 +2128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4908526365814493365}
   - component: {fileID: 4908526365828186603}
+  - component: {fileID: 2049263722}
   m_Layer: 0
   m_Name: Pants Male
   m_TagString: Untagged
@@ -2226,6 +2242,20 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: -0.48516452, z: 0.07532676}
     m_Extent: {x: 0.28886437, y: 0.58243346, z: 0.19402042}
   m_DirtyAABB: 0
+--- !u!114 &2049263722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4908526365814590805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f86ced136ca64b458064259ddd2b05f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlowColor: {r: 0.9137255, g: 0.8745098, b: 0, a: 1}
+  LerpFactor: 10
 --- !u!1 &4908526365814590807
 GameObject:
   m_ObjectHideFlags: 0
@@ -2368,6 +2398,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4908526365814493375}
   - component: {fileID: 4908526365828186605}
+  - component: {fileID: 912779086}
   m_Layer: 0
   m_Name: Torso Male Short Sleeves
   m_TagString: Untagged
@@ -2481,3 +2512,17 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.00009587407, y: 0.4054935, z: 0.027268}
     m_Extent: {x: 0.8729589, y: 0.34485555, z: 0.118449904}
   m_DirtyAABB: 0
+--- !u!114 &912779086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4908526365814590815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f86ced136ca64b458064259ddd2b05f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlowColor: {r: 0.9150943, g: 0.8744179, b: 0, a: 1}
+  LerpFactor: 10
