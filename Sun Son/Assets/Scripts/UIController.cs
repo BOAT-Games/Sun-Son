@@ -20,7 +20,6 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(_player.getCurrentLightPoints());
         _lightBar.SetLightPoints(_player.getCurrentLightPoints());
         _powerups.activateDashCooldown(_player.getIsDashCooldown());
     }

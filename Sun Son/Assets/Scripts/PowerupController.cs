@@ -9,6 +9,10 @@ public class PowerupController : MonoBehaviour
     [SerializeField] PlayerV2 _player;
     private float _dashCooldown;
 
+    // Fields related to doublejump
+    [SerializeField] DoubleJump doubleJump;
+    private bool hasDoubleJump = false;
+
     void Start() {
         _dashCooldownImage.fillAmount = 0;
     }

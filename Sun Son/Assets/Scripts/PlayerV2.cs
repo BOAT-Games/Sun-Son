@@ -26,6 +26,13 @@ public class PlayerV2 : MonoBehaviour
     private bool _isDashCooldown;
     private float _nextDashAvailable;
 
+    // Fields for double jump
+    [SerializeField] int _doubleJumpCost = 10;
+    [SerializeField] int _maxJumps = 2;
+    private int _currentJumps;
+    private bool _canDoubleJump;
+    
+
     // Fields for Player Resources
     [SerializeField] int _maxLightPoints;
     private int _currentLightPoints;
@@ -106,6 +113,7 @@ public class PlayerV2 : MonoBehaviour
         _isMeleeingHash = Animator.StringToHash("isMeleeing");
 
         _currentDashTime = _maxDashTime;
+        _canDoubleJump = false;
 
         _currentLightPoints = _maxLightPoints;
         _lightBar.SetMaxLightPoints(_maxLightPoints);
@@ -191,12 +199,37 @@ public class PlayerV2 : MonoBehaviour
 
     void handleJumping()
     {
-        if(_jumpPressed && _grounded)
+        // Brad: "I'm not sure why it has to be done this way. 
+        // But apparently with the new input system, double jump is finicky and can't be done
+        // The same as way as with the standard unity input system
+        // If the both if statements used the same variable, double jumping wouldn't work.
+        // https://answers.unity.com/questions/1750687/implementing-jump-w-new-input-system.html
+        if (_jumpPressed)
         {
-            _playerVelocity.y += Mathf.Sqrt(_jumpHeight * -3.5f * _gravityValue);
-            _anim.SetTrigger(_isJumpingHash);
+            if(_grounded)
+            {
+                _currentJumps = 0;
+                Jump();
+
+            }
+            if (_input.CharacterControls.Jump.triggered && !_grounded && _currentJumps < _maxJumps && _canDoubleJump) 
+            {
+                Jump();
+                _currentLightPoints -= _doubleJumpCost;
+                _lightBar.SetLightPoints(_currentLightPoints);
+                _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
+            }
+
         }
     }
+
+    void Jump() 
+    {
+        _playerVelocity.y += Mathf.Sqrt(_jumpHeight * -3.5f * _gravityValue);
+        _anim.SetTrigger(_isJumpingHash);
+        _currentJumps++;
+    }
+
 
     void handleDashing()
     {
@@ -244,4 +277,5 @@ public class PlayerV2 : MonoBehaviour
     public float getDashDelay() { return _dashDelay; }
     public bool getIsDashCooldown() { return _isDashCooldown; }
     public void setIsDashCooldown(bool cooldown) { _isDashCooldown = cooldown; }
+    public void setCanDoubleJump(bool doublejump) { _canDoubleJump = doublejump;}
 }
