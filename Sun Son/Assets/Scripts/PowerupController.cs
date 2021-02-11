@@ -14,7 +14,7 @@ public class PowerupController : MonoBehaviour
     }
     public void activateDashCooldown(bool isCooldown) {
         if (isCooldown) {
-             timeCooldown(_dashCooldown, _dashCooldownImage);
+            timeCooldown(_dashCooldown, _dashCooldownImage);
         }
     }
 

@@ -203,7 +203,7 @@ public class PlayerV2 : MonoBehaviour
         if (Time.time >= _nextDashAvailable && _currentLightPoints >= _dashCost)
         {
             if (_dashPressed && _movementPressed)
-            {
+            {            
                 _anim.SetTrigger(_isDashingHash);
                 _isDashCooldown = true;
                 _currentDashTime = 0.0f;
