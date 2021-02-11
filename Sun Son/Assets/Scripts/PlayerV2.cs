@@ -28,9 +28,8 @@ public class PlayerV2 : MonoBehaviour
 
     // Fields for double jump
     [SerializeField] int _doubleJumpCost = 10;
-    [SerializeField] int _maxJumps = 2;
-    private int _currentJumps;
     private bool _canDoubleJump;
+    private bool _hasDoubleJumped;
     
 
     // Fields for Player Resources
@@ -141,6 +140,10 @@ public class PlayerV2 : MonoBehaviour
         {
             _anim.SetBool(_isFallingHash, true);
         }
+        if (_grounded) {
+            Debug.Log("here");
+            _hasDoubleJumped = false;
+        }
 
         handleDirection();
         handleGroundMovement();
@@ -208,14 +211,13 @@ public class PlayerV2 : MonoBehaviour
         {
             if(_grounded)
             {
-                _currentJumps = 0;
                 Jump();
-
             }
-            if (_input.CharacterControls.Jump.triggered && !_grounded && _currentJumps < _maxJumps && _canDoubleJump) 
+            if (_input.CharacterControls.Jump.triggered && !_grounded && !_hasDoubleJumped && _canDoubleJump) 
             {
                 Jump();
                 _currentLightPoints -= _doubleJumpCost;
+                _hasDoubleJumped = true;
                 _lightBar.SetLightPoints(_currentLightPoints);
                 _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
             }
@@ -227,7 +229,6 @@ public class PlayerV2 : MonoBehaviour
     {
         _playerVelocity.y += Mathf.Sqrt(_jumpHeight * -3.5f * _gravityValue);
         _anim.SetTrigger(_isJumpingHash);
-        _currentJumps++;
     }
 
 
@@ -272,10 +273,14 @@ public class PlayerV2 : MonoBehaviour
         }
     }
 
+
     public int getMaxLightPoints() { return _maxLightPoints; }
     public int getCurrentLightPoints() { return _currentLightPoints; }
     public float getDashDelay() { return _dashDelay; }
     public bool getIsDashCooldown() { return _isDashCooldown; }
+    public bool getCanDoubleJump() { return _canDoubleJump; }
+    public bool getHasDoubleJumped() { return _hasDoubleJumped; }
+    public bool getGrounded() { return _grounded; }
     public void setIsDashCooldown(bool cooldown) { _isDashCooldown = cooldown; }
     public void setCanDoubleJump(bool doublejump) { _canDoubleJump = doublejump;}
 }
