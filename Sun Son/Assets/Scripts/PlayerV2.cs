@@ -148,7 +148,6 @@ public class PlayerV2 : MonoBehaviour
             _currentJumps = 0;
         }
         if (_grounded) {
-            Debug.Log("here");
             _hasDoubleJumped = false;
         }
 
