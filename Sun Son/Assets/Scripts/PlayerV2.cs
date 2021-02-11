@@ -226,6 +226,19 @@ public class PlayerV2 : MonoBehaviour
         _controller.Move(_moveDirection * Time.deltaTime * _dashSpeed);
     }
 
+    void OnTriggerEnter(Collider coll)
+    {
+        if (coll.gameObject.CompareTag("Light"))
+        {
+            if (_currentLightPoints != _maxLightPoints)
+            {
+                _currentLightPoints = _maxLightPoints;
+                _lightBar.SetLightPoints(_currentLightPoints);
+                _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
+            }
+        }
+    }
+
     public int getMaxLightPoints() { return _maxLightPoints; }
     public int getCurrentLightPoints() { return _currentLightPoints; }
     public float getDashDelay() { return _dashDelay; }
