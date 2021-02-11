@@ -1,29 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class RatController : MonoBehaviour
 {
-    [SerializeField] int _maxLightPoints;
     [SerializeField] int _damageCost = 2;
     [SerializeField] float _targetRange = 5;
     [SerializeField] float _speed = 0.02f;
-    [SerializeField] LightPower _pointLight;
-    [SerializeField] LightBar _lightBar;
+
+
+    private GameObject _player;
 
     private bool goingLeft = false;
     private bool lockedOn = false;
     private float walkTimer = 2.0f;
     private float damageTimer = 1.0f;
-    private int _currentLightPoints;
     private Vector3 targetPos;
 
     // Start is called before the first frame update
     void Start()
     {
-        _currentLightPoints = _maxLightPoints;
-        _lightBar.SetLightPoints(_currentLightPoints);
-        _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
+        _player = FindObjectOfType<PlayerV2>().gameObject;
     }
 
     // Update is called once per frame
@@ -47,7 +45,7 @@ public class RatController : MonoBehaviour
             else if (lockedOn)
             {
                 targetPos = new Vector3(targetPos.x, transform.position.y, targetPos.z);
-                transform.position = Vector3.MoveTowards(transform.position, targetPos, _speed); 
+                transform.position = Vector3.MoveTowards(transform.position, targetPos, _speed);
             }
             else
             {
@@ -58,14 +56,11 @@ public class RatController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.name == "SunCharacter")
+        if (other.CompareTag("Player"))
         {
             if (damageTimer <= 0)
             {
-                _currentLightPoints = _lightBar.GetLightPoints();
-                _currentLightPoints -= _damageCost;
-                _lightBar.SetLightPoints(_currentLightPoints);
-                _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
+                _player.GetComponent<PlayerV2>().TakeDamage(_damageCost);
                 damageTimer = 1.0f;
             }
             else
@@ -81,7 +76,7 @@ public class RatController : MonoBehaviour
 
         foreach (Collider col in array)
         {
-            if (col.gameObject.name == "SunCharacter")
+            if (col.gameObject.CompareTag("Player"))
             { 
                 lockedOn = true;
                 return col.transform.position;
