@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class PowerupController : MonoBehaviour
 {
     [SerializeField] Image _dashCooldownImage;
-    [SerializeField] Player _player;
+    [SerializeField] PlayerV2 _player;
     private float _dashCooldown;
 
     void Start() {

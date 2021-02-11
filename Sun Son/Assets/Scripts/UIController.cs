@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class UIController : MonoBehaviour
 {
-    [SerializeField] Player _player;
+    [SerializeField] PlayerV2 _player;
     [SerializeField] PowerupController _powerups;
     [SerializeField] LightBar _lightBar;
     private int _currentLightPoints;
