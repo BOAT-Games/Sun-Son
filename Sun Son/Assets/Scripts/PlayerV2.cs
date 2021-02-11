@@ -26,6 +26,14 @@ public class PlayerV2 : MonoBehaviour
     private bool _isDashCooldown;
     private float _nextDashAvailable;
 
+    // Fields for double jump
+    [SerializeField] int _doubleJumpCost = 10;
+    [SerializeField] int _maxJumps = 2;
+    private int _currentJumps;
+    private bool _canDoubleJump;
+    private bool _hasDoubleJumped;
+    
+
     // Fields for Player Resources
     [SerializeField] int _maxLightPoints;
     private int _currentLightPoints;
@@ -43,7 +51,7 @@ public class PlayerV2 : MonoBehaviour
     private int _isWalkingHash;
     private int _isRunningHash;
     private int _isJumpingHash;
-    private int _isFallingHash;
+    private int _isAirborneHash;
     private int _isDashingHash;
     private int _isShieldingHash;
     private int _isFiringRangedHash;
@@ -99,13 +107,14 @@ public class PlayerV2 : MonoBehaviour
         _isWalkingHash = Animator.StringToHash("isWalking");
         _isRunningHash = Animator.StringToHash("isRunning");
         _isJumpingHash = Animator.StringToHash("isJumping");
-        _isFallingHash = Animator.StringToHash("isFalling");
+        _isAirborneHash = Animator.StringToHash("isAirborne");
         _isDashingHash = Animator.StringToHash("isDashing");
         _isShieldingHash = Animator.StringToHash("isShielding");
         _isFiringRangedHash = Animator.StringToHash("isFiringRanged");
         _isMeleeingHash = Animator.StringToHash("isMeleeing");
 
         _currentDashTime = _maxDashTime;
+        _canDoubleJump = false;
 
         _currentLightPoints = _maxLightPoints;
         _lightBar.SetMaxLightPoints(_maxLightPoints);
@@ -118,20 +127,28 @@ public class PlayerV2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        bool isAirborne = _anim.GetBool(_isAirborneHash);
+        if (!isAirborne && !_grounded)
+        {
+            _anim.SetBool(_isAirborneHash, true);
+        }
+        else if(isAirborne && _grounded)
+        {
+            _anim.SetBool(_isAirborneHash, false);
+        }
     }
 
     private void FixedUpdate()
     {
-
         _grounded = _controller.isGrounded;
+
         if (_grounded && _playerVelocity.y < 0)
         {
             _playerVelocity.y = 0f;
-            _anim.SetBool(_isFallingHash, false);
+            _currentJumps = 0;
         }
-        else if(!_grounded && _playerVelocity.y < 0)
-        {
-            _anim.SetBool(_isFallingHash, true);
+        if (_grounded) {
+            _hasDoubleJumped = false;
         }
 
         handleDirection();
@@ -191,19 +208,43 @@ public class PlayerV2 : MonoBehaviour
 
     void handleJumping()
     {
-        if(_jumpPressed && _grounded)
+        if (_jumpPressed && _grounded)
         {
-            _playerVelocity.y += Mathf.Sqrt(_jumpHeight * -3.5f * _gravityValue);
-            _anim.SetTrigger(_isJumpingHash);
+            ExecuteJump();
         }
+
+        if (_jumpPressed && !_grounded && _currentJumps < _maxJumps && _canDoubleJump) 
+        {
+            ExecuteJump();
+            _currentLightPoints -= _doubleJumpCost;
+            _lightBar.SetLightPoints(_currentLightPoints);
+            _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
+            _hasDoubleJumped = true;
+        }
+
     }
+
+    void ExecuteJump() 
+    {
+        if (!_grounded)
+            _playerVelocity.y = 0;
+
+        _playerVelocity.y += Mathf.Sqrt(_jumpHeight * -3.5f * _gravityValue);
+        _anim.SetTrigger(_isJumpingHash);
+        _currentJumps++;
+
+        // At the end of the Jump execution we tell the player that jump is no longer pressed, the next time
+        // that jump can be set to true is after a full release and then re-pressing of the jump button
+        _jumpPressed = false;
+    }
+
 
     void handleDashing()
     {
         if (Time.time >= _nextDashAvailable && _currentLightPoints >= _dashCost)
         {
             if (_dashPressed && _movementPressed)
-            {
+            {            
                 _anim.SetTrigger(_isDashingHash);
                 _isDashCooldown = true;
                 _currentDashTime = 0.0f;
@@ -244,9 +285,14 @@ public class PlayerV2 : MonoBehaviour
         _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
     }
 
+
     public int getMaxLightPoints() { return _maxLightPoints; }
     public int getCurrentLightPoints() { return _currentLightPoints; }
     public float getDashDelay() { return _dashDelay; }
     public bool getIsDashCooldown() { return _isDashCooldown; }
+    public bool getCanDoubleJump() { return _canDoubleJump; }
+    public bool getHasDoubleJumped() { return _hasDoubleJumped; }
+    public bool getGrounded() { return _grounded; }
     public void setIsDashCooldown(bool cooldown) { _isDashCooldown = cooldown; }
+    public void setCanDoubleJump(bool doublejump) { _canDoubleJump = doublejump;}
 }
