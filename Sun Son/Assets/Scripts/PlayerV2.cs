@@ -215,7 +215,7 @@ public class PlayerV2 : MonoBehaviour
             ExecuteJump();
         }
 
-        if (_jumpPressed && !_grounded && _currentJumps < _maxJumps && _canDoubleJump) 
+        if (_jumpPressed && !_grounded && _currentJumps < _maxJumps && _canDoubleJump && _currentLightPoints >= _doubleJumpCost) 
         {
             ExecuteJump();
             _currentLightPoints -= _doubleJumpCost;
