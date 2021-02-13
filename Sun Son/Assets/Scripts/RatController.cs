@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+//majority of code from:
+//https://unity.grogansoft.com/navigation-with-the-nav-mesh-part-4-patrolling-and-chasing/
+
 public class RatController : MonoBehaviour
 {
     [SerializeField] int _damageCost = 2;
