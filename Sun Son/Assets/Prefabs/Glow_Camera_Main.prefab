@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6463447405654834823
+--- !u!1 &1904116848254794169
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6463447405654834822}
-  - component: {fileID: 6463447405654834819}
-  - component: {fileID: 6463447405654834821}
+  - component: {fileID: 97394392742882043}
+  - component: {fileID: 6547235181745362086}
+  - component: {fileID: 1804138852217944318}
   m_Layer: 0
-  m_Name: GlowPrepass
-  m_TagString: Untagged
+  m_Name: Glow_Camera_Main
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6463447405654834822
+--- !u!4 &97394392742882043
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6463447405654834823}
+  m_GameObject: {fileID: 1904116848254794169}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,13 +32,13 @@ Transform:
   m_Father: {fileID: 6463447406991735285}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &6463447405654834819
+--- !u!20 &6547235181745362086
 Camera:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6463447405654834823}
+  m_GameObject: {fileID: 1904116848254794169}
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
@@ -60,7 +60,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: 0
+  m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -75,13 +75,13 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &6463447405654834821
+--- !u!114 &1804138852217944318
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6463447405654834823}
+  m_GameObject: {fileID: 1904116848254794169}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f2afdd3b7ae6c94caa0a9040d0abc30, type: 3}
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 6463447406991735287}
   - component: {fileID: 6463447406991735284}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Glow_Camera_Main
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,10 +114,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6463447406991735288}
   m_LocalRotation: {x: -0.0037619667, y: -0.0065351496, z: 0.000022037484, w: -0.9999716}
-  m_LocalPosition: {x: 1.5555582, y: -1.960577, z: -0.65946865}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 6463447405654834822}
+  - {fileID: 97394392742882043}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
