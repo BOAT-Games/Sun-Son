@@ -7,50 +7,71 @@ public class RatController : MonoBehaviour
 {
     [SerializeField] int _damageCost = 2;
     [SerializeField] float _targetRange = 5;
-    [SerializeField] float _speed = 0.02f;
-
+    [SerializeField] float _decisionDelay = 3f;
+    [SerializeField] Transform[] targets;
+    [SerializeField] EnemyStates currentState;
+    [SerializeField] Transform objectToChase;
 
     private GameObject _player;
-
-    private bool goingLeft = false;
-    private bool lockedOn = false;
-    private float walkTimer = 2.0f;
     private float damageTimer = 1.0f;
-    private Vector3 targetPos;
+    private int currentTarget = 0;
+
+    
+    NavMeshAgent agent;
+
+    enum EnemyStates
+    {
+        Patrolling,
+        Chasing
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
+        InvokeRepeating("SetDestination", 1.5f, _decisionDelay);
+        //agent.SetDestination(targets.position);
         _player = FindObjectOfType<PlayerV2>().gameObject;
+
+        if (currentState == EnemyStates.Patrolling)
+        {
+            agent.SetDestination(targets[currentTarget].position);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        targetPos = GetInRadius(_targetRange);
-
-        if (walkTimer <= 0)
+        if (Vector3.Distance(transform.position, objectToChase.position) > _targetRange)
         {
-            walkTimer = 2.0f;
-            goingLeft = !goingLeft;
+            currentState = EnemyStates.Patrolling;
+            agent.speed = 1;
         }
         else
         {
-            walkTimer -= Time.deltaTime;
+            currentState = EnemyStates.Chasing;
+            agent.speed = 2.5f;
+        }
 
-            if (goingLeft && !lockedOn)
+        if (currentState == EnemyStates.Patrolling)
+        {
+            if (Vector3.Distance(transform.position, targets[currentTarget].position) < 0.2f)
             {
-                transform.position -= new Vector3(_speed, 0, 0);
+                currentTarget++;
+                if (currentTarget == targets.Length)
+                {
+                    currentTarget = 0;
+                }
             }
-            else if (lockedOn)
-            {
-                targetPos = new Vector3(targetPos.x, transform.position.y, targetPos.z);
-                transform.position = Vector3.MoveTowards(transform.position, targetPos, _speed);
-            }
-            else
-            {
-                transform.position += new Vector3(_speed, 0, 0);
-            }
+            agent.SetDestination(targets[currentTarget].position);
+        }
+    }
+
+    void SetDestination()
+    {
+        if (currentState == EnemyStates.Chasing)
+        {
+            agent.SetDestination(objectToChase.position);
         }
     }
 
@@ -68,21 +89,5 @@ public class RatController : MonoBehaviour
                 damageTimer -= Time.deltaTime;
             }
         }
-    }
-
-    Vector3 GetInRadius(float radius)
-    {
-        Collider[] array = Physics.OverlapSphere(transform.position, radius);
-
-        foreach (Collider col in array)
-        {
-            if (col.gameObject.CompareTag("Player"))
-            { 
-                lockedOn = true;
-                return col.transform.position;
-            }
-        }
-        lockedOn = false;
-        return transform.position;
     }
 }
