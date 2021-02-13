@@ -55,6 +55,7 @@ public class PlayerV2 : MonoBehaviour
     private bool _movementPressed;
     private bool _dashPressed;
     private bool _jumpPressed;
+    private bool _letGoPressed;
 
     // Fields for Animations
     private Animator _anim;
@@ -97,6 +98,8 @@ public class PlayerV2 : MonoBehaviour
         _input.CharacterControls.Dash.performed += ctx => _dashPressed = ctx.ReadValueAsButton();
 
         _input.CharacterControls.Jump.performed += ctx => _jumpPressed = ctx.ReadValueAsButton();
+
+        _input.CharacterControls.Let_Go.performed += ctx => _letGoPressed = ctx.ReadValueAsButton();
     }
 
     private void OnEnable()
@@ -217,12 +220,12 @@ public class PlayerV2 : MonoBehaviour
         Ray wallGrabRay = new Ray(_wallGrabRayOrigin.position, this.transform.forward);
         bool wGRayHit = Physics.Raycast(wallGrabRay, out hit, Mathf.Infinity, 1 << 8);
 
-        if (wGRayHit && hit.distance > 0.4f)
+        if (wGRayHit && hit.distance > 0.4f && hit.normal.normalized == -wallGrabRay.direction.normalized)
         {
             wGRayHit = false;
         }
 
-        if (!_grounded && !_grabbingWall && wGRayHit)
+        if (!_grounded && !_grabbingWall && wGRayHit && _movementPressed)
         {
             _currentDashTime = _maxDashTime;
             _trailRenderer.enabled = false;
@@ -231,14 +234,12 @@ public class PlayerV2 : MonoBehaviour
             _currentJumps = 0;
             _grabbingWall = true;
         }
-        else if (!wGRayHit || _grounded)
+        else if (!wGRayHit || _grounded || (_letGoPressed && (_currentMovement.x * wallGrabRay.direction.x) <= 0))
         {
             _currentGravity = _gravityValue;
             _anim.SetBool(_isGrabbingWallHash, false);
             _grabbingWall = false;
         }
-
-
     }
 
     void handleDirection()
