@@ -22,5 +22,7 @@ public class UIController : MonoBehaviour
     {
         _lightBar.SetLightPoints(_player.getCurrentLightPoints());
         _powerups.activateDashCooldown(_player.getIsDashCooldown());
+        _powerups.activateDoubleJumpCooldown(_player.getHasDoubleJumped());
+        _powerups.showDoubleJump(_player.getCanDoubleJump());
     }
 }
