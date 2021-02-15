@@ -139,6 +139,8 @@ public class PlayerV2 : MonoBehaviour
 
         _currentGravity = _gravityValue;
 
+        _mainCamera.GetComponent<GlowComposite>().Intensity = (float)_currentLightPoints / (float)_maxLightPoints;
+
     }
 
     // Update is called once per frame
@@ -372,6 +374,8 @@ public class PlayerV2 : MonoBehaviour
         _currentLightPoints -= damage;
         _lightBar.SetLightPoints(_currentLightPoints);
         _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
+        _mainCamera.GetComponent<GlowComposite>().Intensity = (float)_currentLightPoints / (float)_maxLightPoints;
+
     }
 
 
