@@ -22,17 +22,17 @@
                     "interactions": "Press(behavior=2)"
                 },
                 {
-                    "name": "Run",
+                    "name": "Jump",
                     "type": "Button",
-                    "id": "b37f4801-43e5-454a-b6cb-7fd8bd38c814",
+                    "id": "90310259-5df6-401a-a3f6-5d947d39a645",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press(behavior=2)"
                 },
                 {
-                    "name": "Jump",
+                    "name": "Let_Go",
                     "type": "Button",
-                    "id": "90310259-5df6-401a-a3f6-5d947d39a645",
+                    "id": "10c63240-8a61-4a85-823a-32871738de00",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press(behavior=2)"
@@ -42,7 +42,7 @@
                 {
                     "name": "",
                     "id": "b69310f0-4b70-4874-b886-6dc5845cbcc7",
-                    "path": "<Keyboard>/leftAlt",
+                    "path": "<Keyboard>/leftShift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -58,28 +58,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3a9d7dab-84a2-4a5a-b0e8-9cb08a49235f",
-                    "path": "<Keyboard>/leftShift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Run",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d58703e6-e052-4b16-af59-2fac60bba17e",
-                    "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Run",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -168,6 +146,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dfcade32-8546-4201-9e76-fa7153ea4c9b",
+                    "path": "<Keyboard>/leftAlt",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Let_Go",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ca65ac86-cf91-44da-ac6f-06012d49fbd3",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Let_Go",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
