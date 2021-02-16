@@ -2253,6 +2253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _talkText: {fileID: 2831735256567216357}
   _playerV2: {fileID: 0}
+  convo: []
 --- !u!1 &2831735256567216359
 GameObject:
   m_ObjectHideFlags: 0
@@ -2381,7 +2382,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 1
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -0.7613497, y: 0, z: -0.78846645, w: 0}
+  m_margin: {x: -1.7472553, y: 0, z: -1.5832167, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
