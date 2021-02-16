@@ -194,6 +194,7 @@ public class PlayerV2 : MonoBehaviour
 
         if (_grounded) {
             _hasDoubleJumped = false;
+            _controller.stepOffset = 0.3f;
         }
 
         handleWallGrab();
@@ -302,6 +303,8 @@ public class PlayerV2 : MonoBehaviour
 
     void ExecuteJump() 
     {
+        _controller.stepOffset = 0.0f;
+
         if (!_grounded)
             _playerVelocity.y = 0;
 
