@@ -11,6 +11,7 @@ public class PlayerV2 : MonoBehaviour
     [SerializeField] float _sprintSpeed = 4;
     [SerializeField] float _airSpeed = 3;
     [SerializeField] float _xDecel = 0.1f;
+    [SerializeField] Transform _headHitOrigin;
     private float _currentGravity;
     private float _gravityValue = Physics.gravity.y * 1.5f;
     private float _wallSlideG = Physics.gravity.y / 4;
@@ -24,7 +25,7 @@ public class PlayerV2 : MonoBehaviour
     [SerializeField] float _maxDashTime = 1.0f;
     [SerializeField] float _dashSpeed = 10.0f;
     [SerializeField] float _dashStoppingSpeed = 0.1f;
-    [SerializeField] float _dashDelay = 2f;
+    [SerializeField] float _dashDelay = 1f;
     [SerializeField] int _dashCost = 20;
     private float _currentDashTime;
     private bool _isDashCooldown;
@@ -86,7 +87,7 @@ public class PlayerV2 : MonoBehaviour
         _input.CharacterControls.Movement.performed += ctx =>
         {   
             _currentMovement = ctx.ReadValue<Vector2>();
-            _movementPressed = _currentMovement != Vector2.zero;
+            _movementPressed = Mathf.Abs(_currentMovement.x) >= 0.1;
         };
 
         _input.CharacterControls.Movement.canceled += ctx =>
@@ -166,35 +167,7 @@ public class PlayerV2 : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _grounded = _controller.isGrounded;
-
-        if (_playerVelocity.y < 0)
-        {
-            if(_grounded)
-            {
-                _playerVelocity.y = 0f;
-                _currentJumps = 0;
-            }
-
-            if(_grabbingWall && _currentGravity != _wallSlideG)
-            {
-                _playerVelocity.y = 0;
-                _currentGravity = _wallSlideG;
-            }
-            else if(!_grabbingWall)
-            {
-                _currentGravity = _gravityValue;
-            } 
-        }
-
-        if(Mathf.Abs(_playerVelocity.x) > 0)
-        {
-            _playerVelocity.x -= _xDecel * this.transform.forward.x;
-        }
-
-        if (_grounded) {
-            _hasDoubleJumped = false;
-        }
+        handleAerialChecks();
 
         handleWallGrab();
 
@@ -211,8 +184,51 @@ public class PlayerV2 : MonoBehaviour
             handleJumping();
         }
 
+        // Drop due to gravity after all other effects are applied
         _playerVelocity.y += _currentGravity * Time.deltaTime;
         _controller.Move(_playerVelocity * Time.deltaTime);
+    }
+
+    private void handleAerialChecks()
+    {
+        _grounded = _controller.isGrounded;
+
+        RaycastHit hit;
+        Ray headRay = new Ray(_headHitOrigin.position, this.transform.up);
+        bool hitHead = Physics.Raycast(headRay, out hit, 0.2f);
+
+        if (hitHead && !_grounded && !_grabbingWall && _playerVelocity.y > 0)
+            _playerVelocity.y = 0;
+
+        if (_playerVelocity.y < 0)
+        {
+            if (_grounded)
+            {
+                _playerVelocity.y = 0f;
+                _currentJumps = 0;
+            }
+
+            if (_grabbingWall && _currentGravity != _wallSlideG)
+            {
+                _playerVelocity.y = 0;
+                _currentGravity = _wallSlideG;
+            }
+            else if (!_grabbingWall)
+            {
+                _currentGravity = _gravityValue;
+            }
+        }
+
+        if (Mathf.Abs(_playerVelocity.x) > 0)
+        {
+            _playerVelocity.x -= _xDecel * this.transform.forward.x;
+        }
+
+        if (_grounded)
+        {
+            _hasDoubleJumped = false;
+            _controller.stepOffset = 0.3f;
+        }
     }
 
     private void handleWallGrab()
@@ -302,6 +318,8 @@ public class PlayerV2 : MonoBehaviour
 
     void ExecuteJump() 
     {
+        _controller.stepOffset = 0.0f;
+
         if (!_grounded)
             _playerVelocity.y = 0;
 
@@ -365,6 +383,8 @@ public class PlayerV2 : MonoBehaviour
                 _currentLightPoints = _maxLightPoints;
                 _lightBar.SetLightPoints(_currentLightPoints);
                 _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
+                _mainCamera.GetComponent<GlowComposite>().Intensity = (float)_currentLightPoints / (float)_maxLightPoints;
+
             }
         }
     }
@@ -394,5 +414,7 @@ public class PlayerV2 : MonoBehaviour
         // Draws a 5 unit long red line in front of the object
         Gizmos.color = Color.red;
         Gizmos.DrawRay(_wallGrabRayOrigin.position, this.transform.forward * 0.4f);
+
+        Gizmos.DrawRay(_headHitOrigin.position, this.transform.up * 0.2f);
     }
 }
