@@ -329,6 +329,11 @@ PrefabInstance:
       objectReference: {fileID: 401550440632506909}
     - target: {fileID: 4743982200065333441, guid: 2b8896715792a654b975359657c760ae,
         type: 3}
+      propertyPath: _dashDelay
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743982200065333441, guid: 2b8896715792a654b975359657c760ae,
+        type: 3}
       propertyPath: _headHitOrigin
       value: 
       objectReference: {fileID: 8679553606893071872}

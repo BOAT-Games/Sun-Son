@@ -25,7 +25,7 @@ public class PlayerV2 : MonoBehaviour
     [SerializeField] float _maxDashTime = 1.0f;
     [SerializeField] float _dashSpeed = 10.0f;
     [SerializeField] float _dashStoppingSpeed = 0.1f;
-    [SerializeField] float _dashDelay = 2f;
+    [SerializeField] float _dashDelay = 1f;
     [SerializeField] int _dashCost = 20;
     private float _currentDashTime;
     private bool _isDashCooldown;
@@ -383,6 +383,8 @@ public class PlayerV2 : MonoBehaviour
                 _currentLightPoints = _maxLightPoints;
                 _lightBar.SetLightPoints(_currentLightPoints);
                 _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
+                _mainCamera.GetComponent<GlowComposite>().Intensity = (float)_currentLightPoints / (float)_maxLightPoints;
+
             }
         }
     }
