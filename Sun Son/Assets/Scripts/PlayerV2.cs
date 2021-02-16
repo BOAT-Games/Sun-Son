@@ -27,6 +27,7 @@ public class PlayerV2 : MonoBehaviour
     [SerializeField] float _dashStoppingSpeed = 0.1f;
     [SerializeField] float _dashDelay = 1f;
     [SerializeField] int _dashCost = 20;
+    [SerializeField] bool _canDash = true;
     private float _currentDashTime;
     private bool _isDashCooldown;
     private float _nextDashAvailable;
@@ -129,6 +130,7 @@ public class PlayerV2 : MonoBehaviour
         _isMeleeingHash = Animator.StringToHash("isMeleeing");
         _isGrabbingWallHash = Animator.StringToHash("isGrabbingWall");
 
+        _trailRenderer.enabled = _canDash;
         _currentDashTime = _maxDashTime;
         _canDoubleJump = false;
 
@@ -177,7 +179,10 @@ public class PlayerV2 : MonoBehaviour
             handleDirection();
             handleMovement();
             handleJumping();
-            handleDashing();
+            if (_canDash)
+            {
+                handleDashing();
+            }
         }
         else
         {
