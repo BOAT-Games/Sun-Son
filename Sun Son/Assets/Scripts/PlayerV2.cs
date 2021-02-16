@@ -11,6 +11,7 @@ public class PlayerV2 : MonoBehaviour
     [SerializeField] float _sprintSpeed = 4;
     [SerializeField] float _airSpeed = 3;
     [SerializeField] float _xDecel = 0.1f;
+    [SerializeField] Transform _headHitOrigin;
     private float _currentGravity;
     private float _gravityValue = Physics.gravity.y * 1.5f;
     private float _wallSlideG = Physics.gravity.y / 4;
@@ -166,36 +167,7 @@ public class PlayerV2 : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _grounded = _controller.isGrounded;
-
-        if (_playerVelocity.y < 0)
-        {
-            if(_grounded)
-            {
-                _playerVelocity.y = 0f;
-                _currentJumps = 0;
-            }
-
-            if(_grabbingWall && _currentGravity != _wallSlideG)
-            {
-                _playerVelocity.y = 0;
-                _currentGravity = _wallSlideG;
-            }
-            else if(!_grabbingWall)
-            {
-                _currentGravity = _gravityValue;
-            } 
-        }
-
-        if(Mathf.Abs(_playerVelocity.x) > 0)
-        {
-            _playerVelocity.x -= _xDecel * this.transform.forward.x;
-        }
-
-        if (_grounded) {
-            _hasDoubleJumped = false;
-            _controller.stepOffset = 0.3f;
-        }
+        handleAerialChecks();
 
         handleWallGrab();
 
@@ -214,6 +186,48 @@ public class PlayerV2 : MonoBehaviour
 
         _playerVelocity.y += _currentGravity * Time.deltaTime;
         _controller.Move(_playerVelocity * Time.deltaTime);
+    }
+
+    private void handleAerialChecks()
+    {
+        _grounded = _controller.isGrounded;
+
+        RaycastHit hit;
+        Ray headRay = new Ray(_headHitOrigin.position, this.transform.up);
+        bool hitHead = Physics.Raycast(headRay, out hit, 0.2f);
+
+        if (hitHead && !_grounded && !_grabbingWall && _playerVelocity.y > 0)
+            _playerVelocity.y = 0;
+
+        if (_playerVelocity.y < 0)
+        {
+            if (_grounded)
+            {
+                _playerVelocity.y = 0f;
+                _currentJumps = 0;
+            }
+
+            if (_grabbingWall && _currentGravity != _wallSlideG)
+            {
+                _playerVelocity.y = 0;
+                _currentGravity = _wallSlideG;
+            }
+            else if (!_grabbingWall)
+            {
+                _currentGravity = _gravityValue;
+            }
+        }
+
+        if (Mathf.Abs(_playerVelocity.x) > 0)
+        {
+            _playerVelocity.x -= _xDecel * this.transform.forward.x;
+        }
+
+        if (_grounded)
+        {
+            _hasDoubleJumped = false;
+            _controller.stepOffset = 0.3f;
+        }
     }
 
     private void handleWallGrab()
@@ -397,5 +411,7 @@ public class PlayerV2 : MonoBehaviour
         // Draws a 5 unit long red line in front of the object
         Gizmos.color = Color.red;
         Gizmos.DrawRay(_wallGrabRayOrigin.position, this.transform.forward * 0.4f);
+
+        Gizmos.DrawRay(_headHitOrigin.position, this.transform.up * 0.2f);
     }
 }
