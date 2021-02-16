@@ -87,7 +87,7 @@ public class PlayerV2 : MonoBehaviour
         _input.CharacterControls.Movement.performed += ctx =>
         {   
             _currentMovement = ctx.ReadValue<Vector2>();
-            _movementPressed = _currentMovement != Vector2.zero;
+            _movementPressed = Mathf.Abs(_currentMovement.x) >= 0.1;
         };
 
         _input.CharacterControls.Movement.canceled += ctx =>
@@ -184,6 +184,7 @@ public class PlayerV2 : MonoBehaviour
             handleJumping();
         }
 
+        // Drop due to gravity after all other effects are applied
         _playerVelocity.y += _currentGravity * Time.deltaTime;
         _controller.Move(_playerVelocity * Time.deltaTime);
     }

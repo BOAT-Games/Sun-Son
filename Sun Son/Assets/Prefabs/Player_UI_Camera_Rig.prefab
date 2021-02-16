@@ -1,5 +1,95 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1241490635
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1241490636}
+  - component: {fileID: 1241490638}
+  - component: {fileID: 1241490637}
+  m_Layer: 5
+  m_Name: Controls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1241490636
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241490635}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3798832220179437181}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 344.4, y: 79.3}
+  m_SizeDelta: {x: 600, y: 200}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1241490638
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241490635}
+  m_CullTransparentMesh: 0
+--- !u!114 &1241490637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1241490635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 22
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Controls:
+
+    A/D - Left/Right
+
+    Space - Jump, Jump off wall, Double
+    jump (once unlocked)
+
+    L Shift - Dash
+
+    A/D towards a wall - Grab wall
+
+    L
+    Alt - Drop'
 --- !u!1 &3798832219140185207
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,6 +242,7 @@ RectTransform:
   - {fileID: 4370480124951448349}
   - {fileID: 3935247998523102151}
   - {fileID: 1107979166254173425}
+  - {fileID: 1241490636}
   m_Father: {fileID: 3798832219254405143}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -227,11 +318,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3798832219254405143}
     m_Modifications:
+    - target: {fileID: 1983121037, guid: 2b8896715792a654b975359657c760ae, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.37
+      objectReference: {fileID: 0}
     - target: {fileID: 4743982200065333441, guid: 2b8896715792a654b975359657c760ae,
         type: 3}
       propertyPath: _lightBar
       value: 
       objectReference: {fileID: 401550440632506909}
+    - target: {fileID: 4743982200065333441, guid: 2b8896715792a654b975359657c760ae,
+        type: 3}
+      propertyPath: _headHitOrigin
+      value: 
+      objectReference: {fileID: 8679553606893071872}
     - target: {fileID: 4908526365814493367, guid: 2b8896715792a654b975359657c760ae,
         type: 3}
       propertyPath: m_RootOrder
@@ -250,7 +350,7 @@ PrefabInstance:
     - target: {fileID: 4908526365814493367, guid: 2b8896715792a654b975359657c760ae,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.106
+      value: 5.95
       objectReference: {fileID: 0}
     - target: {fileID: 4908526365814493367, guid: 2b8896715792a654b975359657c760ae,
         type: 3}
@@ -312,6 +412,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b95829c2673b653488e3b748d837527e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &8679553606893071872 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5533747200155413578, guid: 2b8896715792a654b975359657c760ae,
+    type: 3}
+  m_PrefabInstance: {fileID: 3798832218311295562}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3798832218915101782
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -776,7 +882,7 @@ PrefabInstance:
     - target: {fileID: 6804662132514650106, guid: c067cf112f3b96d4a812f909c705fbb4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -14.212517
+      value: -13.368517
       objectReference: {fileID: 0}
     - target: {fileID: 6804662132514650106, guid: c067cf112f3b96d4a812f909c705fbb4,
         type: 3}
