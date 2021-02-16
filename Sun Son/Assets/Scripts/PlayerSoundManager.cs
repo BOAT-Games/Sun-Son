@@ -22,7 +22,7 @@ public class PlayerSoundManager : MonoBehaviour
         }
     }
 
-    public void playDash()
+    void playDash()
     {
         if(_audioSource.clip != _dash)
         {
@@ -30,4 +30,6 @@ public class PlayerSoundManager : MonoBehaviour
             _audioSource.Play();
         }
     }
+
+
 }
