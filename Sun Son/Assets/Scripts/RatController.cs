@@ -13,7 +13,6 @@ public class RatController : MonoBehaviour
     [SerializeField] float _decisionDelay = 3f;
     [SerializeField] Transform[] targets;
     [SerializeField] EnemyStates currentState;
-    [SerializeField] Transform objectToChase;
 
     private GameObject _player;
     private float damageTimer = 1.0f;
@@ -45,7 +44,7 @@ public class RatController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, objectToChase.position) > _targetRange)
+        if (Vector3.Distance(transform.position, _player.transform.position) > _targetRange)
         {
             currentState = EnemyStates.Patrolling;
             agent.speed = 1;
@@ -53,7 +52,7 @@ public class RatController : MonoBehaviour
         else
         {
             currentState = EnemyStates.Chasing;
-            agent.speed = 2.5f;
+            agent.speed = 3f;
         }
 
         if (currentState == EnemyStates.Patrolling)
@@ -74,7 +73,7 @@ public class RatController : MonoBehaviour
     {
         if (currentState == EnemyStates.Chasing)
         {
-            agent.SetDestination(objectToChase.position);
+            agent.SetDestination(_player.transform.position);
         }
     }
 
@@ -92,5 +91,11 @@ public class RatController : MonoBehaviour
                 damageTimer -= Time.deltaTime;
             }
         }
+    }
+
+    //for when the player can attack back
+    public void TakeDamage(int damage)
+    {
+
     }
 }
