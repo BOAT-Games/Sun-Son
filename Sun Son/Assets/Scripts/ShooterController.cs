@@ -33,7 +33,6 @@ public class ShooterController : MonoBehaviour
 
     private void Start()
     {
-        InvokeRepeating("SetDestination", 1.5f, _decisionDelay);
         agent.SetDestination(targets[currentTarget].position);
 
     }
