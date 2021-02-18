@@ -308,9 +308,7 @@ public class PlayerV2 : MonoBehaviour
         if (_jumpPressed && !_grounded && _currentJumps < _maxJumps && _canDoubleJump && _currentLightPoints >= _doubleJumpCost) 
         {
             ExecuteJump();
-            _currentLightPoints -= _doubleJumpCost;
-            _lightBar.SetLightPoints(_currentLightPoints);
-            _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
+            TakeDamage(_doubleJumpCost);
             _hasDoubleJumped = true;
         }
 
@@ -374,13 +372,13 @@ public class PlayerV2 : MonoBehaviour
         _controller.Move(_moveDirection * Time.deltaTime * _dashSpeed);
     }
 
-    void OnTriggerEnter(Collider coll)
+    void OnTriggerStay(Collider coll)
     {
         if (coll.gameObject.CompareTag("Light"))
         {
             if (_currentLightPoints != _maxLightPoints)
             {
-                _currentLightPoints = _maxLightPoints;
+                _currentLightPoints = Mathf.CeilToInt(Mathf.Lerp(_currentLightPoints, _maxLightPoints, 0.05f));
                 _lightBar.SetLightPoints(_currentLightPoints);
                 _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
                 _mainCamera.GetComponent<GlowComposite>().Intensity = (float)_currentLightPoints / (float)_maxLightPoints;
