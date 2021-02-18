@@ -45,6 +45,9 @@ public class PlayerV2 : MonoBehaviour
     private bool _grabbingWall;
     private float _controlsAvailable;
 
+    //Fields for NPC interaction
+    [SerializeField] bool _canTalk;
+
 
     // Fields for Player Resources
     [SerializeField] int _maxLightPoints;
@@ -60,7 +63,7 @@ public class PlayerV2 : MonoBehaviour
 
     // Fields for Animations
     private Animator _anim;
-    private int _isRunningHash;
+    private int _moveInputValue;
     private int _isJumpingHash;
     private int _isAirborneHash;
     private int _isDashingHash;
@@ -120,7 +123,7 @@ public class PlayerV2 : MonoBehaviour
         _controller = GetComponent<CharacterController>();
         _mainCamera = Camera.main;
         
-        _isRunningHash = Animator.StringToHash("isRunning");
+        _moveInputValue = Animator.StringToHash("moveInputValue");
         _isJumpingHash = Animator.StringToHash("isJumping");
         _isAirborneHash = Animator.StringToHash("isAirborne");
         _isDashingHash = Animator.StringToHash("isDashing");
@@ -270,19 +273,19 @@ public class PlayerV2 : MonoBehaviour
     void handleMovement()
     {
         _moveDirection = new Vector3(_currentMovement.x, 0, 0);
-        bool isRunning = _anim.GetBool(_isRunningHash);
+        bool isRunning = _anim.GetFloat(_moveInputValue) != 0;
 
         if (!_movementPressed)
             _playerSpeed = 0;
 
-        if(_movementPressed && !isRunning)
+        if(_movementPressed)
         {
-            _anim.SetBool(_isRunningHash, true);
+            _anim.SetFloat(_moveInputValue, Mathf.Abs(_currentMovement.x));
         }
 
         if(!_movementPressed && isRunning)
         {
-            _anim.SetBool(_isRunningHash, false);
+            _anim.SetFloat(_moveInputValue, 0.0f);
         }
 
         if (_grounded && isRunning)
@@ -308,9 +311,7 @@ public class PlayerV2 : MonoBehaviour
         if (_jumpPressed && !_grounded && _currentJumps < _maxJumps && _canDoubleJump && _currentLightPoints >= _doubleJumpCost) 
         {
             ExecuteJump();
-            _currentLightPoints -= _doubleJumpCost;
-            _lightBar.SetLightPoints(_currentLightPoints);
-            _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
+            TakeDamage(_doubleJumpCost);
             _hasDoubleJumped = true;
         }
 
@@ -374,13 +375,13 @@ public class PlayerV2 : MonoBehaviour
         _controller.Move(_moveDirection * Time.deltaTime * _dashSpeed);
     }
 
-    void OnTriggerEnter(Collider coll)
+    void OnTriggerStay(Collider coll)
     {
         if (coll.gameObject.CompareTag("Light"))
         {
             if (_currentLightPoints != _maxLightPoints)
             {
-                _currentLightPoints = _maxLightPoints;
+                _currentLightPoints = Mathf.CeilToInt(Mathf.Lerp(_currentLightPoints, _maxLightPoints, 0.05f));
                 _lightBar.SetLightPoints(_currentLightPoints);
                 _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
                 _mainCamera.GetComponent<GlowComposite>().Intensity = (float)_currentLightPoints / (float)_maxLightPoints;
@@ -417,4 +418,7 @@ public class PlayerV2 : MonoBehaviour
 
         Gizmos.DrawRay(_headHitOrigin.position, this.transform.up * 0.2f);
     }
+
+    public void setCanTalk(bool talk) { _canTalk = talk; }
+    public bool getCanTalk() { return _canTalk; }
 }
