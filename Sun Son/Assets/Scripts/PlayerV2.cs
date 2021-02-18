@@ -45,6 +45,9 @@ public class PlayerV2 : MonoBehaviour
     private bool _grabbingWall;
     private float _controlsAvailable;
 
+    //Fields for NPC interaction
+    [SerializeField] bool _canTalk;
+
 
     // Fields for Player Resources
     [SerializeField] int _maxLightPoints;
@@ -415,4 +418,7 @@ public class PlayerV2 : MonoBehaviour
 
         Gizmos.DrawRay(_headHitOrigin.position, this.transform.up * 0.2f);
     }
+
+    public void setCanTalk(bool talk) { _canTalk = talk; }
+    public bool getCanTalk() { return _canTalk; }
 }
