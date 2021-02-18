@@ -24,9 +24,12 @@ public class TalkController : MonoBehaviour
     }
     private void Start()
     {
-        convo = new string[] {"Hey Sun.",
+        if (convo.Length > 0)
+        {
+            convo = new string[] {"Hey Sun.",
             "How\'s the mission coming along?",
             "Try not to die out there!" };
+        }
 
     }
     // Update is called once per frame
