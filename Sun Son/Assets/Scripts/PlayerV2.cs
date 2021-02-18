@@ -60,7 +60,7 @@ public class PlayerV2 : MonoBehaviour
 
     // Fields for Animations
     private Animator _anim;
-    private int _isRunningHash;
+    private int _moveInputValue;
     private int _isJumpingHash;
     private int _isAirborneHash;
     private int _isDashingHash;
@@ -120,7 +120,7 @@ public class PlayerV2 : MonoBehaviour
         _controller = GetComponent<CharacterController>();
         _mainCamera = Camera.main;
         
-        _isRunningHash = Animator.StringToHash("isRunning");
+        _moveInputValue = Animator.StringToHash("moveInputValue");
         _isJumpingHash = Animator.StringToHash("isJumping");
         _isAirborneHash = Animator.StringToHash("isAirborne");
         _isDashingHash = Animator.StringToHash("isDashing");
@@ -270,19 +270,19 @@ public class PlayerV2 : MonoBehaviour
     void handleMovement()
     {
         _moveDirection = new Vector3(_currentMovement.x, 0, 0);
-        bool isRunning = _anim.GetBool(_isRunningHash);
+        bool isRunning = _anim.GetFloat(_moveInputValue) != 0;
 
         if (!_movementPressed)
             _playerSpeed = 0;
 
-        if(_movementPressed && !isRunning)
+        if(_movementPressed)
         {
-            _anim.SetBool(_isRunningHash, true);
+            _anim.SetFloat(_moveInputValue, Mathf.Abs(_currentMovement.x));
         }
 
         if(!_movementPressed && isRunning)
         {
-            _anim.SetBool(_isRunningHash, false);
+            _anim.SetFloat(_moveInputValue, 0.0f);
         }
 
         if (_grounded && isRunning)
