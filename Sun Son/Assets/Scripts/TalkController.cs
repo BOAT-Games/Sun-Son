@@ -15,6 +15,7 @@ public class TalkController : MonoBehaviour
     private bool _wasPressed = false;
 
     public string[] convo;
+
     
     private void Awake()
     {
@@ -24,12 +25,7 @@ public class TalkController : MonoBehaviour
     }
     private void Start()
     {
-        if (convo.Length > 0)
-        {
-            convo = new string[] {"Hey Sun.",
-            "How\'s the mission coming along?",
-            "Try not to die out there!" };
-        }
+        
 
     }
     // Update is called once per frame
