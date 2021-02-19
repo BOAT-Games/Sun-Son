@@ -973,9 +973,6 @@ MonoBehaviour:
   agent: {fileID: 1213850218175435675}
   player: {fileID: 0}
   health: 0
-  targets:
-  - {fileID: 0}
-  - {fileID: 0}
   timeBetweenAttacks: 1.5
   projectile: {fileID: 7248486601484364845, guid: e20fb677b55f948b1bb7835ab2bbc99d,
     type: 3}
@@ -2191,7 +2188,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.12941177, g: 0.011764706, b: 0.16078432, a: 1}
   m_Intensity: 3
-  m_Range: 10
+  m_Range: 7
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -2222,7 +2219,7 @@ Light:
       e33: 1
     m_UseCullingMatrixOverride: 0
   m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
+  m_DrawHalo: 1
   m_Flare: {fileID: 0}
   m_RenderMode: 0
   m_CullingMask:

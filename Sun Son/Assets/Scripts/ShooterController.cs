@@ -10,11 +10,6 @@ public class ShooterController : MonoBehaviour
     [SerializeField] Transform player;
     [SerializeField] float health;
 
-    //Patroling
-    [SerializeField] Transform[] targets;
-
-    private int currentTarget = 0;
-
     //Attacking
     [SerializeField] float timeBetweenAttacks;
     bool alreadyAttacked;
@@ -37,7 +32,7 @@ public class ShooterController : MonoBehaviour
 
     private void Start()
     {
-        agent.SetDestination(targets[currentTarget].position);
+        agent.SetDestination(transform.position);
 
         _anim = GetComponent<Animator>();
 
@@ -70,7 +65,6 @@ public class ShooterController : MonoBehaviour
         {
             _anim.SetBool(_isChasing, false);
             _anim.SetBool(_isAttacking, false);
-           // Patroling();
         }
 
         if (playerInSightRange && !playerInAttackRange)
@@ -89,20 +83,6 @@ public class ShooterController : MonoBehaviour
             }
             AttackPlayer();
         }
-    }
-
-    private void Patroling()
-    {
-        if (Vector3.Distance(transform.position, targets[currentTarget].position) < 0.2f)
-        {
-            currentTarget++;
-            if (currentTarget == targets.Length)
-            {
-                currentTarget = 0;
-            }
-        }
-        agent.SetDestination(targets[currentTarget].position);
-        agent.speed = 1;
     }
 
     private void ChasePlayer()
