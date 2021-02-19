@@ -24,6 +24,12 @@ public class ShooterController : MonoBehaviour
     private int _isChasing;
     private int _isAttacking;
 
+    public SkinnedMeshRenderer rhead;
+    public SkinnedMeshRenderer rbody;
+    public SkinnedMeshRenderer rlegs;
+    public Material red;
+    private Material originalMaterial;
+
     private void Awake()
     {
         player = FindObjectOfType<PlayerV2>().gameObject.transform;
@@ -38,6 +44,8 @@ public class ShooterController : MonoBehaviour
 
         _isChasing = Animator.StringToHash("Chasing");
         _isAttacking = Animator.StringToHash("RangedAttack");
+
+        originalMaterial = rhead.material;
 
     }
 
@@ -65,6 +73,7 @@ public class ShooterController : MonoBehaviour
         {
             _anim.SetBool(_isChasing, false);
             _anim.SetBool(_isAttacking, false);
+            agent.SetDestination(transform.position);
         }
 
         if (playerInSightRange && !playerInAttackRange)
@@ -111,16 +120,30 @@ public class ShooterController : MonoBehaviour
         rb.AddForce(transform.forward * 16f, ForceMode.Impulse);
         rb.AddForce(transform.up * 4f, ForceMode.Impulse);
 
+        gameObject.GetComponent<AudioSource>().Play();
     }
 
     public void TakeDamage(int damage)
     {
         health -= damage;
 
+        rhead.materials = new Material[] { red, red, red };
+        rbody.materials = new Material[] { red, red };
+        rlegs.materials = new Material[] { red, red };
+
+        Invoke("ResetColor", 0.1f);
+
         if (health <= 0)
         {
             Invoke(nameof(DestroyEnemy), 0.5f);
         }
+    }
+
+    void ResetColor()
+    {
+        rhead.materials = new Material[] { originalMaterial, originalMaterial, originalMaterial };
+        rbody.materials = new Material[] { originalMaterial, originalMaterial };
+        rlegs.materials = new Material[] { originalMaterial, originalMaterial };
     }
 
     private void DestroyEnemy()
