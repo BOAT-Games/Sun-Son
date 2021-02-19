@@ -118,7 +118,7 @@ public class CrawlerController : MonoBehaviour
         _player.GetComponent<PlayerV2>().TakeDamage(_damageCost);
 
         Instantiate(obj, targetPosition, Quaternion.LookRotation(transform.forward * -1, Vector3.up));
-
+        GetComponent<AudioSource>().Play();
     }
 
     //for when the player can attack back
