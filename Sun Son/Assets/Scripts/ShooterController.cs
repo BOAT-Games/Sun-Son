@@ -10,12 +10,6 @@ public class ShooterController : MonoBehaviour
     [SerializeField] Transform player;
     [SerializeField] float health;
 
-    //Patroling
-    [SerializeField] float _decisionDelay = 3f;
-    [SerializeField] Transform[] targets;
-
-    private int currentTarget = 0;
-
     //Attacking
     [SerializeField] float timeBetweenAttacks;
     bool alreadyAttacked;
@@ -25,6 +19,17 @@ public class ShooterController : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    //Animations
+    private Animator _anim;
+    private int _isChasing;
+    private int _isAttacking;
+
+    public SkinnedMeshRenderer rhead;
+    public SkinnedMeshRenderer rbody;
+    public SkinnedMeshRenderer rlegs;
+    public Material red;
+    private Material originalMaterial;
+
     private void Awake()
     {
         player = FindObjectOfType<PlayerV2>().gameObject.transform;
@@ -33,7 +38,14 @@ public class ShooterController : MonoBehaviour
 
     private void Start()
     {
-        agent.SetDestination(targets[currentTarget].position);
+        agent.SetDestination(transform.position);
+
+        _anim = GetComponent<Animator>();
+
+        _isChasing = Animator.StringToHash("Chasing");
+        _isAttacking = Animator.StringToHash("RangedAttack");
+
+        originalMaterial = rhead.material;
 
     }
 
@@ -59,32 +71,27 @@ public class ShooterController : MonoBehaviour
 
         if (!playerInSightRange && !playerInAttackRange)
         {
-            Patroling();
+            _anim.SetBool(_isChasing, false);
+            _anim.SetBool(_isAttacking, false);
+            agent.SetDestination(transform.position);
         }
 
         if (playerInSightRange && !playerInAttackRange)
         {
+            _anim.SetBool(_isChasing, true);
+            _anim.SetBool(_isAttacking, false);
             ChasePlayer();
         }
 
         if (playerInSightRange && playerInAttackRange)
         {
+            if (!_anim.GetBool(_isAttacking))
+            {
+                _anim.SetBool(_isAttacking, true);
+                _anim.SetBool(_isChasing, false);
+            }
             AttackPlayer();
         }
-    }
-
-    private void Patroling()
-    {
-        if (Vector3.Distance(transform.position, targets[currentTarget].position) < 0.2f)
-        {
-            currentTarget++;
-            if (currentTarget == targets.Length)
-            {
-                currentTarget = 0;
-            }
-        }
-        agent.SetDestination(targets[currentTarget].position);
-        agent.speed = 1;
     }
 
     private void ChasePlayer()
@@ -97,32 +104,34 @@ public class ShooterController : MonoBehaviour
     {
         //make sure enemy doesn't move
         agent.SetDestination(transform.position);
+    }
+
+    public void Shoot()
+    {
         Vector3 targetPostition = new Vector3(player.position.x,
                                         this.transform.position.y,
                                         player.position.z);
         transform.LookAt(targetPostition);
 
-        if(!alreadyAttacked)
-        {
-            //attack code here
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 16f, ForceMode.Impulse);
-            rb.AddForce(transform.up * 4f, ForceMode.Impulse);
+        Vector3 shootPoint = new Vector3(transform.position.x,
+                               transform.position.y + 1, transform.position.z);
+        //attack code here
+        Rigidbody rb = Instantiate(projectile, shootPoint, Quaternion.identity).GetComponent<Rigidbody>();
+        rb.AddForce(transform.forward * 16f, ForceMode.Impulse);
+        rb.AddForce(transform.up * 4f, ForceMode.Impulse);
 
-
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
-        }
-    }
-
-    private void ResetAttack()
-    {
-        alreadyAttacked = false;
+        gameObject.GetComponent<AudioSource>().Play();
     }
 
     public void TakeDamage(int damage)
     {
         health -= damage;
+
+        rhead.materials = new Material[] { red, red, red };
+        rbody.materials = new Material[] { red, red };
+        rlegs.materials = new Material[] { red, red };
+
+        Invoke("ResetColor", 0.1f);
 
         if (health <= 0)
         {
@@ -130,8 +139,16 @@ public class ShooterController : MonoBehaviour
         }
     }
 
+    void ResetColor()
+    {
+        rhead.materials = new Material[] { originalMaterial, originalMaterial, originalMaterial };
+        rbody.materials = new Material[] { originalMaterial, originalMaterial };
+        rlegs.materials = new Material[] { originalMaterial, originalMaterial };
+    }
+
     private void DestroyEnemy()
     {
         Destroy(gameObject);
     }
+
 }
