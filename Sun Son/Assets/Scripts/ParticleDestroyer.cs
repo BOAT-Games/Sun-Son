@@ -32,7 +32,6 @@ public class ParticleDestroyer : MonoBehaviour
         if (!_called && other.CompareTag("Player"))
         {
             _called = true;
-            Debug.Log("Ouch");
             _player.GetComponent<PlayerV2>().TakeDamage(_damageCost);
         }
     }
