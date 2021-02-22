@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2238202032112938875}
   - component: {fileID: 2238202032112938820}
   - component: {fileID: 8851514610023812636}
+  - component: {fileID: 6298529853372979743}
   m_Layer: 0
   m_Name: ShadowImpact2
   m_TagString: Untagged
@@ -4825,3 +4826,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c08e59b1f739a4e3e91fe0530af2a78a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 0}
+  _damageCost: 30
+--- !u!65 &6298529853372979743
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2238202032112938821}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.5, y: 8, z: 6}
+  m_Center: {x: -0.428895, y: 4.682127, z: -0.021116395}

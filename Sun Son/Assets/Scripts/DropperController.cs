@@ -5,40 +5,50 @@ using UnityEngine;
 public class DropperController : MonoBehaviour
 {
     [SerializeField] bool _drop = false;
+    [SerializeField] bool _timerStart = false;
     [SerializeField] float _dropTimer = 2f;
     [SerializeField] GameObject ps;
-    
+
+    [SerializeField] Light leftEye;
+    [SerializeField] Light rightEye;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        leftEye.intensity = 0;
+        rightEye.intensity = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       if (_timerStart)
+        {
+            _dropTimer -= Time.deltaTime;
+            leftEye.intensity = 2;
+            rightEye.intensity = 2;
+        }
+
+        if (!_drop && _dropTimer <= 0)
+        {
+            _drop = true;
+        }
+
+        if (_drop)
+        {
+            transform.position = new Vector3(transform.position.x,
+                                        transform.position.y - 0.3f,
+                                        transform.position.z);
+        }
     }
 
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (!_timerStart && other.CompareTag("Player"))
         {
-            if (!_drop && _dropTimer <= 0)
-            {
-                _drop = true;
-            }
-            else if (!_drop && _dropTimer > 0)
-            {
-                _dropTimer -= Time.deltaTime;
-            }
-            else if (_drop)
-            {
-                transform.position = new Vector3(transform.position.x,
-                                            transform.position.y - 0.3f,
-                                            transform.position.z);
-            }
+            _timerStart = true;
         }
+        
     }
 
     void OnCollisionEnter(Collision collision)

@@ -299,6 +299,8 @@ MonoBehaviour:
   _drop: 0
   _dropTimer: 2
   ps: {fileID: 2238202032112938821, guid: b84058ee175594e81bc2c6d5883586af, type: 3}
+  leftEye: {fileID: 9044253344235463777}
+  rightEye: {fileID: 4261200893080564179}
 --- !u!65 &4702226806795352966
 BoxCollider:
   m_ObjectHideFlags: 0

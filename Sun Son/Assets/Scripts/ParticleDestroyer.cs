@@ -5,11 +5,15 @@ using UnityEngine;
 public class ParticleDestroyer : MonoBehaviour
 {
     private ParticleSystem ps;
+    [SerializeField] GameObject _player;
+    [SerializeField] int _damageCost = 20;
+    private bool _called = false;
 
 
     public void Start()
     {
         ps = GetComponent<ParticleSystem>();
+        _player = FindObjectOfType<PlayerV2>().gameObject;
     }
 
     public void Update()
@@ -20,6 +24,16 @@ public class ParticleDestroyer : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+        }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (!_called && other.CompareTag("Player"))
+        {
+            _called = true;
+            Debug.Log("Ouch");
+            _player.GetComponent<PlayerV2>().TakeDamage(_damageCost);
         }
     }
 }
