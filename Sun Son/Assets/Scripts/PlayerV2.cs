@@ -27,7 +27,7 @@ public class PlayerV2 : MonoBehaviour
     [SerializeField] float _dashStoppingSpeed = 0.1f;
     [SerializeField] float _dashDelay = 1f;
     [SerializeField] int _dashCost = 20;
-    [SerializeField] bool _canDash = true;
+    [SerializeField] bool _canUseAbilities = true;
     private float _currentDashTime;
     private bool _isDashCooldown;
     private float _nextDashAvailable;
@@ -133,15 +133,18 @@ public class PlayerV2 : MonoBehaviour
         _isMeleeingHash = Animator.StringToHash("isMeleeing");
         _isGrabbingWallHash = Animator.StringToHash("isGrabbingWall");
 
-        _trailRenderer.enabled = _canDash;
+        _trailRenderer.enabled = _canUseAbilities;
         _currentDashTime = _maxDashTime;
         _canDoubleJump = false;
 
-        _currentLightPoints = _maxLightPoints;
-        _lightBar.SetMaxLightPoints(_maxLightPoints);
-        _lightBar.SetLightPoints(_maxLightPoints);
-        _pointLight.GetComponent<LightPower>().SetMaxLightPoints(_currentLightPoints);
-        _pointLight.GetComponent<LightPower>().SetLightPoints(_maxLightPoints);
+        if (_canUseAbilities)
+        {
+            _currentLightPoints = _maxLightPoints;
+            _lightBar.SetMaxLightPoints(_maxLightPoints);
+            _lightBar.SetLightPoints(_maxLightPoints);
+            _pointLight.GetComponent<LightPower>().SetMaxLightPoints(_currentLightPoints);
+            _pointLight.GetComponent<LightPower>().SetLightPoints(_maxLightPoints);
+        }
 
         _currentGravity = _gravityValue;
 
@@ -182,7 +185,7 @@ public class PlayerV2 : MonoBehaviour
             handleDirection();
             handleMovement();
             handleJumping();
-            if (_canDash)
+            if (_canUseAbilities)
             {
                 handleDashing();
             }
