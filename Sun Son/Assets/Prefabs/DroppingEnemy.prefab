@@ -199,8 +199,8 @@ GameObject:
   - component: {fileID: 4702226806797346245}
   - component: {fileID: 4702226806795352964}
   - component: {fileID: 4702226806795352967}
-  - component: {fileID: 4702226806795352966}
   - component: {fileID: 4702226806795352961}
+  - component: {fileID: 4910584384595013370}
   m_Layer: 0
   m_Name: DroppingEnemy
   m_TagString: Untagged
@@ -297,23 +297,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _drop: 0
+  _timerStart: 0
   _dropTimer: 2
   ps: {fileID: 2238202032112938821, guid: b84058ee175594e81bc2c6d5883586af, type: 3}
   leftEye: {fileID: 9044253344235463777}
   rightEye: {fileID: 4261200893080564179}
---- !u!65 &4702226806795352966
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4702226806795352965}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.25980765, y: 0.49415493, z: 0.22500001}
-  m_Center: {x: 0.000000011920929, y: -0.3022704, z: 0.037500005}
 --- !u!54 &4702226806795352961
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -330,6 +318,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &4910584384595013370
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4702226806795352965}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.25980765, y: 0.46331713, z: 0.22500001}
+  m_Center: {x: 0.000000011920929, y: -0.20195122, z: 0.037500005}
 --- !u!1 &7165047029631587221
 GameObject:
   m_ObjectHideFlags: 0

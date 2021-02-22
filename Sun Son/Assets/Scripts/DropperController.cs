@@ -37,7 +37,7 @@ public class DropperController : MonoBehaviour
         if (_drop)
         {
             transform.position = new Vector3(transform.position.x,
-                                        transform.position.y - 0.3f,
+                                        transform.position.y - 0.4f,
                                         transform.position.z);
         }
     }
@@ -57,6 +57,14 @@ public class DropperController : MonoBehaviour
         {
             Vector3 targetPosition = new Vector3(transform.position.x,
                                        transform.position.y - 2.5f, transform.position.z);
+            Instantiate(ps, targetPosition, Quaternion.identity);
+            Destroy(gameObject);
+        }
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Vector3 targetPosition = new Vector3(transform.position.x,
+                                       transform.position.y - 3.5f, transform.position.z);
             Instantiate(ps, targetPosition, Quaternion.identity);
             Destroy(gameObject);
         }
