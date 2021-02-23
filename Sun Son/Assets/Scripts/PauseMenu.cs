@@ -47,9 +47,4 @@ public class PauseMenu : MonoBehaviour
         _isPaused = true;
         _pausePressed = false;
     }
-
-    public void Quit() {
-        Debug.Log("Quitting game");
-        Application.Quit();
-    }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class UIController : MonoBehaviour
 {
     [SerializeField] PlayerV2 _player;
@@ -24,5 +25,21 @@ public class UIController : MonoBehaviour
         _powerups.activateDashCooldown(_player.getIsDashCooldown());
         _powerups.activateDoubleJumpCooldown(_player.getHasDoubleJumped());
         _powerups.showDoubleJump(_player.getCanDoubleJump());
+    }
+
+        public void PlayGame() 
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void RestartGame() 
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void QuitGame() 
+    {
+        Debug.Log("QUIT GAME");
+        Application.Quit();
     }
 }
