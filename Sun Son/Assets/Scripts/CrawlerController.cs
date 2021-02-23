@@ -13,7 +13,7 @@ public class CrawlerController : MonoBehaviour
     [SerializeField] float _attackRange = 0.5f;
     [SerializeField] float _decisionDelay = 3f;
 
-    [SerializeField] float _health = 0;
+    [SerializeField] int _health = 5;
 
 
     [SerializeField] Transform[] targets;
@@ -32,6 +32,8 @@ public class CrawlerController : MonoBehaviour
     public SkinnedMeshRenderer rbody;
     public Material red;
     private Material originalMaterial;
+
+    public GameObject ps;
 
 
 
@@ -63,6 +65,11 @@ public class CrawlerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_health <= 0)
+        {
+            DestroyEnemy();
+        }
+
         if (Vector3.Distance(transform.position, _player.transform.position) > _targetRange)
         {
             currentState = EnemyStates.Patrolling;
@@ -146,6 +153,7 @@ public class CrawlerController : MonoBehaviour
 
     private void DestroyEnemy()
     {
+        Instantiate(ps, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

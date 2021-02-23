@@ -32,7 +32,15 @@ public class ParticleDestroyer : MonoBehaviour
         if (!_called && other.CompareTag("Player"))
         {
             _called = true;
-            _player.GetComponent<PlayerV2>().TakeDamage(_damageCost);
+
+            if (this.CompareTag("Shadow"))
+            {
+                _player.GetComponent<PlayerV2>().TakeDamage(_damageCost);
+            }
+            else
+            {
+                //add code to give player back some health
+            }
         }
     }
 }

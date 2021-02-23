@@ -7,6 +7,7 @@ TagManager:
   - Light
   - PickUp
   - Floor
+  - Shadow
   layers:
   - Default
   - TransparentFX
