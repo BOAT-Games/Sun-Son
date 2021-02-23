@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
-public class OptionsMenu : MonoBehaviour
+public class SettingsController : MonoBehaviour
 {
     [SerializeField] AudioMixer mixer;
+
+    private void Start() {
+        AudioMixer mixer = FindObjectOfType<AudioMixer>();
+    }
     public void SetVolume(float volume) {
         mixer.SetFloat("Volume", volume);
     }

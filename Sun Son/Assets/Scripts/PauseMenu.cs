@@ -6,6 +6,8 @@ public class PauseMenu : MonoBehaviour
 {
     private PlayerControls _input;
     private bool _pausePressed = false;
+    // Reference this variable in other methods to do things
+    // ex: turn down the volume on background music
     public static bool _isPaused = false;
 
     public GameObject pauseMenuUi;
