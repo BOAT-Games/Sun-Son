@@ -29,6 +29,10 @@ public class CrawlerController : MonoBehaviour
     private int _isWalkingHash;
     private int _isAttackingHash;
 
+    public SkinnedMeshRenderer rbody;
+    public Material red;
+    private Material originalMaterial;
+
 
 
     enum EnemyStates
@@ -121,15 +125,23 @@ public class CrawlerController : MonoBehaviour
         GetComponent<AudioSource>().Play();
     }
 
-    //for when the player can attack back
     public void TakeDamage(int damage)
     {
         _health -= damage;
+
+        rbody.materials = new Material[] { red };
+
+        Invoke("ResetColor", 0.1f);
 
         if (_health <= 0)
         {
             Invoke(nameof(DestroyEnemy), 0.5f);
         }
+    }
+
+    void ResetColor()
+    {
+        rbody.materials = new Material[] { originalMaterial };
     }
 
     private void DestroyEnemy()
