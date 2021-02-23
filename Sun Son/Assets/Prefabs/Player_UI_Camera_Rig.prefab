@@ -311,6 +311,19 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &53909865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8117385933260951325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d18140c882160447829b54b46da8c75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxLightPoints: 100
 --- !u!1001 &3798832218311295562
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -399,6 +412,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b8896715792a654b975359657c760ae, type: 3}
+--- !u!1 &8117385933260951325 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4908526365814590807, guid: 2b8896715792a654b975359657c760ae,
+    type: 3}
+  m_PrefabInstance: {fileID: 3798832218311295562}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8117385933260722941 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4908526365814493367, guid: 2b8896715792a654b975359657c760ae,
@@ -411,7 +430,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 3798832218311295562}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 8117385933260951325}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b95829c2673b653488e3b748d837527e, type: 3}
@@ -882,12 +901,12 @@ PrefabInstance:
     - target: {fileID: 6804662132514650106, guid: c067cf112f3b96d4a812f909c705fbb4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.0263793
+      value: 3.0263796
       objectReference: {fileID: 0}
     - target: {fileID: 6804662132514650106, guid: c067cf112f3b96d4a812f909c705fbb4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.368517
+      value: -13.368515
       objectReference: {fileID: 0}
     - target: {fileID: 6804662132514650106, guid: c067cf112f3b96d4a812f909c705fbb4,
         type: 3}
