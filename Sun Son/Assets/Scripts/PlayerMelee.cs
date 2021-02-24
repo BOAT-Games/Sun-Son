@@ -9,7 +9,7 @@ public class PlayerMelee : MonoBehaviour
     private bool _attackPressed;
 
     [SerializeField] GameObject _sword;
-    [SerializeField] float _attackRate = 2;
+    [SerializeField] float _attackRate = 0.6f;
 
     private Animator _anim;
     private int _isMeleeHash;
@@ -49,9 +49,11 @@ public class PlayerMelee : MonoBehaviour
         if (Time.time >= _nextAttackTime)
         {
             _isAttacking = false;
+            _anim.SetLayerWeight(1, Mathf.Lerp(_anim.GetLayerWeight(1), 0, 0.1f));
             _anim.SetBool(_isMeleeHash, false);
             _sword.SetActive(false);
-            if (_attackPressed)
+
+            if (_attackPressed && !_anim.GetBool("isGrabbingWall"))
             {
                 Attack();
                 _isAttacking = true;
@@ -62,7 +64,9 @@ public class PlayerMelee : MonoBehaviour
 
     private void Attack()
     {
+        _anim.SetLayerWeight(1, 1);
         _anim.SetBool(_isMeleeHash, true);
         _sword.SetActive(true);
+        _attackPressed = false;
     }
 }

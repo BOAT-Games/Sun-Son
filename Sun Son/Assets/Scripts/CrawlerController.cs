@@ -137,4 +137,13 @@ public class CrawlerController : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Weapon"))
+        {
+            Debug.Log("Damaged");
+            this.TakeDamage(other.gameObject.GetComponent<Weapon>()._damage);
+        }
+    }
+
 }
