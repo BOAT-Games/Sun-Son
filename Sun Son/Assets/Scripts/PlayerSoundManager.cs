@@ -9,6 +9,7 @@ public class PlayerSoundManager : MonoBehaviour
     [SerializeField] AudioClip[] _footstep;
     [SerializeField] AudioClip _dash;
     [SerializeField] AudioClip _meleeAttack;
+    [SerializeField] AudioClip _rangedAttack;
 
     void playFootstep()
     {
@@ -38,6 +39,15 @@ public class PlayerSoundManager : MonoBehaviour
         if(!_attackAudio.isPlaying)
         {
             _attackAudio.clip = _meleeAttack;
+            _attackAudio.Play();
+        }
+    }
+
+    void playRangedAttack()
+    {
+        if (!_attackAudio.isPlaying)
+        {
+            _attackAudio.clip = _rangedAttack;
             _attackAudio.Play();
         }
     }
