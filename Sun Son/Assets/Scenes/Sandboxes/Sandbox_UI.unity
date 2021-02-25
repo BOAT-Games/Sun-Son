@@ -770,7 +770,7 @@ PrefabInstance:
     - target: {fileID: 4743982200065333441, guid: 2b8896715792a654b975359657c760ae,
         type: 3}
       propertyPath: _maxLightPoints
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4908526365814493367, guid: 2b8896715792a654b975359657c760ae,
         type: 3}
