@@ -13,7 +13,7 @@ public class CrawlerController : MonoBehaviour
     [SerializeField] float _attackRange = 0.5f;
     [SerializeField] float _decisionDelay = 3f;
 
-    [SerializeField] float _health = 0;
+    [SerializeField] int _health = 5;
 
 
     [SerializeField] Transform[] targets;
@@ -28,6 +28,12 @@ public class CrawlerController : MonoBehaviour
     private Animator _anim;
     private int _isWalkingHash;
     private int _isAttackingHash;
+
+    public SkinnedMeshRenderer rbody;
+    public Material red;
+    private Material originalMaterial;
+
+    public GameObject ps;
 
 
 
@@ -59,6 +65,11 @@ public class CrawlerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_health <= 0)
+        {
+            DestroyEnemy();
+        }
+
         if (Vector3.Distance(transform.position, _player.transform.position) > _targetRange)
         {
             currentState = EnemyStates.Patrolling;
@@ -121,10 +132,13 @@ public class CrawlerController : MonoBehaviour
         GetComponent<AudioSource>().Play();
     }
 
-    //for when the player can attack back
     public void TakeDamage(int damage)
     {
         _health -= damage;
+
+        rbody.materials = new Material[] { red };
+
+        Invoke("ResetColor", 0.1f);
 
         if (_health <= 0)
         {
@@ -132,8 +146,14 @@ public class CrawlerController : MonoBehaviour
         }
     }
 
+    void ResetColor()
+    {
+        rbody.materials = new Material[] { originalMaterial };
+    }
+
     private void DestroyEnemy()
     {
+        Instantiate(ps, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

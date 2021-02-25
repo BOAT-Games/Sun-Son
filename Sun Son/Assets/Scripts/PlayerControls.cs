@@ -73,6 +73,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Hold(duration=0.05)""
+                },
+                {
+                    ""name"": ""PauseGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""ab47b250-5606-4dbf-810b-ccca2ea0abe1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)""
                 }
             ],
             ""bindings"": [
@@ -273,6 +281,28 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Shield"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b18ef27a-03b6-4072-8a34-d62460cf789b"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4bf948e7-350b-4671-9908-51b432468fff"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -288,6 +318,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_CharacterControls_Interact = m_CharacterControls.FindAction("Interact", throwIfNotFound: true);
         m_CharacterControls_Attack = m_CharacterControls.FindAction("Attack", throwIfNotFound: true);
         m_CharacterControls_Shield = m_CharacterControls.FindAction("Shield", throwIfNotFound: true);
+        m_CharacterControls_PauseGame = m_CharacterControls.FindAction("PauseGame", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -344,6 +375,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_CharacterControls_Interact;
     private readonly InputAction m_CharacterControls_Attack;
     private readonly InputAction m_CharacterControls_Shield;
+    private readonly InputAction m_CharacterControls_PauseGame;
     public struct CharacterControlsActions
     {
         private @PlayerControls m_Wrapper;
@@ -355,6 +387,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Interact => m_Wrapper.m_CharacterControls_Interact;
         public InputAction @Attack => m_Wrapper.m_CharacterControls_Attack;
         public InputAction @Shield => m_Wrapper.m_CharacterControls_Shield;
+        public InputAction @PauseGame => m_Wrapper.m_CharacterControls_PauseGame;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -385,6 +418,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Shield.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnShield;
                 @Shield.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnShield;
                 @Shield.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnShield;
+                @PauseGame.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPauseGame;
+                @PauseGame.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPauseGame;
+                @PauseGame.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPauseGame;
             }
             m_Wrapper.m_CharacterControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -410,6 +446,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Shield.started += instance.OnShield;
                 @Shield.performed += instance.OnShield;
                 @Shield.canceled += instance.OnShield;
+                @PauseGame.started += instance.OnPauseGame;
+                @PauseGame.performed += instance.OnPauseGame;
+                @PauseGame.canceled += instance.OnPauseGame;
             }
         }
     }
@@ -423,5 +462,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnShield(InputAction.CallbackContext context);
+        void OnPauseGame(InputAction.CallbackContext context);
     }
 }

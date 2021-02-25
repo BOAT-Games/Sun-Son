@@ -8,7 +8,7 @@ public class ShooterController : MonoBehaviour
 {
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform player;
-    [SerializeField] float health;
+    [SerializeField] int health;
 
     //Attacking
     [SerializeField] float timeBetweenAttacks;
@@ -29,6 +29,7 @@ public class ShooterController : MonoBehaviour
     public SkinnedMeshRenderer rlegs;
     public Material red;
     private Material originalMaterial;
+    public GameObject ps;
 
     private void Awake()
     {
@@ -148,6 +149,7 @@ public class ShooterController : MonoBehaviour
 
     private void DestroyEnemy()
     {
+        Instantiate(ps, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 
