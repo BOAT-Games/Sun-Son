@@ -8,7 +8,11 @@ public class PlayerRanged : MonoBehaviour
     private bool _attackPressed;
 
     [SerializeField] Transform _ShootPoint;
+    [SerializeField] GameObject _bulletPrefab;
     [SerializeField] float _attackRate = 0.6f;
+    [SerializeField] int _shootCost = 1;
+
+    private PlayerResources _pr;
 
     private Animator _anim;
     private int _isFiringRangedHash;
@@ -38,6 +42,8 @@ public class PlayerRanged : MonoBehaviour
     {
         _anim = GetComponent<Animator>();
         _isFiringRangedHash = Animator.StringToHash("isFiringRanged");
+
+        _pr = FindObjectOfType<PlayerResources>();
     }
 
     // Update is called once per frame
@@ -60,5 +66,13 @@ public class PlayerRanged : MonoBehaviour
     void Attack()
     {
         _anim.SetBool(_isFiringRangedHash, true);
+
+    }
+
+    public void SpawnBullet()
+    {
+        GameObject bullet = Instantiate(_bulletPrefab, _ShootPoint.position, Quaternion.identity);
+        bullet.GetComponent<Rigidbody>().AddForce(this.gameObject.transform.forward * 1000);
+        _pr.TakeDamage(_shootCost);
     }
 }
