@@ -49,7 +49,6 @@ public class PlayerMelee : MonoBehaviour
         if (Time.time >= _nextAttackTime)
         {
             _isAttacking = false;
-            _anim.SetLayerWeight(1, Mathf.Lerp(_anim.GetLayerWeight(1), 0, 0.1f));
             _anim.SetBool(_isMeleeHash, false);
             _sword.SetActive(false);
 
@@ -64,7 +63,6 @@ public class PlayerMelee : MonoBehaviour
 
     private void Attack()
     {
-        _anim.SetLayerWeight(1, 1);
         _anim.SetBool(_isMeleeHash, true);
         _sword.SetActive(true);
         _attackPressed = false;
