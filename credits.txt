@@ -1,3 +1,7 @@
 Double jump taken from this video: https://www.youtube.com/watch?v=OqTwWIoR75Y
 
 Cooldown UI visual effect taken from this video: https://www.youtube.com/watch?v=8Xgao1qP7xw
+
+UI for start menus taken from the Brackeys video: https://www.youtube.com/watch?v=zc8ac_qUXQY
+
+Functionality for the options menu take from the brackeys video: https://www.youtube.com/watch?v=YOaYQrN1oYQ
