@@ -419,12 +419,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3798832218311295562}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &8679553606893071872 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5533747200155413578, guid: 2b8896715792a654b975359657c760ae,
-    type: 3}
-  m_PrefabInstance: {fileID: 3798832218311295562}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8461748491027913355 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4743982200065333441, guid: 2b8896715792a654b975359657c760ae,
@@ -957,7 +951,7 @@ PrefabInstance:
     - target: {fileID: 6804662132514650107, guid: c067cf112f3b96d4a812f909c705fbb4,
         type: 3}
       propertyPath: Intensity
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6804662133860003980, guid: c067cf112f3b96d4a812f909c705fbb4,
         type: 3}
