@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7628539919378988229}
   - component: {fileID: 6340365145432966923}
   m_Layer: 0
-  m_Name: Mushroom Prototype
+  m_Name: Mushroom Source
   m_TagString: Light
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,7 +169,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.654902, g: 0.9882353, b: 0.7073064, a: 1}
-  m_Intensity: 1.2
+  m_Intensity: 0.5
   m_Range: 8
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208

@@ -78,7 +78,7 @@ PrefabInstance:
     - target: {fileID: 7628539919378988230, guid: 135090c243bc29e4bad4deb1cda5a5e3,
         type: 3}
       propertyPath: m_Name
-      value: Mushroom Prototype Short Variant
+      value: Mushroom Source Short
       objectReference: {fileID: 0}
     - target: {fileID: 7628539919378988230, guid: 135090c243bc29e4bad4deb1cda5a5e3,
         type: 3}
@@ -94,6 +94,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7628539920724344348, guid: 135090c243bc29e4bad4deb1cda5a5e3,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7628539920724344349, guid: 135090c243bc29e4bad4deb1cda5a5e3,
         type: 3}
