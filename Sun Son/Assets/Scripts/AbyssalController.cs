@@ -13,6 +13,8 @@ public class AbyssalController : MonoBehaviour
     [SerializeField] bool _attacked = false;
     [SerializeField] bool _inRange = false;
 
+    private Animator _anim;
+    private int _isAttackingHash;
 
     private GameObject _player;
     private Vector3 startPosition;
@@ -27,11 +29,17 @@ public class AbyssalController : MonoBehaviour
     {
         _player = FindObjectOfType<PlayerV2>().gameObject;
         startPosition = transform.position;
+
+        _anim = GetComponent<Animator>();
+        _isAttackingHash = Animator.StringToHash("IsAttacking");
     }
 
     // Update is called once per frame
     void Update()
     {
+        //always look at player...creppy
+        transform.LookAt(_player.transform.position);
+
         if (_timer <= 0)
         {
             if (!_atPlayer && !_attacked)
@@ -48,12 +56,13 @@ public class AbyssalController : MonoBehaviour
             }
             else if (_atPlayer && !_attacked)
             {
-                Attack();
+                _anim.SetBool(_isAttackingHash, true);
                 _attacked = true;
                 _timer = 2;
             }
             else if (_atPlayer && _attacked)
             {
+                _anim.SetBool(_isAttackingHash, false);
                 //teleport back to original position
                 transform.position = startPosition;
                 _atPlayer = false;
