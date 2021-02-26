@@ -158,6 +158,10 @@ public class AbyssalController : MonoBehaviour
         {
             _inRange = true;
         }
+        else if (other.CompareTag("Weapon"))
+        {
+            //take damage
+        }
     }
 
     private void OnTriggerExit(Collider other)
