@@ -46,9 +46,17 @@ public class AbyssalController : MonoBehaviour
 
         if (_timer <= 0)
         {
-            Vector3 targetPos = new Vector3(_player.transform.position.x - 1.2f,
-                                                _player.transform.position.y,
-                                                _player.transform.position.z);
+            Vector3 targetPos;
+            if (!_portalSet)
+            {
+                targetPos = new Vector3(_player.transform.position.x - 1.3f,
+                                                    _player.transform.position.y,
+                                                    _player.transform.position.z);
+            }
+            else
+            {
+                targetPos = portalClone.transform.position;
+            }
 
             if (!_portalSet && !_atPlayer && !_attacked)
             {
@@ -56,6 +64,11 @@ public class AbyssalController : MonoBehaviour
                 Vector3 portalPos = new Vector3(targetPos.x, targetPos.y + 0.1f, targetPos.z);
                 portalClone = Instantiate(portal, portalPos,
                                 Quaternion.LookRotation(Vector3.up, Vector3.up));
+
+                Vector3 flashPos = new Vector3(transform.position.x, transform.position.y + 1.3f,
+                                        transform.position.z - 1);
+                Instantiate(flash, flashPos, Quaternion.LookRotation(Vector3.up, Vector3.up));
+
                 _portalSet = true;
                 _timer = 2;
             }
@@ -66,6 +79,7 @@ public class AbyssalController : MonoBehaviour
                 Instantiate(flash, flashPos, Quaternion.LookRotation(Vector3.up, Vector3.up));
 
                 Destroy(portalClone);
+
                 transform.position = targetPos;
 
                 _atPlayer = true;
@@ -84,6 +98,11 @@ public class AbyssalController : MonoBehaviour
                 Vector3 portalPos = new Vector3(startPosition.x, startPosition.y + 0.1f, startPosition.z);
                 portalClone = Instantiate(portal, portalPos,
                                 Quaternion.LookRotation(Vector3.up, Vector3.up));
+
+                Vector3 flashPos = new Vector3(transform.position.x, transform.position.y + 1.3f,
+                                            transform.position.z - 1);
+                Instantiate(flash, flashPos, Quaternion.LookRotation(Vector3.up, Vector3.up));
+
                 _portalSet = true;
                 _timer = 2;
             }
@@ -100,11 +119,21 @@ public class AbyssalController : MonoBehaviour
                 _atPlayer = false;
                 _attacked = false;
                 _portalSet = false;
-                _timer = 5;
+                _timer = 2;
             }
         }
         else
         {
+            if (_portalSet)
+            {
+                transform.localScale = Vector3.Slerp(transform.localScale, new Vector3(0, 0, 0),
+                                        0.5f);
+            }
+            else
+            {
+                transform.localScale = Vector3.Slerp(transform.localScale, new Vector3(0.7f, 0.7f, 0.7f),
+                                        0.5f);
+            }
             _timer -= Time.deltaTime;
         }
 
