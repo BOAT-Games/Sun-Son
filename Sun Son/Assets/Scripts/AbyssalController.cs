@@ -143,8 +143,11 @@ public class AbyssalController : MonoBehaviour
 
     void Attack()
     {
+        GetComponent<AudioSource>().Play();
+
         if (_inRange)
         {
+
             _player.GetComponent<PlayerV2>().TakeDamage(_damage);
         }
     } 
