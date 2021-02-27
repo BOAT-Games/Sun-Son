@@ -23,7 +23,7 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_player.getCurrentLightPoints() == 0) {
+        if (_player.getCurrentLightPoints() <= 0) {
             _gameOver.SetActive(true);
         }
         _lightBar.SetLightPoints(_player.getCurrentLightPoints());
