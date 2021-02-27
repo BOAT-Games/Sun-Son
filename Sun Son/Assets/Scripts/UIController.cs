@@ -23,22 +23,27 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_gameOver.activeSelf == false) Time.timeScale = 1;
         if (_player.getCurrentLightPoints() == 0) {
             _gameOver.SetActive(true);
+            Time.timeScale = 0;
         }
         _lightBar.SetLightPoints(_player.getCurrentLightPoints());
         _powerups.activateDashCooldown(_player.getIsDashCooldown());
+        _powerups.disableDashIcon(_player.getCurrentLightPoints());
         _powerups.activateDoubleJumpCooldown(_player.getHasDoubleJumped());
+        _powerups.disableDoubleJumpIcon(_player.getCurrentLightPoints());
         _powerups.showDoubleJump(_player.getCanDoubleJump());
     }
 
-        public void PlayGame() 
+    public void PlayGame() 
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void RestartGame() 
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
