@@ -84,7 +84,7 @@ public class CrawlerController : MonoBehaviour
 
         if (currentState == EnemyStates.Patrolling)
         {
-            if (Vector3.Distance(transform.position, targets[currentTarget].position) < 0.2f)
+            if (Vector3.Distance(transform.position, targets[currentTarget].position) < 0.3f)
             {
                 currentTarget++;
                 if (currentTarget == targets.Length)
