@@ -70,7 +70,7 @@ public class AbyssalController : MonoBehaviour
                 Instantiate(flash, flashPos, Quaternion.LookRotation(Vector3.up, Vector3.up));
 
                 _portalSet = true;
-                _timer = 2;
+                _timer = 1.5f;
             }
             else if (_portalSet && !_atPlayer && !_attacked)
             {
@@ -84,13 +84,14 @@ public class AbyssalController : MonoBehaviour
 
                 _atPlayer = true;
                 _portalSet = false;
-                _timer = 1;
+                _timer = 0.0f;
             }
             else if (_atPlayer && !_attacked)
             {
                 _anim.SetBool(_isAttackingHash, true);
                 _attacked = true;
                 _timer = 2;
+
             }
             else if (!_portalSet && _atPlayer && _attacked)
             {
@@ -104,7 +105,7 @@ public class AbyssalController : MonoBehaviour
                 Instantiate(flash, flashPos, Quaternion.LookRotation(Vector3.up, Vector3.up));
 
                 _portalSet = true;
-                _timer = 2;
+                _timer = 1.5f;
             }
             else if (_portalSet && _atPlayer && _attacked)
             {
@@ -134,6 +135,12 @@ public class AbyssalController : MonoBehaviour
                 transform.localScale = Vector3.Slerp(transform.localScale, new Vector3(0.7f, 0.7f, 0.7f),
                                         0.5f);
             }
+
+            if (_attacked)
+            {
+                _anim.SetBool(_isAttackingHash, false);
+            }
+
             _timer -= Time.deltaTime;
         }
 
