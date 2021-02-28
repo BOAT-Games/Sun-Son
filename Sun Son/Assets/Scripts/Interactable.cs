@@ -2,18 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 
 public class Interactable : MonoBehaviour
 {
     private PlayerControls _input;
     private bool _interactPressed;
+
     private bool _isInRange;
+    [SerializeField] TextMeshProUGUI _text; 
     [SerializeField] KeyCode _interactKey;
     [SerializeField] UnityEvent _interactAction;
 
     public void Awake() {
         _input = new PlayerControls();
-
         _input.CharacterControls.Interact.performed += ctx => _interactPressed = ctx.ReadValueAsButton();
  
     }
@@ -42,6 +44,7 @@ public class Interactable : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player")) {
             _isInRange = true;
+            _text.gameObject.SetActive(true);
         }
     }
 
@@ -49,6 +52,7 @@ public class Interactable : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player")) {
             _isInRange = false;
+            _text.gameObject.SetActive(false);
         }
     }
 }
