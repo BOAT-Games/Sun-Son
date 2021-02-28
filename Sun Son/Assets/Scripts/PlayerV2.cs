@@ -66,6 +66,7 @@ public class PlayerV2 : MonoBehaviour
     private int _isAirborneHash;
     private int _isDashingHash;
     private int _isGrabbingWallHash;
+    private int _isAttackingHash;
 
     // Fields for FX
     [SerializeField] TrailRenderer _trailRenderer;
@@ -119,6 +120,7 @@ public class PlayerV2 : MonoBehaviour
         _isAirborneHash = Animator.StringToHash("isAirborne");
         _isDashingHash = Animator.StringToHash("isDashing");
         _isGrabbingWallHash = Animator.StringToHash("isGrabbingWall");
+        _isAttackingHash = Animator.StringToHash("isAttacking");
 
         _currentDashTime = _maxDashTime;
         _canDoubleJump = false;
@@ -159,7 +161,8 @@ public class PlayerV2 : MonoBehaviour
         if (!_grabbingWall && Time.time > _controlsAvailable)
         {
             _playerVelocity.x = 0;
-            handleDirection();
+            
+            if(!_anim.GetBool("isAttacking")) handleDirection();
             handleMovement();
             handleJumping();
             handleDashing();

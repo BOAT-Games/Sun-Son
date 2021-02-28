@@ -9,7 +9,6 @@ public class PlayerRanged : MonoBehaviour
 
     [SerializeField] Transform _ShootPoint;
     [SerializeField] GameObject _bulletPrefab;
-    [SerializeField] float _attackRate = 0.6f;
     [SerializeField] int _shootCost = 1;
 
     private PlayerResources _pr;
@@ -18,7 +17,6 @@ public class PlayerRanged : MonoBehaviour
     private int _isFiringRangedHash;
 
     public bool _isAttacking = false;
-    private float _nextAttackTime = 0f;
 
     void Awake()
     {
@@ -49,24 +47,21 @@ public class PlayerRanged : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time >= _nextAttackTime)
-        {
-            _isAttacking = false;
-            _anim.SetBool(_isFiringRangedHash, false);
 
+        if (_anim.GetBool("CanAttack"))
+        {
             if (_attackPressed && !_anim.GetBool("isGrabbingWall"))
             {
                 Attack();
-                _isAttacking = true;
-                _nextAttackTime = Time.time + 1f / _attackRate;
             }
         }
+
+        _attackPressed = false;
     }
 
     void Attack()
     {
-        _anim.SetBool(_isFiringRangedHash, true);
-
+        _anim.SetTrigger(_isFiringRangedHash);
     }
 
     public void SpawnBullet()

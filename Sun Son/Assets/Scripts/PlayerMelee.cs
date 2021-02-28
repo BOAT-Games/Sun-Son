@@ -9,13 +9,11 @@ public class PlayerMelee : MonoBehaviour
     private bool _attackPressed;
 
     [SerializeField] GameObject _sword;
-    [SerializeField] float _attackRate = 0.6f;
 
     private Animator _anim;
     private int _isMeleeHash;
 
     public bool _isAttacking = false;
-    private float _nextAttackTime = 0f;
 
     void Awake()
     {
@@ -46,25 +44,28 @@ public class PlayerMelee : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time >= _nextAttackTime)
+
+        if (_anim.GetBool("CanAttack"))
         {
-            _isAttacking = false;
-            _anim.SetBool(_isMeleeHash, false);
-            _sword.SetActive(false);
 
             if (_attackPressed && !_anim.GetBool("isGrabbingWall"))
             {
                 Attack();
-                _isAttacking = true;
-                _nextAttackTime = Time.time + 1f / _attackRate;
             }
         }
+
+        _attackPressed = false;
     }
 
     private void Attack()
     {
-        _anim.SetBool(_isMeleeHash, true);
+        _anim.SetTrigger(_isMeleeHash);
         _sword.SetActive(true);
         _attackPressed = false;
+    }
+
+    private void disableSword()
+    {
+        _sword.SetActive(false);
     }
 }

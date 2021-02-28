@@ -41,6 +41,7 @@ public class PlayerSoundManager : MonoBehaviour
         if(!_attackAudio.isPlaying)
         {
             _attackAudio.clip = _meleeAttack;
+            _attackAudio.volume = 1f;
             _attackAudio.Play();
         }
     }
@@ -48,6 +49,7 @@ public class PlayerSoundManager : MonoBehaviour
     void playRangedAttack()
     {
         _attackAudio.clip = _rangedAttack;
+        _attackAudio.volume = 0.5f;
         _attackAudio.Play();
     }
 
