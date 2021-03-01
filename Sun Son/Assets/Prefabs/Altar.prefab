@@ -252,7 +252,7 @@ PrefabInstance:
     - target: {fileID: 8260219514361982854, guid: 7a93e07023f417142881f9ebea0e642b,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: enableSword
+      value: enableGun
       objectReference: {fileID: 0}
     - target: {fileID: 8260219514361982854, guid: 7a93e07023f417142881f9ebea0e642b,
         type: 3}
