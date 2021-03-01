@@ -35,6 +35,7 @@ public class CrawlerBossController : MonoBehaviour
     public bool paused = true;
     public bool attacked = false;
     public bool charged = false;
+    public bool stomped = false;
     public bool inRange = false;
     public bool stage1 = true;
     public bool stage2 = false;
@@ -55,7 +56,7 @@ public class CrawlerBossController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        stage1 = true;
     }
 
     // Update is called once per frame
@@ -85,7 +86,7 @@ public class CrawlerBossController : MonoBehaviour
         }
 
         if (!paused && stage1 && !stage2 && !stage3)
-        {
+        { 
             //stage 1
             //charge to target 1
             if (!charged && !attacked)
@@ -122,24 +123,66 @@ public class CrawlerBossController : MonoBehaviour
         }
         else if (!paused && stage1 && stage2 && !stage3)
         {
-            //just switched to stage 2
-            if (currentTarget == 0 &&
-                    Vector3.Distance(transform.position, targets[currentTarget].position) < 1)
-            {
+            //just switched to stage to 2
 
-                stage1 = false;
-            }
-            else
-            {
-                Retreat();
-            }
+            //for testing
+            _health = 65;
+
+            stage1 = false;
+            stomped = true;
+            charged = true;
+            attacked = true;
+
         }
         else if (!paused && !stage1 && stage2 && !stage3)
         {
             //stage 2
-            //summon smaller crawlers
-            //once all crawlers dead
-            //follow stage 1 movements
+            if (!stomped && !charged && !attacked)
+            {
+                Stomp();
+                stomped = true;
+
+                paused = true;
+                timer = 1;
+            }
+            else if (stomped && !charged && !attacked)
+            {
+                _anim.SetBool(_isSummoningHash, false);
+                Charge();
+                charged = true;
+            }
+            //attack
+            else if (stomped && !attacked && charged && currentTarget == 1 &&
+                Vector3.Distance(transform.position, targets[currentTarget].position) < 1)
+            {
+                _anim.SetBool(_isWalkingHash, false);
+                _anim.SetBool(_isAttackingHash, true);
+
+                attacked = true;
+                paused = true;
+                timer = 1;
+            }
+            //walk back to target 0
+            else if (stomped && attacked && charged)
+            {
+                if (currentTarget == 0 &&
+                    Vector3.Distance(transform.position, targets[currentTarget].position) < 1)
+                {
+                    ResetPosition();
+
+                    attacked = false;
+                    charged = false;
+                    stomped = false;
+                }
+                else
+                {
+                    Retreat();
+                }
+            }
+        }
+        else if (!paused && !stage1 && stage2 && stage3)
+        {
+            //just switched to stage 3
         }
         else if (!paused && !stage1 && !stage2 && stage3)
         {
@@ -152,12 +195,39 @@ public class CrawlerBossController : MonoBehaviour
         
     }
 
+    void ResetPosition()
+    {
+        _anim.SetBool(_isWalkingHash, false);
+        currentTarget = 1;
+        _agent.speed = 1;
+
+        _agent.SetDestination(targets[currentTarget].position);
+
+        paused = true;
+        timer = 2;
+    }
+
+    void Stomp()
+    {
+        _anim.SetBool(_isSummoningHash, true);
+        //stop moving
+        _agent.isStopped = true;
+        _agent.ResetPath();
+    }
+
+    void Summon(GameObject obj)
+    { 
+        //instantiate dropper
+        Instantiate(obj, new Vector3(_player.transform.position.x, _player.transform.position.y + 8, _player.transform.position.z),
+            Quaternion.identity);
+    }
+
     void Charge()
     {
         _anim.SetBool(_isWalkingHash, true);
 
         currentTarget = 1;
-        _agent.speed = 30;
+        _agent.speed = 25;
 
         _agent.SetDestination(targets[currentTarget].position);
     }
