@@ -17,6 +17,8 @@ public class PowerupController : MonoBehaviour
     [SerializeField] Image _doubleJumpCooldownImage;
     [SerializeField] TextMeshProUGUI _doubleJumpText;
     [SerializeField] DoubleJump _doubleJump;
+    private bool _dashDisabled;
+    private bool _doubleJumpDisabled;
 
     void Start() {
         
@@ -26,7 +28,8 @@ public class PowerupController : MonoBehaviour
         _doubleJumpImage.fillAmount = 0;
         _doubleJumpCooldownImage.fillAmount = 1;
         _doubleJumpText.enabled = false;
-
+        _dashDisabled = false;
+        _doubleJumpDisabled = false;
     }
 
 
@@ -44,8 +47,6 @@ public class PowerupController : MonoBehaviour
         }
     }
 
-    // Unfortunately there's no real "cooldown" on just gravity since
-    // Player might be at variable heights
     public void showDoubleJump(bool hasDoubleJump) {
         if (hasDoubleJump) {
             _doubleJumpImage.fillAmount = 1;
@@ -63,9 +64,30 @@ public class PowerupController : MonoBehaviour
         }
     }
 
-
     public void setDashCooldown(float dashCooldown) {
         _dashCooldown = dashCooldown;
     }
 
+    public void disableDashIcon(int lightPoints) {
+        if (lightPoints < 20)  {
+            _dashCooldownImage.fillAmount = 1;
+            _dashDisabled = true;
+        }
+        if (_dashDisabled == true & lightPoints > 20) {
+            Debug.Log("MADE IT");
+            _dashCooldownImage.fillAmount = 0;
+            _dashDisabled = false;
+        }
+    } 
+
+    public void disableDoubleJumpIcon(int lightPoints) {
+        if (lightPoints < 10) { 
+            _doubleJumpCooldownImage.fillAmount = 1;
+            _doubleJumpDisabled = true;
+        }
+        if (_doubleJumpDisabled == true & lightPoints > 10) {
+            _doubleJumpCooldownImage.fillAmount = 0;
+            _doubleJumpDisabled = false;
+        }
+    } 
 }
