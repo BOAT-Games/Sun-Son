@@ -200,13 +200,17 @@ public class CrawlerBossController : MonoBehaviour
             _agent.SetDestination(targets[currentTarget].position);
             stage2 = false;
 
-            paused = true;
-            timer = 3;
+            /*paused = true;
+            timer = 3;*/
         }
         else if (!paused && !stage1 && !stage2 && stage3)
         {
             //big rock falls and opens up upper area
-            if (Vector3.Distance(transform.position, targets[2].position) < 30)
+            if (Vector3.Distance(transform.position, targets[2].position) < 5)
+            {
+                Destroy(gameObject);
+            }
+            else if (Vector3.Distance(transform.position, targets[2].position) < 25)
             { 
                 //drop the rock
                 Vector3 targetPos = new Vector3(targets[0].position.x, targets[0].position.y + 1,
@@ -215,11 +219,6 @@ public class CrawlerBossController : MonoBehaviour
                 rock1.position = Vector3.MoveTowards(rock1.position, targetPos, step);
 
             }
-            //stage 3
-            //retreat to back cave
-            //big rock falls
-            //wait on drop rock
-            //take no damage anymore
         }
 
     }
