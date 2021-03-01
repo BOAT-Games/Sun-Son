@@ -11,7 +11,6 @@ public class ShooterController : MonoBehaviour
     [SerializeField] int health;
 
     private PlayerMelee _sword;
-    public bool _swordAttacked;
 
     //Attacking
     [SerializeField] float timeBetweenAttacks;
@@ -26,6 +25,8 @@ public class ShooterController : MonoBehaviour
     private Animator _anim;
     private int _isChasing;
     private int _isAttacking;
+
+    public int count = 0;
 
     public SkinnedMeshRenderer rhead;
     public SkinnedMeshRenderer rbody;
@@ -169,10 +170,10 @@ public class ShooterController : MonoBehaviour
             }
             else
             {
-                if (_sword._isAttacking && !_swordAttacked)
+                if (_sword._hit)
                 {
                     TakeDamage(10);
-                    _sword._isAttacking = false;
+                    _sword._hit = false;
                 }
             }
         }

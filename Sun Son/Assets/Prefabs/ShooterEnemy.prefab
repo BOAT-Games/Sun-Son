@@ -975,6 +975,7 @@ MonoBehaviour:
   agent: {fileID: 1213850218175435675}
   player: {fileID: 0}
   health: 15
+  _swordAttacked: 0
   timeBetweenAttacks: 1.5
   projectile: {fileID: 7248486601484364845, guid: e20fb677b55f948b1bb7835ab2bbc99d,
     type: 3}
@@ -982,6 +983,7 @@ MonoBehaviour:
   attackRange: 5
   playerInSightRange: 0
   playerInAttackRange: 0
+  count: 0
   rhead: {fileID: 9148855816738846744}
   rbody: {fileID: 1213850218163871378}
   rlegs: {fileID: 1213850218163871384}
@@ -1115,7 +1117,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 1
   m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: 1.14, z: 0}

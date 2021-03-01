@@ -21,7 +21,8 @@ public class AbyssalController : MonoBehaviour
     private GameObject _player;
     private PlayerShield _shield;
     private PlayerMelee _sword;
-    public bool _swordAttacked;
+
+    public int count = 0;
 
     private Vector3 startPosition;
     [SerializeField] GameObject portal;
@@ -49,7 +50,6 @@ public class AbyssalController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _swordAttacked = _sword._isAttacking;
 
         //always look at player...creppy
         transform.LookAt(_player.transform.position);
@@ -186,10 +186,10 @@ public class AbyssalController : MonoBehaviour
             }
             else
             {
-                if (_sword._isAttacking && !_swordAttacked)
+                if (_sword._hit)
                 {
                     TakeDamage(10);
-                    _sword._isAttacking = false;
+                    _sword._hit = false;
                 }
             }
         }

@@ -22,7 +22,6 @@ public class CrawlerController : MonoBehaviour
     private GameObject _player;
     private PlayerShield _shield;
     private PlayerMelee _sword;
-    public bool _swordAttacked;
     private int currentTarget = 0;
 
     
@@ -70,7 +69,6 @@ public class CrawlerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _swordAttacked = _sword._isAttacking;
 
         if (_health <= 0)
         {
@@ -178,10 +176,10 @@ public class CrawlerController : MonoBehaviour
             }
             else
             {
-                if (_sword._isAttacking && _swordAttacked)
+                if (_sword._hit)
                 {
                     TakeDamage(5);
-                    _sword._isAttacking = false;
+                    _sword._hit = false;
                 }
             }
         }
