@@ -126,7 +126,7 @@ public class CrawlerController : MonoBehaviour
         Vector3 targetPosition = new Vector3(transform.position.x,
                                         transform.position.y + 0.2f,
                                         transform.position.z);
-        _player.GetComponent<PlayerV2>().TakeDamage(_damageCost);
+        _player.GetComponent<PlayerResources>().TakeDamage(_damageCost);
 
         Instantiate(obj, targetPosition, Quaternion.LookRotation(transform.forward * -1, Vector3.up));
         GetComponent<AudioSource>().Play();
@@ -155,6 +155,15 @@ public class CrawlerController : MonoBehaviour
     {
         Instantiate(ps, transform.position, Quaternion.identity);
         Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Weapon"))
+        {
+            Debug.Log("Damaged");
+            this.TakeDamage(other.gameObject.GetComponent<Weapon>()._damage);
+        }
     }
 
 }
