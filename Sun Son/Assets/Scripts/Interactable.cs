@@ -9,7 +9,7 @@ public class Interactable : MonoBehaviour
     private PlayerControls _input;
     private bool _interactPressed;
 
-    private bool _isInRange;
+    public static bool _isInRange;
     [SerializeField] TextMeshProUGUI _text; 
     [SerializeField] KeyCode _interactKey;
     [SerializeField] UnityEvent _interactAction;

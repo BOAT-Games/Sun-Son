@@ -10,6 +10,7 @@ public class DoubleJump : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player")) {
             _player.setCanDoubleJump(true);
+            _player.setHasDoubleJumpAbility(true);
             Destroy(gameObject);
         }
     }

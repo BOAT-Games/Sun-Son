@@ -20,6 +20,7 @@ public class PlayerV2 : MonoBehaviour
     private Vector3 _playerVelocity;
     private float _playerSpeed;
     private bool _grounded;
+    [SerializeField] int _skillPoints = 2;
 
     // Fields for dash ability
     [SerializeField] float _maxDashTime = 1.0f;
@@ -30,13 +31,15 @@ public class PlayerV2 : MonoBehaviour
     private float _currentDashTime;
     private bool _isDashCooldown;
     private float _nextDashAvailable;
+    private bool _hasDashAbility;
 
     // Fields for double jump
     [SerializeField] int _doubleJumpCost = 10;
-    [SerializeField] int _maxJumps = 2;
+    private int _maxJumps = 2;
     private int _currentJumps;
     private bool _canDoubleJump;
     private bool _hasDoubleJumped;
+    private bool _hasDoubleJumpAbility;
 
     //Fields for wall grab
     [SerializeField] Transform _wallGrabRayOrigin;
@@ -142,6 +145,9 @@ public class PlayerV2 : MonoBehaviour
         _pointLight.GetComponent<LightPower>().SetLightPoints(_maxLightPoints);
 
         _currentGravity = _gravityValue;
+        
+        _hasDashAbility = true;
+        _hasDoubleJumpAbility = false;
 
         _mainCamera.GetComponent<GlowComposite>().Intensity = (float)_currentLightPoints / (float)_maxLightPoints;
 
@@ -409,6 +415,11 @@ public class PlayerV2 : MonoBehaviour
     public bool getGrounded() { return _grounded; }
     public void setIsDashCooldown(bool cooldown) { _isDashCooldown = cooldown; }
     public void setCanDoubleJump(bool doublejump) { _canDoubleJump = doublejump;}
+    public bool getHasDashAbility() {return _hasDashAbility;}
+    public bool getHasDoubleJumpAbility() {return _hasDoubleJumpAbility;}
+    public void setHasDoubleJumpAbility(bool hasDoubleJump) { _hasDoubleJumpAbility = hasDoubleJump;}
+    public int getSkillPoints() {return _skillPoints; }
+    public void setSkillPoints(int points) {_skillPoints = points;}
 
     void OnDrawGizmosSelected()
     {
