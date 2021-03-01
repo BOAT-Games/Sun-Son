@@ -2445,10 +2445,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1516061867}
     m_Modifications:
+    - target: {fileID: 4108516526369430986, guid: 50bf56bbb4da44128a3ed50ed44537b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4108516526369432396, guid: 50bf56bbb4da44128a3ed50ed44537b4,
         type: 3}
       propertyPath: m_Name
       value: MinesLight (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4108516526369432396, guid: 50bf56bbb4da44128a3ed50ed44537b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4108516526369705624, guid: 50bf56bbb4da44128a3ed50ed44537b4,
         type: 3}
@@ -6630,10 +6640,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1516061867}
     m_Modifications:
+    - target: {fileID: 4108516526369430986, guid: 50bf56bbb4da44128a3ed50ed44537b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4108516526369432396, guid: 50bf56bbb4da44128a3ed50ed44537b4,
         type: 3}
       propertyPath: m_Name
       value: MinesLight (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4108516526369432396, guid: 50bf56bbb4da44128a3ed50ed44537b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4108516526369705624, guid: 50bf56bbb4da44128a3ed50ed44537b4,
         type: 3}
@@ -7808,10 +7828,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1516061867}
     m_Modifications:
+    - target: {fileID: 4108516526369430986, guid: 50bf56bbb4da44128a3ed50ed44537b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4108516526369432396, guid: 50bf56bbb4da44128a3ed50ed44537b4,
         type: 3}
       propertyPath: m_Name
       value: MinesLight (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4108516526369432396, guid: 50bf56bbb4da44128a3ed50ed44537b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4108516526369705624, guid: 50bf56bbb4da44128a3ed50ed44537b4,
         type: 3}
@@ -8380,10 +8410,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1516061867}
     m_Modifications:
+    - target: {fileID: 4108516526369430986, guid: 50bf56bbb4da44128a3ed50ed44537b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4108516526369432396, guid: 50bf56bbb4da44128a3ed50ed44537b4,
         type: 3}
       propertyPath: m_Name
       value: MinesLight (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4108516526369432396, guid: 50bf56bbb4da44128a3ed50ed44537b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4108516526369705624, guid: 50bf56bbb4da44128a3ed50ed44537b4,
         type: 3}
@@ -9646,6 +9686,41 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1005991375}
   m_PrefabAsset: {fileID: 0}
+--- !u!84 &1010362318
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  serializedVersion: 3
+  m_Width: 1684
+  m_Height: 947
+  m_AntiAliasing: 2
+  m_MipCount: -1
+  m_DepthFormat: 2
+  m_ColorFormat: 8
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1001 &1025478920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11759,10 +11834,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1516061867}
     m_Modifications:
+    - target: {fileID: 4108516526369430986, guid: 50bf56bbb4da44128a3ed50ed44537b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4108516526369432396, guid: 50bf56bbb4da44128a3ed50ed44537b4,
         type: 3}
       propertyPath: m_Name
       value: MinesLight (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4108516526369432396, guid: 50bf56bbb4da44128a3ed50ed44537b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4108516526369705624, guid: 50bf56bbb4da44128a3ed50ed44537b4,
         type: 3}
@@ -11850,10 +11935,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1516061867}
     m_Modifications:
+    - target: {fileID: 4108516526369430986, guid: 50bf56bbb4da44128a3ed50ed44537b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4108516526369432396, guid: 50bf56bbb4da44128a3ed50ed44537b4,
         type: 3}
       propertyPath: m_Name
       value: MinesLight (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4108516526369432396, guid: 50bf56bbb4da44128a3ed50ed44537b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4108516526369705624, guid: 50bf56bbb4da44128a3ed50ed44537b4,
         type: 3}
@@ -13119,7 +13214,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1543652378}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 46.1, y: 13.72, z: 1}
+  m_LocalPosition: {x: 46.1, y: 13.7, z: 1}
   m_LocalScale: {x: 5, y: 15, z: 6}
   m_Children: []
   m_Father: {fileID: 2008631268}
@@ -14055,10 +14150,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1516061867}
     m_Modifications:
+    - target: {fileID: 4108516526369430986, guid: 50bf56bbb4da44128a3ed50ed44537b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4108516526369432396, guid: 50bf56bbb4da44128a3ed50ed44537b4,
         type: 3}
       propertyPath: m_Name
       value: MinesLight (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4108516526369432396, guid: 50bf56bbb4da44128a3ed50ed44537b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4108516526369705624, guid: 50bf56bbb4da44128a3ed50ed44537b4,
         type: 3}
@@ -14757,8 +14862,6 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781816882}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 82.9, y: 17.7, z: 1}
-  m_LocalScale: {x: 70, y: 7, z: 6}
   m_Children: []
   m_Father: {fileID: 2008631268}
   m_RootOrder: 16
@@ -16023,10 +16126,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1516061867}
     m_Modifications:
+    - target: {fileID: 4108516526369430986, guid: 50bf56bbb4da44128a3ed50ed44537b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4108516526369432396, guid: 50bf56bbb4da44128a3ed50ed44537b4,
         type: 3}
       propertyPath: m_Name
       value: MinesLight (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4108516526369432396, guid: 50bf56bbb4da44128a3ed50ed44537b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4108516526369705624, guid: 50bf56bbb4da44128a3ed50ed44537b4,
         type: 3}
@@ -16853,10 +16966,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1516061867}
     m_Modifications:
+    - target: {fileID: 4108516526369430986, guid: 50bf56bbb4da44128a3ed50ed44537b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4108516526369432396, guid: 50bf56bbb4da44128a3ed50ed44537b4,
         type: 3}
       propertyPath: m_Name
       value: MinesLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 4108516526369432396, guid: 50bf56bbb4da44128a3ed50ed44537b4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4108516526369705624, guid: 50bf56bbb4da44128a3ed50ed44537b4,
         type: 3}
