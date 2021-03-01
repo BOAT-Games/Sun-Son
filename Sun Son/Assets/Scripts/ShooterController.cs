@@ -10,6 +10,9 @@ public class ShooterController : MonoBehaviour
     [SerializeField] Transform player;
     [SerializeField] int health;
 
+    private PlayerMelee _sword;
+    public bool _swordAttacked;
+
     //Attacking
     [SerializeField] float timeBetweenAttacks;
     bool alreadyAttacked;
@@ -35,6 +38,8 @@ public class ShooterController : MonoBehaviour
     {
         player = FindObjectOfType<PlayerV2>().gameObject.transform;
         agent.GetComponent<NavMeshAgent>();
+
+        _sword = player.GetComponent<PlayerMelee>();
     }
 
     private void Start()
@@ -52,6 +57,11 @@ public class ShooterController : MonoBehaviour
 
     private void Update()
     {
+        if (health <= 0)
+        {
+            Invoke(nameof(DestroyEnemy), 0.5f);
+        }
+
         if (Vector3.Distance(transform.position, player.position) < sightRange)
         {
             playerInSightRange = true;
@@ -133,11 +143,6 @@ public class ShooterController : MonoBehaviour
         rlegs.materials = new Material[] { red, red };
 
         Invoke("ResetColor", 0.1f);
-
-        if (health <= 0)
-        {
-            Invoke(nameof(DestroyEnemy), 0.5f);
-        }
     }
 
     void ResetColor()
@@ -157,8 +162,19 @@ public class ShooterController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Weapon"))
         {
-            Debug.Log("Damaged");
-            this.TakeDamage(other.gameObject.GetComponent<Weapon>()._damage);
+            if (other.GetComponent<SunBulletController>())
+            {
+                //bullet damage
+                TakeDamage(5);
+            }
+            else
+            {
+                if (_sword._isAttacking && !_swordAttacked)
+                {
+                    TakeDamage(10);
+                    _sword._isAttacking = false;
+                }
+            }
         }
     }
 
