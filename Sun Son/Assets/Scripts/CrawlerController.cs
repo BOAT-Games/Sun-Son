@@ -20,6 +20,9 @@ public class CrawlerController : MonoBehaviour
     [SerializeField] EnemyStates currentState;
 
     private GameObject _player;
+    private PlayerShield _shield;
+    private PlayerMelee _sword;
+    public bool _swordAttacked;
     private int currentTarget = 0;
 
     
@@ -50,6 +53,8 @@ public class CrawlerController : MonoBehaviour
         InvokeRepeating("SetDestination", 1.5f, _decisionDelay);
         //agent.SetDestination(targets.position);
         _player = FindObjectOfType<PlayerV2>().gameObject;
+        _shield = _player.GetComponent<PlayerShield>();
+        _sword = _player.GetComponent<PlayerMelee>();
 
         if (currentState == EnemyStates.Patrolling)
         {
@@ -65,6 +70,8 @@ public class CrawlerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        _swordAttacked = _sword._isAttacking;
+
         if (_health <= 0)
         {
             DestroyEnemy();
@@ -126,9 +133,12 @@ public class CrawlerController : MonoBehaviour
         Vector3 targetPosition = new Vector3(transform.position.x,
                                         transform.position.y + 0.2f,
                                         transform.position.z);
-        _player.GetComponent<PlayerResources>().TakeDamage(_damageCost);
+        if (!_shield._shieldPressed)
+        {
+            _player.GetComponent<PlayerResources>().TakeDamage(_damageCost);
 
-        Instantiate(obj, targetPosition, Quaternion.LookRotation(transform.forward * -1, Vector3.up));
+            Instantiate(obj, targetPosition, Quaternion.LookRotation(transform.forward * -1, Vector3.up));
+        }
         GetComponent<AudioSource>().Play();
     }
 
@@ -161,8 +171,19 @@ public class CrawlerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Weapon"))
         {
-            Debug.Log("Damaged");
-            this.TakeDamage(other.gameObject.GetComponent<Weapon>()._damage);
+            if (other.GetComponent<SunBulletController>())
+            {
+                //bullet damage
+                TakeDamage(5);
+            }
+            else
+            {
+                if (_sword._isAttacking && _swordAttacked)
+                {
+                    TakeDamage(5);
+                    _sword._isAttacking = false;
+                }
+            }
         }
     }
 
