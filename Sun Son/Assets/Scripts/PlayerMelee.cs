@@ -61,10 +61,12 @@ public class PlayerMelee : MonoBehaviour
         _anim.SetTrigger(_isMeleeHash);
         _sword.SetActive(true);
         _attackPressed = false;
+        _isAttacking = true;
     }
 
     private void disableSword()
     {
+        _isAttacking = false;
         _sword.SetActive(false);
     }
 }
