@@ -36,6 +36,7 @@ public class CrawlerController : MonoBehaviour
     private Material originalMaterial;
 
     public GameObject ps;
+    public GameObject ps2;
 
 
 
@@ -172,12 +173,18 @@ public class CrawlerController : MonoBehaviour
             if (other.GetComponent<SunBulletController>())
             {
                 //bullet damage
+                Vector3 targetPos = new Vector3(transform.position.x, other.transform.position.y,
+                                transform.position.z - 1);
+                Instantiate(ps2, targetPos, Quaternion.LookRotation(transform.forward * 1, Vector3.up));
                 TakeDamage(5);
             }
             else
             {
                 if (_sword._hit)
                 {
+                    Vector3 targetPos = new Vector3(transform.position.x, other.transform.position.y,
+                                    transform.position.z - 1);
+                    Instantiate(ps2, targetPos, Quaternion.LookRotation(transform.forward * 1, Vector3.up));
                     TakeDamage(5);
                     _sword._hit = false;
                 }

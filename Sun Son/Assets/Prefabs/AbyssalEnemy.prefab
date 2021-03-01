@@ -187,6 +187,7 @@ MonoBehaviour:
   red: {fileID: 2100000, guid: 64fc7d1a7d0eb4eee81ae97e7ee511ac, type: 2}
   originalMaterial: {fileID: 2100000, guid: 0d32ff1da3122d5408081134559b927d, type: 2}
   ps: {fileID: 1452258673496147686, guid: b7a0e9e9bdb284b64b4265ec5c2a85cf, type: 3}
+  ps2: {fileID: 331006806237371657, guid: d061490dbe1dc4a6caa8b186d76992a8, type: 3}
 --- !u!136 &161285444255951187
 CapsuleCollider:
   m_ObjectHideFlags: 0

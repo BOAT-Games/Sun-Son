@@ -982,12 +982,12 @@ MonoBehaviour:
   attackRange: 5
   playerInSightRange: 0
   playerInAttackRange: 0
-  count: 0
   rhead: {fileID: 9148855816738846744}
   rbody: {fileID: 1213850218163871378}
   rlegs: {fileID: 1213850218163871384}
   red: {fileID: 2100000, guid: 64fc7d1a7d0eb4eee81ae97e7ee511ac, type: 2}
   ps: {fileID: 1452258673496147686, guid: b7a0e9e9bdb284b64b4265ec5c2a85cf, type: 3}
+  ps2: {fileID: 331006806237371657, guid: d061490dbe1dc4a6caa8b186d76992a8, type: 3}
 --- !u!195 &1213850218175435675
 NavMeshAgent:
   m_ObjectHideFlags: 0

@@ -20,7 +20,7 @@ public class AbyssalController : MonoBehaviour
     //player stuff
     private GameObject _player;
     private PlayerShield _shield;
-    private PlayerMelee _sword; 
+    private PlayerMelee _sword;
 
     private Vector3 startPosition;
     [SerializeField] GameObject portal;
@@ -31,6 +31,7 @@ public class AbyssalController : MonoBehaviour
     public Material originalMaterial;
 
     [SerializeField] GameObject ps;
+    [SerializeField] GameObject ps2;
 
     // Start is called before the first frame update
     void Start()
@@ -177,16 +178,21 @@ public class AbyssalController : MonoBehaviour
         else if (other.CompareTag("Weapon"))
         {
             //take damage
-            
             if (other.GetComponent<SunBulletController>())
             {
-                //bullet damage
+                Vector3 targetPos = new Vector3(transform.position.x, other.transform.position.y,
+                                transform.position.z - 1);
+                Instantiate(ps2, targetPos, Quaternion.LookRotation(transform.forward * 1, Vector3.up));
                 TakeDamage(5);
             }
             else
             {
                 if (_sword._hit)
                 {
+                    Vector3 targetPos = new Vector3(transform.position.x, other.transform.position.y,
+                                transform.position.z - 1);
+                    Instantiate(ps2, targetPos, Quaternion.LookRotation(transform.forward * 1, Vector3.up));
+
                     TakeDamage(10);
                     _sword._hit = false;
                 }
