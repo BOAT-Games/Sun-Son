@@ -31,6 +31,9 @@ public class CrawlerBossController : MonoBehaviour
 
     private float timer = 3f;
 
+    //event objects
+    public Transform rock1;
+
     //booleans
     public bool paused = true;
     public bool attacked = false;
@@ -182,17 +185,43 @@ public class CrawlerBossController : MonoBehaviour
         }
         else if (!paused && !stage1 && stage2 && stage3)
         {
+            //for testing
+            _health = 20;
+
             //just switched to stage 3
+            //escape to cave
+            _anim.SetBool(_isWalkingHash, true);
+            _anim.SetBool(_isAttackingHash, false);
+            _anim.SetBool(_isSummoningHash, false);
+
+            currentTarget = 2;
+            _agent.speed = 30;
+
+            _agent.SetDestination(targets[currentTarget].position);
+            stage2 = false;
+
+            paused = true;
+            timer = 3;
         }
         else if (!paused && !stage1 && !stage2 && stage3)
         {
+            //big rock falls and opens up upper area
+            if (Vector3.Distance(transform.position, targets[2].position) < 30)
+            { 
+                //drop the rock
+                Vector3 targetPos = new Vector3(targets[0].position.x, targets[0].position.y + 1,
+                                        targets[0].position.z);
+                float step = 20 * Time.deltaTime;
+                rock1.position = Vector3.MoveTowards(rock1.position, targetPos, step);
+
+            }
             //stage 3
             //retreat to back cave
             //big rock falls
             //wait on drop rock
             //take no damage anymore
         }
-        
+
     }
 
     void ResetPosition()
