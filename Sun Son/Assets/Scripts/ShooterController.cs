@@ -26,8 +26,6 @@ public class ShooterController : MonoBehaviour
     private int _isChasing;
     private int _isAttacking;
 
-    public int count = 0;
-
     public SkinnedMeshRenderer rhead;
     public SkinnedMeshRenderer rbody;
     public SkinnedMeshRenderer rlegs;
@@ -45,7 +43,8 @@ public class ShooterController : MonoBehaviour
 
     private void Start()
     {
-        agent.SetDestination(transform.position);
+        transform.position = new Vector3(transform.position.x, transform.position.y, player.transform.position.z);
+agent.SetDestination(transform.position);
 
         _anim = GetComponent<Animator>();
 

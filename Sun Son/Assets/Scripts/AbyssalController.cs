@@ -20,9 +20,7 @@ public class AbyssalController : MonoBehaviour
     //player stuff
     private GameObject _player;
     private PlayerShield _shield;
-    private PlayerMelee _sword;
-
-    public int count = 0;
+    private PlayerMelee _sword; 
 
     private Vector3 startPosition;
     [SerializeField] GameObject portal;
@@ -38,6 +36,7 @@ public class AbyssalController : MonoBehaviour
     void Start()
     {
         _player = FindObjectOfType<PlayerV2>().gameObject;
+        transform.position = new Vector3(transform.position.x, transform.position.y, _player.transform.position.z);
         startPosition = transform.position;
 
         _shield = _player.GetComponent<PlayerShield>();
