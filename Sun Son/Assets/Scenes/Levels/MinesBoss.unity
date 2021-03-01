@@ -849,7 +849,7 @@ Transform:
   m_Father: {fileID: 1603802626}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!84 &215256640
+--- !u!84 &201329129
 RenderTexture:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -862,8 +862,8 @@ RenderTexture:
   m_ForcedFallbackFormat: 4
   m_DownscaleFallback: 0
   serializedVersion: 3
-  m_Width: 640
-  m_Height: 480
+  m_Width: 64
+  m_Height: 64
   m_AntiAliasing: 2
   m_MipCount: -1
   m_DepthFormat: 2
@@ -7555,7 +7555,7 @@ Animator:
   m_GameObject: {fileID: 1252315298}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 7a538f29bad700d47a681a6568b943b4, type: 3}
-  m_Controller: {fileID: 9100000, guid: 028cb48b12dca4484a470c0ca5357256, type: 2}
+  m_Controller: {fileID: 9100000, guid: c1094695dca804f07b65bd05c35b997c, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -13514,6 +13514,7 @@ MonoBehaviour:
   - {fileID: 2268020275079380785}
   targetPos: {fileID: 1765046709}
   spider: {fileID: 1252315298}
+  boss: {fileID: 0}
 --- !u!1 &2023171155
 GameObject:
   m_ObjectHideFlags: 0
@@ -18553,7 +18554,7 @@ Animator:
   m_GameObject: {fileID: 1390238442588480587}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 7a538f29bad700d47a681a6568b943b4, type: 3}
-  m_Controller: {fileID: 9100000, guid: 028cb48b12dca4484a470c0ca5357256, type: 2}
+  m_Controller: {fileID: 9100000, guid: c1094695dca804f07b65bd05c35b997c, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
