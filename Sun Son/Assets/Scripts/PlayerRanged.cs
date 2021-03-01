@@ -50,7 +50,7 @@ public class PlayerRanged : MonoBehaviour
 
         if (_anim.GetBool("CanAttack"))
         {
-            if (_attackPressed && !_anim.GetBool("isGrabbingWall"))
+            if (_attackPressed && !_anim.GetBool("isGrabbingWall") && !_anim.GetBool("isShielding"))
             {
                 Attack();
             }

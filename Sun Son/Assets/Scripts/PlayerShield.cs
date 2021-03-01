@@ -12,6 +12,9 @@ public class PlayerShield : MonoBehaviour
     private PlayerSoundManager _psm;
     private bool _stopInitiated = false;
 
+    private Animator _anim;
+    private int _isShieldingHash;
+
     void Awake()
     {
         _input = new PlayerControls();
@@ -34,6 +37,9 @@ public class PlayerShield : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _anim = GetComponent<Animator>();
+        _isShieldingHash = Animator.StringToHash("isShielding");
+
         _shield.SetActive(false);
         _shield.transform.localScale = new Vector3(0f, 0f, 0f);
 
@@ -48,6 +54,7 @@ public class PlayerShield : MonoBehaviour
             if (!_shield.activeInHierarchy)
             {
                 _shield.SetActive(true);
+                _anim.SetBool(_isShieldingHash, true);
                 _psm.playShield();
             }
 
@@ -67,6 +74,7 @@ public class PlayerShield : MonoBehaviour
             if (_shield.transform.localScale.x <= 0.1)
             {
                 _shield.SetActive(false);
+                _anim.SetBool(_isShieldingHash, false);
                 _stopInitiated = false;
             }
         }

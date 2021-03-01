@@ -155,7 +155,7 @@ public class AbyssalController : MonoBehaviour
         if (_inRange)
         {
 
-            _player.GetComponent<PlayerV2>().TakeDamage(_damage);
+            _player.GetComponent<PlayerResources>().TakeDamage(_damage);
         }
     } 
 

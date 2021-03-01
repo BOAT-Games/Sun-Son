@@ -72,7 +72,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""id"": ""ec1122cb-fa74-4a81-a7f3-c1901720b40f"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Hold(duration=0.05)""
+                    ""interactions"": ""Press(behavior=2)""
                 },
                 {
                     ""name"": ""PauseGame"",
