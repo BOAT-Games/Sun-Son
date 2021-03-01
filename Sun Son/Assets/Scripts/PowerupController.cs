@@ -6,7 +6,7 @@ using TMPro;
 
 public class PowerupController : MonoBehaviour
 {
-    [SerializeField] PlayerV2 _player;
+    private PlayerV2 _player;
 
     // Fields related to dash
     [SerializeField] Image _dashCooldownImage;
@@ -19,6 +19,9 @@ public class PowerupController : MonoBehaviour
     [SerializeField] DoubleJump _doubleJump;
 
     void Start() {
+        
+        _player = FindObjectOfType<PlayerV2>();
+
         _dashCooldownImage.fillAmount = 0;
         _doubleJumpImage.fillAmount = 0;
         _doubleJumpCooldownImage.fillAmount = 1;

@@ -46,9 +46,25 @@
                     "interactions": "Press(behavior=2)"
                 },
                 {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "3a036df7-fd48-4141-bc25-b7d2542f975c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)"
+                },
+                {
+                    "name": "Shield",
+                    "type": "Button",
+                    "id": "ec1122cb-fa74-4a81-a7f3-c1901720b40f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Hold(duration=0.05)"
+                },
+                {
                     "name": "PauseGame",
                     "type": "Button",
-                    "id": "e251e8c8-ae05-4590-bfc8-2bc7ebfe927e",
+                    "id": "ab47b250-5606-4dbf-810b-ccca2ea0abe1",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "Press(behavior=2)"
@@ -200,9 +216,64 @@
                 },
                 {
                     "name": "",
-                    "id": "7c5a5a51-cf19-45ab-b22f-f9b706953dcb",
+                    "id": "7ce50ac8-019e-43d7-881a-19a209754713",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "960edd5b-290e-4553-b29f-70edf900d45f",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "db9a3754-38d9-440b-9f57-13658b8b4f34",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "da1ef43f-58af-4a69-9ba0-d36ea05edb39",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shield",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "24945b83-1a60-439a-a048-1b1af4941c77",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Shield",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b18ef27a-03b6-4072-8a34-d62460cf789b",
                     "path": "<Keyboard>/p",
-                    "interactions": "Press(behavior=2)",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "PauseGame",
@@ -211,9 +282,9 @@
                 },
                 {
                     "name": "",
-                    "id": "1ee3b39e-b266-4996-bee1-4ac9e8f43beb",
+                    "id": "4bf948e7-350b-4671-9908-51b432468fff",
                     "path": "<Gamepad>/start",
-                    "interactions": "Press(behavior=2)",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "PauseGame",
