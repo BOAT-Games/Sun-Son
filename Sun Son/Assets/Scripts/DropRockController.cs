@@ -9,6 +9,7 @@ public class DropRockController : MonoBehaviour
     [SerializeField] Transform targetPos;
     [SerializeField] GameObject spider;
     [SerializeField] GameObject boss;
+    [SerializeField] AudioClip roar;
 
     private int count = 0;
 
@@ -28,6 +29,7 @@ public class DropRockController : MonoBehaviour
                 if (count == 0)
                 {
                     GetComponent<AudioSource>().Play();
+                    spider.GetComponent<AudioSource>().clip = roar;
                     spider.GetComponent<AudioSource>().Play();
                     count++;
                 }

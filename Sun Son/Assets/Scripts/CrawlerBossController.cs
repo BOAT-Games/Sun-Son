@@ -22,7 +22,7 @@ public class CrawlerBossController : MonoBehaviour
 
     //movement targets
     [SerializeField] Transform[] targets;
-    public int currentTarget = 0;
+    private int currentTarget = 0;
     NavMeshAgent _agent;
 
     //animations
@@ -35,7 +35,7 @@ public class CrawlerBossController : MonoBehaviour
     private float timer = 3f;
 
     //event objects
-    public Transform rock1;
+    public Transform rock;
     private GameObject wrapper;
     private int count = 0;
     private GameObject door;
@@ -45,11 +45,11 @@ public class CrawlerBossController : MonoBehaviour
     public AudioClip roar;
 
     //booleans
-    public bool paused = true;
-    public bool attacked = false;
-    public bool charged = false;
-    public bool stomped = false;
-    public bool inRange = false;
+    private bool paused = true;
+    private bool attacked = false;
+    private bool charged = false;
+    private bool stomped = false;
+    private bool inRange = false;
     public bool stage1 = true;
     public bool stage2 = false;
     public bool stage3 = false;
@@ -58,6 +58,8 @@ public class CrawlerBossController : MonoBehaviour
     {
         wrapper = GameObject.Find("Level2Boss");
         door = GameObject.Find("Door");
+        rock = GameObject.Find("Big Rock").transform;
+
 
         _agent = GetComponent<NavMeshAgent>();
         _player = FindObjectOfType<PlayerResources>().gameObject;
@@ -81,7 +83,8 @@ public class CrawlerBossController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_player.transform.position.x > -15)
+        //start once player is in arena
+        if (_player.transform.position.x > -16)
         {
             //boss activates, player is trapped
             door.transform.localScale = Vector3.Slerp(door.transform.localScale, new Vector3(10, 5, 15),
@@ -172,10 +175,6 @@ public class CrawlerBossController : MonoBehaviour
         else if (!paused && stage1 && stage2 && !stage3)
         {
             //just switched to stage to 2
-
-            //for testing
-            _health = 65;
-
             stage1 = false;
             stomped = true;
             charged = true;
@@ -184,7 +183,7 @@ public class CrawlerBossController : MonoBehaviour
         }
         else if (!paused && !stage1 && stage2 && !stage3)
         {
-            //stage 2
+            //stage 2 summon and charge
             if (!stomped && !charged && !attacked)
             {
                 Stomp();
@@ -237,9 +236,6 @@ public class CrawlerBossController : MonoBehaviour
         }
         else if (!paused && !stage1 && stage2 && stage3)
         {
-            //for testing
-            _health = 20;
-
             //just switched to stage 3
             //escape to cave
             _anim.SetBool(_isWalkingHash, true);
@@ -251,12 +247,10 @@ public class CrawlerBossController : MonoBehaviour
 
             _agent.SetDestination(targets[currentTarget].position);
             stage2 = false;
-
-            /*paused = true;
-            timer = 3;*/
         }
         else if (!paused && !stage1 && !stage2 && stage3)
         {
+            //roar as run away
             if (!wrapper.GetComponent<AudioSource>().isPlaying && count == 0)
             {
                 count++;
@@ -271,24 +265,26 @@ public class CrawlerBossController : MonoBehaviour
                 _anim.SetBool(_isSummoningHash, false);
                 Destroy(gameObject);
             }
+            //spider passes under rock
             else if (Vector3.Distance(transform.position, targets[2].position) < 20)
             {
                 //drop the rock
-                if (!rock1.gameObject.GetComponent<AudioSource>().isPlaying)
+                if (!rock.gameObject.GetComponent<AudioSource>().isPlaying)
                 {
-                    rock1.gameObject.GetComponent<AudioSource>().Play();
+                    rock.gameObject.GetComponent<AudioSource>().Play();
                 }
                 Vector3 targetPos = new Vector3(targets[0].position.x, targets[0].position.y + 1,
                                         targets[0].position.z);
                 float step = 20 * Time.deltaTime;
-                rock1.position = Vector3.MoveTowards(rock1.position, targetPos, step);
+                rock.position = Vector3.MoveTowards(rock.position, targetPos, step);
 
             }
             else
             {
-                rock1.position = new Vector3(rock1.position.x + Mathf.Sin(Time.time * 20) * 0.05f,
-                                    rock1.position.y + Mathf.Sin(Time.time * 20) * 0.1f,
-                                    rock1.position.z) ;
+                //little shake to signal fall
+                rock.position = new Vector3(rock.position.x + Mathf.Sin(Time.time * 20) * 0.05f,
+                                    rock.position.y + Mathf.Sin(Time.time * 20) * 0.1f,
+                                    rock.position.z) ;
             }
         }
 
@@ -358,8 +354,8 @@ public class CrawlerBossController : MonoBehaviour
         {
             _player.GetComponent<PlayerResources>().TakeDamage(_damageCost);
             Instantiate(obj, targetPosition, Quaternion.LookRotation(transform.forward * -1, Vector3.up));
-            GetComponent<AudioSource>().Play();
         }
+        GetComponent<AudioSource>().Play();
     }
 
     public void TakeDamage(int damage)
