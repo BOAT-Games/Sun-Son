@@ -10,6 +10,8 @@ public class DropRockController : MonoBehaviour
     [SerializeField] GameObject spider;
     [SerializeField] GameObject boss;
 
+    private int count = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,12 @@ public class DropRockController : MonoBehaviour
         {
             if (rootCount == 0)
             {
+                if (count == 0)
+                {
+                    GetComponent<AudioSource>().Play();
+                    spider.GetComponent<AudioSource>().Play();
+                    count++;
+                }
                 float step = 40 * Time.deltaTime;
                 transform.position = Vector3.MoveTowards(transform.position, targetPos.position, step);
             }

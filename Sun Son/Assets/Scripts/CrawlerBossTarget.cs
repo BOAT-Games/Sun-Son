@@ -22,7 +22,14 @@ public class CrawlerBossTarget : MonoBehaviour
     {
         if (other.CompareTag("Weapon"))
         {
-            _boss.TakeDamage(5);
+            if (other.GetComponent<SunBulletController>() != null)
+            {
+                _boss.TakeDamage(5);
+            }
+            else
+            {
+                _boss.TakeDamage(10);
+            }
         }
     }
 }
