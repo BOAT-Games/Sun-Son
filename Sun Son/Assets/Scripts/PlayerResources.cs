@@ -6,6 +6,7 @@ public class PlayerResources : MonoBehaviour
 {
     [SerializeField] int _maxLightPoints;
     private int _currentLightPoints;
+    private int _skillPoints = 2;
 
     private LightPower _pointLight;
     private LightBar _lightBar;
@@ -62,4 +63,6 @@ public class PlayerResources : MonoBehaviour
 
     public int getMaxLightPoints() { return _maxLightPoints; }
     public int getCurrentLightPoints() { return _currentLightPoints; }
+    public int getSkillPoints() {return _skillPoints; }
+    public void setSkillPoints(int points) {_skillPoints = points;}
 }
