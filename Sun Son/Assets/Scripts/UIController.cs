@@ -52,7 +52,6 @@ public class UIController : MonoBehaviour
 
     public void RestartGame() 
     {
-
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1;
     }
