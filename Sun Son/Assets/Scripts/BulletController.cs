@@ -22,7 +22,7 @@ public class BulletController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            _player.GetComponent<PlayerV2>().TakeDamage(_damageCost);
+            _player.GetComponent<PlayerResources>().TakeDamage(_damageCost);
         }
         Destroy(gameObject);
     }
