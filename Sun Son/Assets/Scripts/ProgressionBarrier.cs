@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ProgressionBarrier : MonoBehaviour
 {
    private GameObject barrierGO;
-   private ProgressionBarrier barrier;
+
+   [SerializeField] TMPro.TextMeshProUGUI remainingText;
 
    [SerializeField] GameObject[] collectibles;
    public int totalCollectibles;
@@ -15,7 +14,7 @@ public class ProgressionBarrier : MonoBehaviour
       totalCollectibles = collectibles.Length;
       collectiblesRemaining = totalCollectibles;
       barrierGO = GameObject.FindGameObjectWithTag("Barrier");
-      barrier = barrierGO.GetComponent<ProgressionBarrier>();
+      remainingText.text = totalCollectibles.ToString();
    }
 
    private void OnTriggerEnter(Collider other) {
@@ -27,5 +26,6 @@ public class ProgressionBarrier : MonoBehaviour
 
    public void DecrementRemaining() {
       collectiblesRemaining -= 1;
+      remainingText.text = collectiblesRemaining.ToString();
    }
 }
