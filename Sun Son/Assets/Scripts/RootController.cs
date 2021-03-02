@@ -22,7 +22,6 @@ public class RootController : MonoBehaviour
     {
         if (other.CompareTag("Weapon"))
         {
-            Debug.Log(gameObject.name);
             _controller.rootCount--;
             Destroy(gameObject);
         }
