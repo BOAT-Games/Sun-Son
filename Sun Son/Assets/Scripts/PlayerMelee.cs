@@ -14,6 +14,7 @@ public class PlayerMelee : MonoBehaviour
     private int _isMeleeHash;
 
     public bool _isAttacking = false;
+    public bool _hit = false;
 
     void Awake()
     {
@@ -61,10 +62,19 @@ public class PlayerMelee : MonoBehaviour
         _anim.SetTrigger(_isMeleeHash);
         _sword.SetActive(true);
         _attackPressed = false;
+        _isAttacking = true;
     }
 
     private void disableSword()
     {
+        _isAttacking = false;
+        _hit = false;
         _sword.SetActive(false);
+    }
+
+    public void Hit()
+    {
+        //Debug.Log("Hi");
+        _hit = true;
     }
 }
