@@ -38,6 +38,8 @@ public class CrawlerBossController : MonoBehaviour
     public Transform rock1;
     private GameObject wrapper;
     private int count = 0;
+    private GameObject door;
+    private bool hasPlayed = false;
 
     public AudioClip hiss;
     public AudioClip roar;
@@ -55,6 +57,7 @@ public class CrawlerBossController : MonoBehaviour
     private void Awake()
     {
         wrapper = GameObject.Find("Level2Boss");
+        door = GameObject.Find("Door");
 
         _agent = GetComponent<NavMeshAgent>();
         _player = FindObjectOfType<PlayerResources>().gameObject;
@@ -78,20 +81,36 @@ public class CrawlerBossController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_player.transform.position.x > -15)
+        {
+            //boss activates, player is trapped
+            door.transform.localScale = Vector3.Slerp(door.transform.localScale, new Vector3(10, 5, 15),
+                                        0.2f);
+
+            if (!hasPlayed)
+            {
+                hasPlayed = true;
+                wrapper.GetComponent<AudioSource>().Play();
+                door.GetComponent<ParticleSystem>().Play();
+            }
+
+            //timer for pausing between actions
+            if (timer <= 0)
+            {
+                paused = false;
+            }
+            else
+            {
+                timer -= Time.deltaTime;
+            }
+        }
+
         //update atack point to always be player
         targets[1].position = new Vector3(_player.transform.position.x + 5, targets[1].transform.position.y,
                                 targets[1].transform.position.z);
 
-        //pause between stages
-        if (timer <= 0)
-        {
-            paused = false;
-        }
-        else
-        {
-            timer -= Time.deltaTime;
-        }
 
+        //health to measue what stage
         if (_health > 66)
         {
             stage1 = true;
@@ -105,6 +124,7 @@ public class CrawlerBossController : MonoBehaviour
             stage3 = true;
         }
 
+        //actions
         if (!paused && stage1 && !stage2 && !stage3)
         { 
             //stage 1
