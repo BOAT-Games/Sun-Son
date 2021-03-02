@@ -12,6 +12,7 @@ public class DropRockController : MonoBehaviour
     [SerializeField] AudioClip roar;
 
     private int count = 0;
+    private float timer = 0.5f;
 
     // Start is called before the first frame update
     void Start()
@@ -28,13 +29,24 @@ public class DropRockController : MonoBehaviour
             {
                 if (count == 0)
                 {
-                    GetComponent<AudioSource>().Play();
                     spider.GetComponent<AudioSource>().clip = roar;
                     spider.GetComponent<AudioSource>().Play();
                     count++;
                 }
-                float step = 40 * Time.deltaTime;
-                transform.position = Vector3.MoveTowards(transform.position, targetPos.position, step);
+                if (timer <= 0)
+                {
+                    if (count == 1)
+                    {
+                        GetComponent<AudioSource>().Play();
+                        count++;
+                    }
+                    float step = 40 * Time.deltaTime;
+                    transform.position = Vector3.MoveTowards(transform.position, targetPos.position, step);
+                }
+                else
+                {
+                    timer -= Time.deltaTime;
+                }
             }
 
             if (Vector3.Distance(transform.position, targetPos.position) < 5)
