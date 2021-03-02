@@ -14,6 +14,9 @@ public class CrawlerBossController : MonoBehaviour
     public Material red;
     private Material originalMaterial;
 
+    //player attacks
+    private PlayerShield _shield;
+
     //death particles
     public GameObject ps;
 
@@ -47,7 +50,10 @@ public class CrawlerBossController : MonoBehaviour
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
-        _player = FindObjectOfType<PlayerV2>().gameObject;
+        _player = FindObjectOfType<PlayerResources>().gameObject;
+
+        _shield = _player.GetComponent<PlayerShield>();
+
         originalMaterial = rbody.material;
 
         _anim = GetComponent<Animator>();
@@ -65,6 +71,10 @@ public class CrawlerBossController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //update atack point to always be player
+        targets[1].position = new Vector3(_player.transform.position.x + 5, targets[1].transform.position.y,
+                                targets[1].transform.position.z);
+
         //pause between stages
         if (timer <= 0)
         {
@@ -98,15 +108,24 @@ public class CrawlerBossController : MonoBehaviour
                 charged = true;
             }
             //attack
-            else if (!attacked && charged && currentTarget == 1 &&
-                Vector3.Distance(transform.position, targets[currentTarget].position) < 1)
+            else if (!attacked && charged)
             {
-                _anim.SetBool(_isWalkingHash, false);
-                _anim.SetBool(_isAttackingHash, true);
+                if (currentTarget == 1 &&
+                Vector3.Distance(transform.position, targets[currentTarget].position) < 1)
+                { 
+                    _anim.SetBool(_isWalkingHash, false);
+                    _anim.SetBool(_isAttackingHash, true);
 
-                attacked = true;
-                paused = true;
-                timer = 1;
+                    attacked = true;
+                    paused = true;
+                    timer = 1;
+                }
+                else
+                {
+                    _agent.SetDestination(targets[currentTarget].position);
+                }
+
+                
             }
             //walk back to target 0
             else if (attacked && charged)
@@ -278,9 +297,9 @@ public class CrawlerBossController : MonoBehaviour
                                         transform.position.y + 0.2f,
                                         transform.position.z);
 
-        if (inRange)
+        if (inRange && !_shield._shieldPressed)
         {
-            _player.GetComponent<PlayerV2>().TakeDamage(_damageCost);
+            _player.GetComponent<PlayerResources>().TakeDamage(_damageCost);
             Instantiate(obj, targetPosition, Quaternion.LookRotation(transform.forward * -1, Vector3.up));
             GetComponent<AudioSource>().Play();
         }
