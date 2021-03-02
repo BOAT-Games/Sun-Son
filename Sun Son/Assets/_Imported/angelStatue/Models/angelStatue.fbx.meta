@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 887d01e4009820946bbb97f937e687b5
+guid: e52e78a69ff5499e9135c6fa760b9a7b
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
@@ -90,22 +90,6 @@ ModelImporter:
     materialName: 1
     materialSearch: 0
     materialLocation: 0
-guid: 319f1d32cbddc7d48a711c009e583764
-ModelImporter:
-  serializedVersion: 23
-  fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: MeleeTexture__VillagerTexture_png
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Shield
-  externalObjects: {}
-  materials:
-    importMaterials: 0
-    materialName: 0
-    materialSearch: 1
-    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -148,7 +132,6 @@ ModelImporter:
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0
-
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
@@ -171,13 +154,6 @@ ModelImporter:
     normalSmoothingSource: 0
   referencedClips: []
   importAnimation: 1
-    tangentImportMode: 3
-    normalCalculationMode: 4
-    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
-    blendShapeNormalImportMode: 1
-    normalSmoothingSource: 0
-  importAnimation: 0
-  copyAvatar: 0
   humanDescription:
     serializedVersion: 2
     human: []
@@ -195,8 +171,6 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
-  humanoidOversampling: 1
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1

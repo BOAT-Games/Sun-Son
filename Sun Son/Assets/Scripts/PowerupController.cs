@@ -69,7 +69,7 @@ public class PowerupController : MonoBehaviour
     }
 
     public void disableDashIcon(int lightPoints) {
-        if (lightPoints < 20)  {
+        if (lightPoints <= 20)  {
             _dashCooldownImage.fillAmount = 1;
             _dashDisabled = true;
         }
@@ -81,7 +81,7 @@ public class PowerupController : MonoBehaviour
     } 
 
     public void disableDoubleJumpIcon(int lightPoints) {
-        if (lightPoints < 10) { 
+        if (lightPoints <= 10 & _player.getHasDoubleJumpAbility()) { 
             _doubleJumpCooldownImage.fillAmount = 1;
             _doubleJumpDisabled = true;
         }
