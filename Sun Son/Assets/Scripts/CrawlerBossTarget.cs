@@ -22,7 +22,6 @@ public class CrawlerBossTarget : MonoBehaviour
     {
         if (other.CompareTag("Weapon"))
         {
-            Debug.Log("ouch");
             _boss.TakeDamage(5);
         }
     }

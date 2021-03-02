@@ -125,7 +125,6 @@ public class CrawlerBossController : MonoBehaviour
                     _agent.SetDestination(targets[currentTarget].position);
                 }
 
-                
             }
             //walk back to target 0
             else if (attacked && charged)
@@ -174,15 +173,22 @@ public class CrawlerBossController : MonoBehaviour
                 charged = true;
             }
             //attack
-            else if (stomped && !attacked && charged && currentTarget == 1 &&
-                Vector3.Distance(transform.position, targets[currentTarget].position) < 1)
+            else if (stomped && !attacked && charged)
             {
-                _anim.SetBool(_isWalkingHash, false);
-                _anim.SetBool(_isAttackingHash, true);
+                if (currentTarget == 1 &&
+                Vector3.Distance(transform.position, targets[currentTarget].position) < 1)
+                {
+                    _anim.SetBool(_isWalkingHash, false);
+                    _anim.SetBool(_isAttackingHash, true);
 
-                attacked = true;
-                paused = true;
-                timer = 1;
+                    attacked = true;
+                    paused = true;
+                    timer = 1;
+                }
+                else
+                {
+                    _agent.SetDestination(targets[currentTarget].position);
+                }
             }
             //walk back to target 0
             else if (stomped && attacked && charged)
@@ -227,6 +233,9 @@ public class CrawlerBossController : MonoBehaviour
             //big rock falls and opens up upper area
             if (Vector3.Distance(transform.position, targets[2].position) < 5)
             {
+                _anim.SetBool(_isWalkingHash, false);
+                _anim.SetBool(_isAttackingHash, false);
+                _anim.SetBool(_isSummoningHash, false);
                 Destroy(gameObject);
             }
             else if (Vector3.Distance(transform.position, targets[2].position) < 25)

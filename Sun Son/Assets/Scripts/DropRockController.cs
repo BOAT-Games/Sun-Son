@@ -4,24 +4,16 @@ using UnityEngine;
 
 public class DropRockController : MonoBehaviour
 {
-    public List<GameObject> roots;
+    public int rootCount = 3;
 
     [SerializeField] Transform targetPos;
     [SerializeField] GameObject spider;
     [SerializeField] GameObject boss;
 
-    private Animator _anim;
-    private int _isSummoningHash;
-
-    private float timer = 3f;
-    private bool paused = true;
-
     // Start is called before the first frame update
     void Start()
     {
         boss = GameObject.Find("CrawlerBoss");
-        _anim = spider.GetComponent<Animator>();
-        _isSummoningHash = Animator.StringToHash("IsSummoning");
     }
 
     // Update is called once per frame
@@ -29,29 +21,7 @@ public class DropRockController : MonoBehaviour
     {
         if (boss == null)
         {
-            if (timer <= 0)
-            {
-                paused = false;
-            }
-            else
-            {
-                timer -= Time.deltaTime;
-            }
-
-            if (!paused)
-            {
-                Stomp();
-
-                timer = 3f;
-                paused = true;
-            }
-            else
-            {
-                _anim.SetBool(_isSummoningHash, false);
-            }
-
-
-            if (roots.Count == 0)
+            if (rootCount == 0)
             {
                 float step = 40 * Time.deltaTime;
                 transform.position = Vector3.MoveTowards(transform.position, targetPos.position, step);
@@ -62,11 +32,6 @@ public class DropRockController : MonoBehaviour
                 Destroy(spider);
             }
         }
-    }
-
-    void Stomp()
-    {
-        _anim.SetBool(_isSummoningHash, true);
     }
 
 }
