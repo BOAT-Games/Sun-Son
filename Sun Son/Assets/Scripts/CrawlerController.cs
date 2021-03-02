@@ -38,7 +38,10 @@ public class CrawlerController : MonoBehaviour
     public GameObject ps;
     public GameObject ps2;
 
-
+    public AudioClip roar;
+    public AudioClip die;
+    public AudioClip bite;
+    private AudioSource _audio;
 
     enum EnemyStates
     {
@@ -50,6 +53,7 @@ public class CrawlerController : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        _audio = GetComponent<AudioSource>();
         InvokeRepeating("SetDestination", 1.5f, _decisionDelay);
         //agent.SetDestination(targets.position);
         _player = FindObjectOfType<PlayerV2>().gameObject;
@@ -90,7 +94,15 @@ public class CrawlerController : MonoBehaviour
         }
         else
         {
+
+            if (currentState == EnemyStates.Patrolling)
+            {
+                _audio.clip = roar;
+                _audio.Play();
+            }
             currentState = EnemyStates.Chasing;
+            
+
             _anim.SetBool(_isWalkingHash, true);
             _anim.SetBool(_isAttackingHash, false);
         }
@@ -138,12 +150,16 @@ public class CrawlerController : MonoBehaviour
 
             Instantiate(obj, targetPosition, Quaternion.LookRotation(transform.forward * -1, Vector3.up));
         }
-        GetComponent<AudioSource>().Play();
+        _audio.clip = bite;
+        _audio.Play();
     }
 
     public void TakeDamage(int damage)
     {
         _health -= damage;
+
+        _audio.clip = die;
+        _audio.Play();
 
         rbody.materials = new Material[] { red };
 
