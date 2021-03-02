@@ -31,13 +31,15 @@ public class PlayerV2 : MonoBehaviour
     private float _currentDashTime;
     private bool _isDashCooldown;
     private float _nextDashAvailable;
+    private bool _hasDashAbility;
 
     // Fields for double jump
     [SerializeField] int _doubleJumpCost = 10;
-    [SerializeField] int _maxJumps = 2;
+    private int _maxJumps = 2;
     private int _currentJumps;
     private bool _canDoubleJump;
     private bool _hasDoubleJumped;
+    private bool _hasDoubleJumpAbility;
 
     //Fields for wall grab
     [SerializeField] Transform _wallGrabRayOrigin;
@@ -133,6 +135,9 @@ public class PlayerV2 : MonoBehaviour
         _pr = GetComponent<PlayerResources>();
 
         _currentGravity = _gravityValue;
+        
+        _hasDashAbility = true;
+        _hasDoubleJumpAbility = false;
 
     }
 
@@ -421,7 +426,9 @@ public class PlayerV2 : MonoBehaviour
     public bool getGrounded() { return _grounded; }
     public void setIsDashCooldown(bool cooldown) { _isDashCooldown = cooldown; }
     public void setCanDoubleJump(bool doublejump) { _canDoubleJump = doublejump;}
-
+    public bool getHasDashAbility() {return _hasDashAbility;}
+    public bool getHasDoubleJumpAbility() {return _hasDoubleJumpAbility;}
+    public void setHasDoubleJumpAbility(bool hasDoubleJump) { _hasDoubleJumpAbility = hasDoubleJump;}
     void OnDrawGizmosSelected()
     {
         // Draws a 5 unit long red line in front of the object

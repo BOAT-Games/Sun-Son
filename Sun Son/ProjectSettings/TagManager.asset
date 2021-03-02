@@ -8,6 +8,8 @@ TagManager:
   - Shadow
   - Weapon
   - Light
+  - Barrier
+  - Barrier Trigger
   layers:
   - Default
   - TransparentFX
