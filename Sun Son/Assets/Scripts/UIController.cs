@@ -9,7 +9,7 @@ public class UIController : MonoBehaviour
     private PowerupController _powerups;
     private LightBar _lightBar;
 
-    [SerializeField] GameObject _gameOver;
+    private GameObject _gameOver;
 
     private int _currentLightPoints;
     private int _maxLightPoints;
@@ -19,6 +19,7 @@ public class UIController : MonoBehaviour
         _player = FindObjectOfType<PlayerV2>();
         _pr = FindObjectOfType<PlayerResources>();
         _powerups = FindObjectOfType<PowerupController>();
+        _gameOver = GameObject.Find("/Player_UI_Camera_Rig/Canvas/GameOver");
         _lightBar = FindObjectOfType<LightBar>();
 
         _maxLightPoints = _pr.getMaxLightPoints();
@@ -26,12 +27,12 @@ public class UIController : MonoBehaviour
         _lightBar.SetMaxLightPoints(_currentLightPoints);
         _lightBar.SetLightPoints(_currentLightPoints);
         _powerups.setDashCooldown(_player.getDashDelay());
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_gameOver.activeSelf == false) Time.timeScale = 1;
         if (_pr.getCurrentLightPoints() <= 0) {
             _gameOver.SetActive(true);
             Time.timeScale = 0;
@@ -51,8 +52,9 @@ public class UIController : MonoBehaviour
 
     public void RestartGame() 
     {
-        Time.timeScale = 1;
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
     }
 
     public void QuitGame() 
