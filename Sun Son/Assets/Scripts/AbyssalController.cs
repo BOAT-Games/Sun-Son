@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AbyssalController : MonoBehaviour
 {
-    [SerializeField] int _health = 20;
+    [SerializeField] int _health = 30;
     [SerializeField] float _timer = 2;
     [SerializeField] int _damage = 20;
 
@@ -17,7 +17,11 @@ public class AbyssalController : MonoBehaviour
     private Animator _anim;
     private int _isAttackingHash;
 
+    //player stuff
     private GameObject _player;
+    private PlayerShield _shield;
+    private PlayerMelee _sword;
+
     private Vector3 startPosition;
     [SerializeField] GameObject portal;
     [SerializeField] GameObject flash;
@@ -27,12 +31,17 @@ public class AbyssalController : MonoBehaviour
     public Material originalMaterial;
 
     [SerializeField] GameObject ps;
+    [SerializeField] GameObject ps2;
 
     // Start is called before the first frame update
     void Start()
     {
         _player = FindObjectOfType<PlayerV2>().gameObject;
+        transform.position = new Vector3(transform.position.x, transform.position.y, _player.transform.position.z);
         startPosition = transform.position;
+
+        _shield = _player.GetComponent<PlayerShield>();
+        _sword = _player.GetComponent<PlayerMelee>();
 
         _anim = GetComponent<Animator>();
         _isAttackingHash = Animator.StringToHash("IsAttacking");
@@ -41,6 +50,7 @@ public class AbyssalController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         //always look at player...creppy
         transform.LookAt(_player.transform.position);
 
@@ -152,7 +162,7 @@ public class AbyssalController : MonoBehaviour
     {
         GetComponent<AudioSource>().Play();
 
-        if (_inRange)
+        if (_inRange && !_shield._shieldPressed)
         {
 
             _player.GetComponent<PlayerResources>().TakeDamage(_damage);
@@ -168,6 +178,25 @@ public class AbyssalController : MonoBehaviour
         else if (other.CompareTag("Weapon"))
         {
             //take damage
+            if (other.GetComponent<SunBulletController>())
+            {
+                Vector3 targetPos = new Vector3(transform.position.x, other.transform.position.y,
+                                transform.position.z - 1);
+                Instantiate(ps2, targetPos, Quaternion.LookRotation(transform.forward * 1, Vector3.up));
+                TakeDamage(5);
+            }
+            else
+            {
+                if (_sword._hit)
+                {
+                    Vector3 targetPos = new Vector3(transform.position.x, other.transform.position.y,
+                                transform.position.z - 1);
+                    Instantiate(ps2, targetPos, Quaternion.LookRotation(transform.forward * 1, Vector3.up));
+
+                    TakeDamage(10);
+                    _sword._hit = false;
+                }
+            }
         }
     }
 
@@ -233,6 +262,7 @@ public class AbyssalController : MonoBehaviour
 
     private void DestroyEnemy()
     {
+        Destroy(portalClone);
         Instantiate(ps, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

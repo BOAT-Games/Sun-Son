@@ -20,6 +20,8 @@ public class CrawlerController : MonoBehaviour
     [SerializeField] EnemyStates currentState;
 
     private GameObject _player;
+    private PlayerShield _shield;
+    private PlayerMelee _sword;
     private int currentTarget = 0;
 
     
@@ -34,6 +36,7 @@ public class CrawlerController : MonoBehaviour
     private Material originalMaterial;
 
     public GameObject ps;
+    public GameObject ps2;
 
 
 
@@ -50,6 +53,8 @@ public class CrawlerController : MonoBehaviour
         InvokeRepeating("SetDestination", 1.5f, _decisionDelay);
         //agent.SetDestination(targets.position);
         _player = FindObjectOfType<PlayerV2>().gameObject;
+        _shield = _player.GetComponent<PlayerShield>();
+        _sword = _player.GetComponent<PlayerMelee>();
 
         if (currentState == EnemyStates.Patrolling)
         {
@@ -65,6 +70,7 @@ public class CrawlerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (_health <= 0)
         {
             DestroyEnemy();
@@ -126,9 +132,12 @@ public class CrawlerController : MonoBehaviour
         Vector3 targetPosition = new Vector3(transform.position.x,
                                         transform.position.y + 0.2f,
                                         transform.position.z);
-        _player.GetComponent<PlayerResources>().TakeDamage(_damageCost);
+        if (!_shield._shieldPressed)
+        {
+            _player.GetComponent<PlayerResources>().TakeDamage(_damageCost);
 
-        Instantiate(obj, targetPosition, Quaternion.LookRotation(transform.forward * -1, Vector3.up));
+            Instantiate(obj, targetPosition, Quaternion.LookRotation(transform.forward * -1, Vector3.up));
+        }
         GetComponent<AudioSource>().Play();
     }
 
@@ -161,8 +170,25 @@ public class CrawlerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Weapon"))
         {
-            Debug.Log("Damaged");
-            this.TakeDamage(other.gameObject.GetComponent<Weapon>()._damage);
+            if (other.GetComponent<SunBulletController>())
+            {
+                //bullet damage
+                Vector3 targetPos = new Vector3(transform.position.x, other.transform.position.y,
+                                transform.position.z - 1);
+                Instantiate(ps2, targetPos, Quaternion.LookRotation(transform.forward * 1, Vector3.up));
+                TakeDamage(5);
+            }
+            else
+            {
+                if (_sword._hit)
+                {
+                    Vector3 targetPos = new Vector3(transform.position.x, other.transform.position.y,
+                                    transform.position.z - 1);
+                    Instantiate(ps2, targetPos, Quaternion.LookRotation(transform.forward * 1, Vector3.up));
+                    TakeDamage(5);
+                    _sword._hit = false;
+                }
+            }
         }
     }
 
