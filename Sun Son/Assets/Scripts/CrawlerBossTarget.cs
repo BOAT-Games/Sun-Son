@@ -5,11 +5,16 @@ using UnityEngine;
 public class CrawlerBossTarget : MonoBehaviour
 {
     [SerializeField] CrawlerBossController _boss;
+    [SerializeField] GameObject _player;
+    [SerializeField] PlayerMelee _sword;
 
     // Start is called before the first frame update
     void Start()
     {
-        _boss = GameObject.Find("CrawlerBoss").GetComponent<CrawlerBossController>();    
+        _boss = GameObject.Find("CrawlerBoss").GetComponent<CrawlerBossController>();
+        _player = FindObjectOfType<PlayerResources>().gameObject;
+
+        _sword = _player.GetComponent<PlayerMelee>();
     }
 
     // Update is called once per frame
@@ -28,7 +33,10 @@ public class CrawlerBossTarget : MonoBehaviour
             }
             else
             {
-                _boss.TakeDamage(10);
+                if (_sword._hit)
+                {
+                    _boss.TakeDamage(10);
+                }
             }
         }
     }
