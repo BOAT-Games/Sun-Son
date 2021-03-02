@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8d3b4c49d5ed564182fcf664824c1cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
   _dashIcon: {fileID: 3290539089512029121}
   _doubleJumpIcon: {fileID: 8608930462425643889}
   _swordBranch1: {fileID: 5248096147259876008}
@@ -194,9 +193,54 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3860919356328235920, guid: 7a93e07023f417142881f9ebea0e642b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3860919356328235920, guid: 7a93e07023f417142881f9ebea0e642b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 403
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869268581464502889, guid: 7a93e07023f417142881f9ebea0e642b,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -1243.3044
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869268581464502889, guid: 7a93e07023f417142881f9ebea0e642b,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -563.1508
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869268581464502889, guid: 7a93e07023f417142881f9ebea0e642b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3869268581464502889, guid: 7a93e07023f417142881f9ebea0e642b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 514
+      objectReference: {fileID: 0}
     - target: {fileID: 5919613946726180070, guid: 7a93e07023f417142881f9ebea0e642b,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6742299512171621569, guid: 7a93e07023f417142881f9ebea0e642b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7051074699557340397, guid: 7a93e07023f417142881f9ebea0e642b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7142615739065234189, guid: 7a93e07023f417142881f9ebea0e642b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7901028778749520145, guid: 7a93e07023f417142881f9ebea0e642b,

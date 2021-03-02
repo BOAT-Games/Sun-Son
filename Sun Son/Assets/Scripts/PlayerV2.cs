@@ -20,7 +20,6 @@ public class PlayerV2 : MonoBehaviour
     private Vector3 _playerVelocity;
     private float _playerSpeed;
     private bool _grounded;
-    [SerializeField] int _skillPoints = 2;
 
     // Fields for dash ability
     [SerializeField] float _maxDashTime = 1.0f;
@@ -384,9 +383,6 @@ public class PlayerV2 : MonoBehaviour
     public bool getHasDashAbility() {return _hasDashAbility;}
     public bool getHasDoubleJumpAbility() {return _hasDoubleJumpAbility;}
     public void setHasDoubleJumpAbility(bool hasDoubleJump) { _hasDoubleJumpAbility = hasDoubleJump;}
-    public int getSkillPoints() {return _skillPoints; }
-    public void setSkillPoints(int points) {_skillPoints = points;}
-
     void OnDrawGizmosSelected()
     {
         // Draws a 5 unit long red line in front of the object

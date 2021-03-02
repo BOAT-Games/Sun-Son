@@ -5,13 +5,19 @@ using UnityEngine.UI;
 
 public class SkillTreeController : MonoBehaviour
 {
-    [SerializeField] PlayerV2 _player;
+    private PlayerV2 _player;
+    private PlayerResources _pr;
     [SerializeField] Image _dashIcon;
     [SerializeField] Image _doubleJumpIcon;
     [SerializeField] Image _swordBranch1;
     [SerializeField] Image _gunBranch1;
     private bool _swordSkill = false;
     private bool _gunSkill = false;
+
+    private void Start() {
+         _player = FindObjectOfType<PlayerV2>();
+        _pr = FindObjectOfType<PlayerResources>();
+    }
     private void Update() {
         enableDashIcon(_player.getHasDashAbility());
         enableDoubleJumpIcon(_player.getHasDoubleJumpAbility());
@@ -30,15 +36,15 @@ public class SkillTreeController : MonoBehaviour
     }
 
     public void enableSword() {
-        if (_player.getSkillPoints() > 0 & !_gunSkill) {
-            _player.setSkillPoints(_player.getSkillPoints() - 1);
+        if (_pr.getSkillPoints() > 0 & !_gunSkill) {
+            _pr.setSkillPoints(_pr.getSkillPoints() - 1);
             _swordSkill = true;
             _swordBranch1.gameObject.SetActive(true);
         }
     }
-        public void enableGun() {
-        if (_player.getSkillPoints() > 0 & !_swordSkill) {
-            _player.setSkillPoints(_player.getSkillPoints() - 1);
+    public void enableGun() {
+        if (_pr.getSkillPoints() > 0 & !_swordSkill) {
+            _pr.setSkillPoints(_pr.getSkillPoints() - 1);
             _gunSkill = true;
             _gunBranch1.gameObject.SetActive(true);
         }

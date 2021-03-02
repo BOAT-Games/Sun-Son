@@ -32,15 +32,15 @@ public class UIController : MonoBehaviour
     void Update()
     {
         if (_gameOver.activeSelf == false) Time.timeScale = 1;
-        if (_player.getCurrentLightPoints() <= 0) {
+        if (_pr.getCurrentLightPoints() <= 0) {
             _gameOver.SetActive(true);
             Time.timeScale = 0;
         }
         _lightBar.SetLightPoints(_pr.getCurrentLightPoints());
         _powerups.activateDashCooldown(_player.getIsDashCooldown());
-        _powerups.disableDashIcon(_player.getCurrentLightPoints());
+        _powerups.disableDashIcon(_pr.getCurrentLightPoints());
         _powerups.activateDoubleJumpCooldown(_player.getHasDoubleJumped());
-        _powerups.disableDoubleJumpIcon(_player.getCurrentLightPoints());
+        _powerups.disableDoubleJumpIcon(_pr.getCurrentLightPoints());
         _powerups.showDoubleJump(_player.getCanDoubleJump());
     }
 
