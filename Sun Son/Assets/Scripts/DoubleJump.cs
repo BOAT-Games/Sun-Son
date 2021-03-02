@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class DoubleJump : MonoBehaviour
 {
-    [SerializeField] PlayerV2 _player;
+    private PlayerV2 _player;
+
+    void Start()
+    {
+        _player = FindObjectOfType<PlayerV2>();
+    }
 
     private void OnTriggerEnter(Collider other) 
     {

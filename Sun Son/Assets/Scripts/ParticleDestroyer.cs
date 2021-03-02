@@ -6,6 +6,7 @@ public class ParticleDestroyer : MonoBehaviour
 {
     private ParticleSystem ps;
     [SerializeField] GameObject _player;
+    private PlayerShield _shield;
     [SerializeField] int _damageCost = 20;
     private bool _called = false;
 
@@ -14,6 +15,7 @@ public class ParticleDestroyer : MonoBehaviour
     {
         ps = GetComponent<ParticleSystem>();
         _player = FindObjectOfType<PlayerV2>().gameObject;
+        _shield = _player.GetComponent<PlayerShield>();
     }
 
     public void Update()
@@ -35,7 +37,10 @@ public class ParticleDestroyer : MonoBehaviour
 
             if (this.CompareTag("Shadow"))
             {
-                _player.GetComponent<PlayerV2>().TakeDamage(_damageCost);
+                if (!_shield._shieldPressed)
+                {
+                    _player.GetComponent<PlayerResources>().TakeDamage(_damageCost);
+                }
             }
             else
             {

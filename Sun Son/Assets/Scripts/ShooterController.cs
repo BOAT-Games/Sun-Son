@@ -10,6 +10,8 @@ public class ShooterController : MonoBehaviour
     [SerializeField] Transform player;
     [SerializeField] int health;
 
+    private PlayerMelee _sword;
+
     //Attacking
     [SerializeField] float timeBetweenAttacks;
     bool alreadyAttacked;
@@ -30,16 +32,20 @@ public class ShooterController : MonoBehaviour
     public Material red;
     private Material originalMaterial;
     public GameObject ps;
+    public GameObject ps2;
 
     private void Awake()
     {
         player = FindObjectOfType<PlayerV2>().gameObject.transform;
         agent.GetComponent<NavMeshAgent>();
+
+        _sword = player.GetComponent<PlayerMelee>();
     }
 
     private void Start()
     {
-        agent.SetDestination(transform.position);
+        transform.position = new Vector3(transform.position.x, transform.position.y, player.transform.position.z);
+agent.SetDestination(transform.position);
 
         _anim = GetComponent<Animator>();
 
@@ -52,6 +58,11 @@ public class ShooterController : MonoBehaviour
 
     private void Update()
     {
+        if (health <= 0)
+        {
+            Invoke(nameof(DestroyEnemy), 0.5f);
+        }
+
         if (Vector3.Distance(transform.position, player.position) < sightRange)
         {
             playerInSightRange = true;
@@ -133,11 +144,6 @@ public class ShooterController : MonoBehaviour
         rlegs.materials = new Material[] { red, red };
 
         Invoke("ResetColor", 0.1f);
-
-        if (health <= 0)
-        {
-            Invoke(nameof(DestroyEnemy), 0.5f);
-        }
     }
 
     void ResetColor()
@@ -151,6 +157,32 @@ public class ShooterController : MonoBehaviour
     {
         Instantiate(ps, transform.position, Quaternion.identity);
         Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Weapon"))
+        {
+            if (other.GetComponent<SunBulletController>())
+            {
+                //bullet damage
+                Vector3 targetPos = new Vector3(transform.position.x, other.transform.position.y,
+                                transform.position.z - 1);
+                Instantiate(ps2, targetPos, Quaternion.LookRotation(transform.forward * 1, Vector3.up));
+                TakeDamage(5);
+            }
+            else
+            {
+                if (_sword._hit)
+                {
+                    Vector3 targetPos = new Vector3(transform.position.x, other.transform.position.y,
+                                    transform.position.z - 1);
+                    Instantiate(ps2, targetPos, Quaternion.LookRotation(transform.forward * 1, Vector3.up));
+                    TakeDamage(10);
+                    _sword._hit = false;
+                }
+            }
+        }
     }
 
 }
