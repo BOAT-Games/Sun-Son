@@ -20,6 +20,7 @@ public class PlayerV2 : MonoBehaviour
     private Vector3 _playerVelocity;
     private float _playerSpeed;
     private bool _grounded;
+    private float _fixedZ;
 
     // Fields for dash ability
     [SerializeField] float _maxDashTime = 1.0f;
@@ -30,13 +31,15 @@ public class PlayerV2 : MonoBehaviour
     private float _currentDashTime;
     private bool _isDashCooldown;
     private float _nextDashAvailable;
+    private bool _hasDashAbility;
 
     // Fields for double jump
     [SerializeField] int _doubleJumpCost = 10;
-    [SerializeField] int _maxJumps = 2;
+    private int _maxJumps = 2;
     private int _currentJumps;
     private bool _canDoubleJump;
     private bool _hasDoubleJumped;
+    private bool _hasDoubleJumpAbility;
 
     //Fields for wall grab
     [SerializeField] Transform _wallGrabRayOrigin;
@@ -48,10 +51,8 @@ public class PlayerV2 : MonoBehaviour
     //Fields for NPC interaction
     [SerializeField] bool _canTalk;
 
-
     // Fields for Player Resources
-    [SerializeField] int _maxLightPoints;
-    private int _currentLightPoints;
+    private PlayerResources _pr;
 
     // Fields for player input
     private PlayerControls _input;
@@ -68,16 +69,10 @@ public class PlayerV2 : MonoBehaviour
     private int _isAirborneHash;
     private int _isDashingHash;
     private int _isGrabbingWallHash;
-    private int _isShieldingHash;
-    private int _isFiringRangedHash;
-    private int _isMeleeingHash;
+    private int _isAttackingHash;
 
     // Fields for FX
     [SerializeField] TrailRenderer _trailRenderer;
-    [SerializeField] GameObject _pointLight;
-
-    // Fields for UI Elements
-    [SerializeField] LightBar _lightBar;
 
     // Main Camera
     private Camera _mainCamera;
@@ -127,30 +122,26 @@ public class PlayerV2 : MonoBehaviour
         _isJumpingHash = Animator.StringToHash("isJumping");
         _isAirborneHash = Animator.StringToHash("isAirborne");
         _isDashingHash = Animator.StringToHash("isDashing");
-        _isShieldingHash = Animator.StringToHash("isShielding");
-        _isFiringRangedHash = Animator.StringToHash("isFiringRanged");
-        _isMeleeingHash = Animator.StringToHash("isMeleeing");
         _isGrabbingWallHash = Animator.StringToHash("isGrabbingWall");
+        _isAttackingHash = Animator.StringToHash("isAttacking");
 
         _currentDashTime = _maxDashTime;
         _canDoubleJump = false;
 
-        _currentLightPoints = _maxLightPoints;
-        _lightBar.SetMaxLightPoints(_maxLightPoints);
-        _lightBar.SetLightPoints(_maxLightPoints);
-        _pointLight.GetComponent<LightPower>().SetMaxLightPoints(_currentLightPoints);
-        _pointLight.GetComponent<LightPower>().SetLightPoints(_maxLightPoints);
+        _pr = GetComponent<PlayerResources>();
 
         _currentGravity = _gravityValue;
+        
+        _hasDashAbility = true;
+        _hasDoubleJumpAbility = false;
 
-        _mainCamera.GetComponent<GlowComposite>().Intensity = (float)_currentLightPoints / (float)_maxLightPoints;
-
+        _fixedZ = transform.position.z;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        transform.position = new Vector3(transform.position.x, transform.position.y, _fixedZ);
         bool isAirborne = _anim.GetBool(_isAirborneHash);
 
         if (!_grabbingWall)
@@ -177,7 +168,8 @@ public class PlayerV2 : MonoBehaviour
         if (!_grabbingWall && Time.time > _controlsAvailable)
         {
             _playerVelocity.x = 0;
-            handleDirection();
+            
+            if(!_anim.GetBool("isAttacking")) handleDirection();
             handleMovement();
             handleJumping();
             handleDashing();
@@ -308,10 +300,10 @@ public class PlayerV2 : MonoBehaviour
             ExecuteJump();
         }
 
-        if (_jumpPressed && !_grounded && _currentJumps < _maxJumps && _canDoubleJump && _currentLightPoints >= _doubleJumpCost) 
+        if (_jumpPressed && !_grounded && _currentJumps < _maxJumps && _canDoubleJump && _pr.ResourcesAvailable(_doubleJumpCost)) 
         {
             ExecuteJump();
-            TakeDamage(_doubleJumpCost);
+            _pr.TakeDamage(_doubleJumpCost);
             _hasDoubleJumped = true;
         }
 
@@ -351,14 +343,14 @@ public class PlayerV2 : MonoBehaviour
 
     void handleDashing()
     {
-        if (Time.time >= _nextDashAvailable && _currentLightPoints >= _dashCost)
+        if (Time.time >= _nextDashAvailable && _pr.ResourcesAvailable(_dashCost))
         {
             if (_dashPressed && _movementPressed)
             {            
                 _anim.SetTrigger(_isDashingHash);
                 _isDashCooldown = true;
                 _currentDashTime = 0.0f;
-                TakeDamage(_dashCost);
+                _pr.TakeDamage(_dashCost);
                 _trailRenderer.enabled = true;
                 _nextDashAvailable = Time.time + _dashDelay;
             }
@@ -379,29 +371,10 @@ public class PlayerV2 : MonoBehaviour
     {
         if (coll.gameObject.CompareTag("Light"))
         {
-            if (_currentLightPoints != _maxLightPoints)
-            {
-                _currentLightPoints = Mathf.CeilToInt(Mathf.Lerp(_currentLightPoints, _maxLightPoints, 0.05f));
-                _lightBar.SetLightPoints(_currentLightPoints);
-                _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
-                _mainCamera.GetComponent<GlowComposite>().Intensity = (float)_currentLightPoints / (float)_maxLightPoints;
-
-            }
+            _pr.Regenerate();
         }
     }
 
-    public void TakeDamage(int damage)
-    {
-        _currentLightPoints -= damage;
-        _lightBar.SetLightPoints(_currentLightPoints);
-        _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
-        _mainCamera.GetComponent<GlowComposite>().Intensity = (float)_currentLightPoints / (float)_maxLightPoints;
-
-    }
-
-
-    public int getMaxLightPoints() { return _maxLightPoints; }
-    public int getCurrentLightPoints() { return _currentLightPoints; }
     public float getDashDelay() { return _dashDelay; }
     public bool getIsDashCooldown() { return _isDashCooldown; }
     public bool getCanDoubleJump() { return _canDoubleJump; }
@@ -409,7 +382,9 @@ public class PlayerV2 : MonoBehaviour
     public bool getGrounded() { return _grounded; }
     public void setIsDashCooldown(bool cooldown) { _isDashCooldown = cooldown; }
     public void setCanDoubleJump(bool doublejump) { _canDoubleJump = doublejump;}
-
+    public bool getHasDashAbility() {return _hasDashAbility;}
+    public bool getHasDoubleJumpAbility() {return _hasDoubleJumpAbility;}
+    public void setHasDoubleJumpAbility(bool hasDoubleJump) { _hasDoubleJumpAbility = hasDoubleJump;}
     void OnDrawGizmosSelected()
     {
         // Draws a 5 unit long red line in front of the object

@@ -13,13 +13,15 @@ public class CrawlerController : MonoBehaviour
     [SerializeField] float _attackRange = 0.5f;
     [SerializeField] float _decisionDelay = 3f;
 
-    [SerializeField] float _health = 0;
+    [SerializeField] int _health = 5;
 
 
     [SerializeField] Transform[] targets;
     [SerializeField] EnemyStates currentState;
 
     private GameObject _player;
+    private PlayerShield _shield;
+    private PlayerMelee _sword;
     private int currentTarget = 0;
 
     
@@ -33,7 +35,13 @@ public class CrawlerController : MonoBehaviour
     public Material red;
     private Material originalMaterial;
 
+    public GameObject ps;
+    public GameObject ps2;
 
+    public AudioClip roar;
+    public AudioClip die;
+    public AudioClip bite;
+    private AudioSource _audio;
 
     enum EnemyStates
     {
@@ -45,9 +53,12 @@ public class CrawlerController : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        _audio = GetComponent<AudioSource>();
         InvokeRepeating("SetDestination", 1.5f, _decisionDelay);
         //agent.SetDestination(targets.position);
         _player = FindObjectOfType<PlayerV2>().gameObject;
+        _shield = _player.GetComponent<PlayerShield>();
+        _sword = _player.GetComponent<PlayerMelee>();
 
         if (currentState == EnemyStates.Patrolling)
         {
@@ -63,6 +74,12 @@ public class CrawlerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (_health <= 0)
+        {
+            DestroyEnemy();
+        }
+
         if (Vector3.Distance(transform.position, _player.transform.position) > _targetRange)
         {
             currentState = EnemyStates.Patrolling;
@@ -77,7 +94,15 @@ public class CrawlerController : MonoBehaviour
         }
         else
         {
+
+            if (currentState == EnemyStates.Patrolling)
+            {
+                _audio.clip = roar;
+                _audio.Play();
+            }
             currentState = EnemyStates.Chasing;
+            
+
             _anim.SetBool(_isWalkingHash, true);
             _anim.SetBool(_isAttackingHash, false);
         }
@@ -119,15 +144,22 @@ public class CrawlerController : MonoBehaviour
         Vector3 targetPosition = new Vector3(transform.position.x,
                                         transform.position.y + 0.2f,
                                         transform.position.z);
-        _player.GetComponent<PlayerV2>().TakeDamage(_damageCost);
+        if (!_shield._shieldPressed)
+        {
+            _player.GetComponent<PlayerResources>().TakeDamage(_damageCost);
 
-        Instantiate(obj, targetPosition, Quaternion.LookRotation(transform.forward * -1, Vector3.up));
-        GetComponent<AudioSource>().Play();
+            Instantiate(obj, targetPosition, Quaternion.LookRotation(transform.forward * -1, Vector3.up));
+        }
+        _audio.clip = bite;
+        _audio.Play();
     }
 
     public void TakeDamage(int damage)
     {
         _health -= damage;
+
+        _audio.clip = die;
+        _audio.Play();
 
         rbody.materials = new Material[] { red };
 
@@ -146,7 +178,34 @@ public class CrawlerController : MonoBehaviour
 
     private void DestroyEnemy()
     {
+        Instantiate(ps, transform.position, Quaternion.identity);
         Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Weapon"))
+        {
+            if (other.GetComponent<SunBulletController>())
+            {
+                //bullet damage
+                Vector3 targetPos = new Vector3(transform.position.x, other.transform.position.y,
+                                transform.position.z - 1);
+                Instantiate(ps2, targetPos, Quaternion.LookRotation(transform.forward * 1, Vector3.up));
+                TakeDamage(5);
+            }
+            else
+            {
+                if (_sword._hit)
+                {
+                    Vector3 targetPos = new Vector3(transform.position.x, other.transform.position.y,
+                                    transform.position.z - 1);
+                    Instantiate(ps2, targetPos, Quaternion.LookRotation(transform.forward * 1, Vector3.up));
+                    TakeDamage(5);
+                    _sword._hit = false;
+                }
+            }
+        }
     }
 
 }

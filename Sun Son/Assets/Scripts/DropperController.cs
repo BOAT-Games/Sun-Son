@@ -27,6 +27,7 @@ public class DropperController : MonoBehaviour
             _dropTimer -= Time.deltaTime;
             leftEye.intensity = 2;
             rightEye.intensity = 2;
+            
         }
 
         if (!_drop && _dropTimer <= 0)
@@ -46,6 +47,7 @@ public class DropperController : MonoBehaviour
     {
         if (!_timerStart && other.CompareTag("Player"))
         {
+            GetComponent<AudioSource>().Play();
             _timerStart = true;
         }
         

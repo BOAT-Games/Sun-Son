@@ -10,7 +10,7 @@ public class SpikeController : MonoBehaviour
     void Start()
     {
         _player = FindObjectOfType<PlayerV2>().gameObject;
-        _damageCost = _player.GetComponent<PlayerV2>().getMaxLightPoints();
+        _damageCost = _player.GetComponent<PlayerResources>().getMaxLightPoints();
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class SpikeController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            _player.GetComponent<PlayerV2>().TakeDamage(_damageCost);
+            _player.GetComponent<PlayerResources>().TakeDamage(_damageCost);
         }
     }
 }

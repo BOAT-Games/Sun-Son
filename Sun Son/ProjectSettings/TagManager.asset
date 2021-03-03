@@ -4,8 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Light
   - PickUp
+  - Shadow
+  - Weapon
+  - Light
+  - Barrier
+  - Barrier Trigger
   - Floor
   layers:
   - Default
@@ -16,8 +20,8 @@ TagManager:
   - UI
   - 
   - 
-  - Wall
-  - Glow
+  - 
+  - 
   - 
   - 
   - 
