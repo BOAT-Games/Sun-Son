@@ -9,10 +9,14 @@ public class DropRockController : MonoBehaviour
     [SerializeField] Transform targetPos;
     [SerializeField] GameObject spider;
     [SerializeField] GameObject boss;
+
     [SerializeField] AudioClip roar;
+    [SerializeField] AudioClip growl;
 
     private int count = 0;
     private float timer = 0.5f;
+
+    private float gTimer = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +29,18 @@ public class DropRockController : MonoBehaviour
     {
         if (boss == null)
         {
+            if (gTimer <= 0)
+            {
+                spider.GetComponent<AudioSource>().clip = growl;
+                spider.GetComponent<AudioSource>().Play();
+
+                gTimer = 8;
+            }
+            else
+            {
+                gTimer -= Time.deltaTime;
+            }
+
             if (rootCount == 0)
             {
                 if (count == 0)

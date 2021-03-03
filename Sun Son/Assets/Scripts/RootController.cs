@@ -7,6 +7,8 @@ public class RootController : MonoBehaviour
     public DropRockController _controller;
     private AudioSource spider;
 
+    public AudioClip hiss;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,7 @@ public class RootController : MonoBehaviour
     {
         if (other.CompareTag("Weapon"))
         {
+            spider.clip = hiss;
             spider.Play();
             _controller.rootCount--;
             Destroy(gameObject);

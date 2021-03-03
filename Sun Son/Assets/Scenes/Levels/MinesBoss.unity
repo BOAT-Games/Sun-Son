@@ -1046,7 +1046,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 1906837655}
+      objectReference: {fileID: 354678529}
     - target: {fileID: 7698672591784055980, guid: 4bfa1019a496ca049aa4aede7acfd9bd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5878,6 +5878,41 @@ Transform:
   m_Father: {fileID: 1169090175}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!84 &354678529
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  serializedVersion: 3
+  m_Width: 640
+  m_Height: 480
+  m_AntiAliasing: 2
+  m_MipCount: -1
+  m_DepthFormat: 2
+  m_ColorFormat: 59
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &466635954
 GameObject:
   m_ObjectHideFlags: 0
@@ -18571,7 +18606,7 @@ Transform:
   m_Father: {fileID: 490572460}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!84 &1906837655
+--- !u!84 &1903066130
 RenderTexture:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -18584,8 +18619,8 @@ RenderTexture:
   m_ForcedFallbackFormat: 4
   m_DownscaleFallback: 0
   serializedVersion: 3
-  m_Width: 640
-  m_Height: 480
+  m_Width: 1722
+  m_Height: 1034
   m_AntiAliasing: 2
   m_MipCount: -1
   m_DepthFormat: 2
@@ -18730,6 +18765,7 @@ MonoBehaviour:
   spider: {fileID: 1252315298}
   boss: {fileID: 810342450}
   roar: {fileID: 8300000, guid: 9d81db5791e9f64459cb98c1aa107956, type: 3}
+  growl: {fileID: 8300000, guid: 45e74223cc22bcd449af0a17d4cd9c27, type: 3}
 --- !u!82 &1996899091
 AudioSource:
   m_ObjectHideFlags: 0
@@ -18826,41 +18862,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!84 &2015284687
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  serializedVersion: 3
-  m_Width: 1494
-  m_Height: 1034
-  m_AntiAliasing: 2
-  m_MipCount: -1
-  m_DepthFormat: 2
-  m_ColorFormat: 59
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &2035405438
 GameObject:
   m_ObjectHideFlags: 0
@@ -25671,6 +25672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controller: {fileID: 1996899090}
+  hiss: {fileID: 8300000, guid: 3be298f555c2d354bba31447c1bd876d, type: 3}
 --- !u!4 &2290504561791624845
 Transform:
   m_ObjectHideFlags: 0
@@ -25733,6 +25735,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controller: {fileID: 1996899090}
+  hiss: {fileID: 8300000, guid: 3be298f555c2d354bba31447c1bd876d, type: 3}
 --- !u!23 &2290504561794049139
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -25981,6 +25984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controller: {fileID: 1996899090}
+  hiss: {fileID: 8300000, guid: 3be298f555c2d354bba31447c1bd876d, type: 3}
 --- !u!64 &5687386795270739496
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -26019,6 +26023,7 @@ MonoBehaviour:
   - {fileID: 752182276}
   rock: {fileID: 0}
   hiss: {fileID: 8300000, guid: c3b8e6bcba7780b459a254e495e4bc35, type: 3}
+  hiss2: {fileID: 8300000, guid: 3be298f555c2d354bba31447c1bd876d, type: 3}
   roar: {fileID: 8300000, guid: 45e74223cc22bcd449af0a17d4cd9c27, type: 3}
   stage1: 0
   stage2: 0

@@ -42,6 +42,7 @@ public class CrawlerBossController : MonoBehaviour
     private bool hasPlayed = false;
 
     public AudioClip hiss;
+    public AudioClip hiss2;
     public AudioClip roar;
 
     //booleans
@@ -361,6 +362,9 @@ public class CrawlerBossController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         _health -= damage;
+
+        wrapper.GetComponent<AudioSource>().clip = hiss2;
+        wrapper.GetComponent<AudioSource>().Play();
 
         rbody.materials = new Material[] { red };
 
