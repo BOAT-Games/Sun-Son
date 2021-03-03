@@ -34,6 +34,10 @@ public class ShooterController : MonoBehaviour
     public GameObject ps;
     public GameObject ps2;
 
+    public AudioClip shoot;
+    public AudioClip scream;
+    public AudioClip die;
+
     private void Awake()
     {
         player = FindObjectOfType<PlayerV2>().gameObject.transform;
@@ -65,6 +69,11 @@ agent.SetDestination(transform.position);
 
         if (Vector3.Distance(transform.position, player.position) < sightRange)
         {
+            if (!playerInSightRange)
+            {
+                GetComponent<AudioSource>().clip = scream;
+                GetComponent<AudioSource>().Play();
+            }
             playerInSightRange = true;
         }
         else
@@ -132,12 +141,16 @@ agent.SetDestination(transform.position);
         rb.AddForce(transform.forward * 16f, ForceMode.Impulse);
         rb.AddForce(transform.up * 4f, ForceMode.Impulse);
 
-        gameObject.GetComponent<AudioSource>().Play();
+        GetComponent<AudioSource>().clip = shoot;
+        GetComponent<AudioSource>().Play();
     }
 
     public void TakeDamage(int damage)
     {
         health -= damage;
+
+        GetComponent<AudioSource>().clip = die;
+        GetComponent<AudioSource>().Play();
 
         rhead.materials = new Material[] { red, red, red };
         rbody.materials = new Material[] { red, red };
