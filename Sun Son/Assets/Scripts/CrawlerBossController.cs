@@ -85,7 +85,7 @@ public class CrawlerBossController : MonoBehaviour
     void Update()
     {
         //start once player is in arena
-        if (_player.transform.position.x > -16)
+        if (_player.transform.position.x > 137)
         {
             //boss activates, player is trapped
             door.transform.localScale = Vector3.Slerp(door.transform.localScale, new Vector3(10, 5, 15),
