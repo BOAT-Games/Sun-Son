@@ -26,7 +26,7 @@ public class CrawlerBossController2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_player.transform.position.y > 107)
+        if (Mathf.Abs(transform.position.y - _player.transform.position.y) <= 25)
         {
             if (!paused)
             {
