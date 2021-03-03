@@ -20,6 +20,7 @@ public class PlayerV2 : MonoBehaviour
     private Vector3 _playerVelocity;
     private float _playerSpeed;
     private bool _grounded;
+    private float _fixedZ;
 
     // Fields for dash ability
     [SerializeField] float _maxDashTime = 1.0f;
@@ -134,12 +135,13 @@ public class PlayerV2 : MonoBehaviour
         _hasDashAbility = true;
         _hasDoubleJumpAbility = false;
 
+        _fixedZ = transform.position.z;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        transform.position = new Vector3(transform.position.x, transform.position.y, _fixedZ);
         bool isAirborne = _anim.GetBool(_isAirborneHash);
 
         if (!_grabbingWall)
