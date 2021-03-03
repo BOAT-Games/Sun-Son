@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class DropRockController : MonoBehaviour
 {
-    public List<GameObject> roots;
+    public int rootCount = 3;
 
     [SerializeField] Transform targetPos;
     [SerializeField] GameObject spider;
     [SerializeField] GameObject boss;
 
-    private Animator _anim;
-    private int _isSummoningHash;
+    [SerializeField] AudioClip roar;
+    [SerializeField] AudioClip growl;
 
-    private float timer = 3f;
-    private bool paused = true;
+    private int count = 0;
+    private float timer = 0.5f;
+
+    private float gTimer = 3;
 
     // Start is called before the first frame update
     void Start()
     {
         boss = GameObject.Find("CrawlerBoss");
-        _anim = spider.GetComponent<Animator>();
-        _isSummoningHash = Animator.StringToHash("IsSummoning");
     }
 
     // Update is called once per frame
@@ -29,44 +29,49 @@ public class DropRockController : MonoBehaviour
     {
         if (boss == null)
         {
-            if (timer <= 0)
+            if (gTimer <= 0)
             {
-                paused = false;
+                spider.GetComponent<AudioSource>().clip = growl;
+                spider.GetComponent<AudioSource>().Play();
+
+                gTimer = 8;
             }
             else
             {
-                timer -= Time.deltaTime;
+                gTimer -= Time.deltaTime;
             }
 
-            if (!paused)
+            if (rootCount == 0)
             {
-                Stomp();
-
-                timer = 3f;
-                paused = true;
-            }
-            else
-            {
-                _anim.SetBool(_isSummoningHash, false);
-            }
-
-
-            if (roots.Count == 0)
-            {
-                float step = 40 * Time.deltaTime;
-                transform.position = Vector3.MoveTowards(transform.position, targetPos.position, step);
+                if (count == 0)
+                {
+                    spider.GetComponent<AudioSource>().clip = roar;
+                    spider.GetComponent<AudioSource>().Play();
+                    count++;
+                }
+                if (timer <= 0)
+                {
+                    if (count == 1)
+                    {
+                        GetComponent<AudioSource>().Play();
+                        count++;
+                    }
+                    float step = 40 * Time.deltaTime;
+                    transform.position = Vector3.MoveTowards(transform.position, targetPos.position, step);
+                }
+                else
+                {
+                    timer -= Time.deltaTime;
+                }
             }
 
             if (Vector3.Distance(transform.position, targetPos.position) < 5)
             {
-                Destroy(spider);
+                if (spider == null) { 
+                    Destroy(spider);
+                }
             }
         }
-    }
-
-    void Stomp()
-    {
-        _anim.SetBool(_isSummoningHash, true);
     }
 
 }
