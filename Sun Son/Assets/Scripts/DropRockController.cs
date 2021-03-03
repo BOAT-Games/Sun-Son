@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class DropRockController : MonoBehaviour
 {
-    public int rootCount = 3;
+    public List<GameObject> roots;
 
     [SerializeField] Transform targetPos;
     [SerializeField] GameObject spider;
     [SerializeField] GameObject boss;
 
-    [SerializeField] AudioClip roar;
-    [SerializeField] AudioClip growl;
+    private Animator _anim;
+    private int _isSummoningHash;
 
-    private int count = 0;
-    private float timer = 0.5f;
-
-    private float gTimer = 3;
+    private float timer = 3f;
+    private bool paused = true;
 
     // Start is called before the first frame update
     void Start()
     {
         boss = GameObject.Find("CrawlerBoss");
+        _anim = spider.GetComponent<Animator>();
+        _isSummoningHash = Animator.StringToHash("IsSummoning");
     }
 
     // Update is called once per frame
@@ -29,49 +29,44 @@ public class DropRockController : MonoBehaviour
     {
         if (boss == null)
         {
-            if (gTimer <= 0)
+            if (timer <= 0)
             {
-                spider.GetComponent<AudioSource>().clip = growl;
-                spider.GetComponent<AudioSource>().Play();
-
-                gTimer = 8;
+                paused = false;
             }
             else
             {
-                gTimer -= Time.deltaTime;
+                timer -= Time.deltaTime;
             }
 
-            if (rootCount == 0)
+            if (!paused)
             {
-                if (count == 0)
-                {
-                    spider.GetComponent<AudioSource>().clip = roar;
-                    spider.GetComponent<AudioSource>().Play();
-                    count++;
-                }
-                if (timer <= 0)
-                {
-                    if (count == 1)
-                    {
-                        GetComponent<AudioSource>().Play();
-                        count++;
-                    }
-                    float step = 40 * Time.deltaTime;
-                    transform.position = Vector3.MoveTowards(transform.position, targetPos.position, step);
-                }
-                else
-                {
-                    timer -= Time.deltaTime;
-                }
+                Stomp();
+
+                timer = 3f;
+                paused = true;
+            }
+            else
+            {
+                _anim.SetBool(_isSummoningHash, false);
+            }
+
+
+            if (roots.Count == 0)
+            {
+                float step = 40 * Time.deltaTime;
+                transform.position = Vector3.MoveTowards(transform.position, targetPos.position, step);
             }
 
             if (Vector3.Distance(transform.position, targetPos.position) < 5)
             {
-                if (spider == null) { 
-                    Destroy(spider);
-                }
+                Destroy(spider);
             }
         }
+    }
+
+    void Stomp()
+    {
+        _anim.SetBool(_isSummoningHash, true);
     }
 
 }

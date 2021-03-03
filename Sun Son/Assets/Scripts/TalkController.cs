@@ -7,7 +7,6 @@ public class TalkController : MonoBehaviour
     [SerializeField] TalkText _talkText;
     [SerializeField] PlayerV2 _playerV2;
 
-
     private PlayerControls _input;
     private bool _interactPressed;
 
@@ -17,7 +16,7 @@ public class TalkController : MonoBehaviour
 
     public string[] convo;
 
-
+    
     private void Awake()
     {
         _input = new PlayerControls();

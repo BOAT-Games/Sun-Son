@@ -10,7 +10,6 @@ TagManager:
   - Light
   - Barrier
   - Barrier Trigger
-  - Floor
   layers:
   - Default
   - TransparentFX

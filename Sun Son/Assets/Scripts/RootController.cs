@@ -5,14 +5,11 @@ using UnityEngine;
 public class RootController : MonoBehaviour
 {
     public DropRockController _controller;
-    private AudioSource spider;
-
-    public AudioClip hiss;
 
     // Start is called before the first frame update
     void Start()
     {
-        spider = GameObject.Find("CrawlerBoss2").GetComponent<AudioSource>();   
+        
     }
 
     // Update is called once per frame
@@ -25,9 +22,7 @@ public class RootController : MonoBehaviour
     {
         if (other.CompareTag("Weapon"))
         {
-            spider.clip = hiss;
-            spider.Play();
-            _controller.rootCount--;
+            _controller.roots.Remove(this.gameObject);
             Destroy(gameObject);
         }
     }
