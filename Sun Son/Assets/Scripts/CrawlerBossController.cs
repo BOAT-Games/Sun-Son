@@ -279,7 +279,7 @@ public class CrawlerBossController : MonoBehaviour
                 float step = 20 * Time.deltaTime;
                 rock.position = Vector3.MoveTowards(rock.position, targetPos, step);
 
-                _player.GetComponent<PlayerV2>().setPlayerVelocity(new Vector3(-50, 0.5f, 0));
+                _player.GetComponent<PlayerV2>().setPlayerVelocity(new Vector3(-25, 0.5f, 0));
 
             }
             else
