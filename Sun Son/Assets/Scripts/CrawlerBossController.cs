@@ -38,7 +38,7 @@ public class CrawlerBossController : MonoBehaviour
     public Transform rock;
     private GameObject wrapper;
     private int count = 0;
-    private GameObject door;
+    public GameObject door;
     private bool hasPlayed = false;
 
     public AudioClip hiss;
@@ -58,7 +58,6 @@ public class CrawlerBossController : MonoBehaviour
     private void Awake()
     {
         wrapper = GameObject.Find("Level2Boss");
-        door = GameObject.Find("Door");
         rock = GameObject.Find("Big Rock").transform;
 
 
@@ -88,6 +87,7 @@ public class CrawlerBossController : MonoBehaviour
         if (_player.transform.position.x > 137)
         {
             //boss activates, player is trapped
+            door.SetActive(true);
             door.transform.localScale = Vector3.Slerp(door.transform.localScale, new Vector3(10, 5, 15),
                                         0.2f);
 

@@ -10,10 +10,8 @@ public class CrawlerBossController2 : MonoBehaviour
     private Animator _anim;
     private int _isSummoningHash;
 
-    private float timer = 3f;
-
-    private bool paused = true;
-    private bool stomped = false;
+    public float timer = 3f;
+    public bool paused = true;
 
     // Start is called before the first frame update
     void Start()
@@ -30,23 +28,24 @@ public class CrawlerBossController2 : MonoBehaviour
     {
         if (_player.transform.position.y > 107)
         {
-            if (timer <= 0)
+            if (!paused)
             {
-                paused = false;
+                Stomp();
+
+                paused = true;
+                timer = 5;
             }
             else
             {
-                timer -= Time.deltaTime;
-            }
-
-
-            if (!stomped && !paused)
-            {
-                Stomp();
-                stomped = true;
-
-                paused = true;
-                timer = 1;
+                if (timer <= 0)
+                {
+                    paused = false;
+                }
+                else
+                {
+                    timer -= Time.deltaTime;
+                    _anim.SetBool(_isSummoningHash, false);
+                }
             }
         }
     }
