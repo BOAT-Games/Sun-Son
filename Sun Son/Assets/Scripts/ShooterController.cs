@@ -64,8 +64,6 @@ agent.SetDestination(transform.position);
     {
         if (health <= 0)
         {
-            GetComponent<AudioSource>().clip = die;
-            GetComponent<AudioSource>().Play();
             Invoke(nameof(DestroyEnemy), 0.5f);
         }
 
@@ -150,6 +148,9 @@ agent.SetDestination(transform.position);
     public void TakeDamage(int damage)
     {
         health -= damage;
+
+        GetComponent<AudioSource>().clip = die;
+        GetComponent<AudioSource>().Play();
 
         rhead.materials = new Material[] { red, red, red };
         rbody.materials = new Material[] { red, red };

@@ -9,10 +9,10 @@ public class AbyssalController : MonoBehaviour
     [SerializeField] int _damage = 20;
 
 
-    [SerializeField] bool _atPlayer = false;
-    [SerializeField] bool _attacked = false;
-    [SerializeField] bool _inRange = false;
-    [SerializeField] bool _portalSet = false;
+    private bool _atPlayer = false;
+    private bool _attacked = false;
+    private bool _inRange = false;
+    private bool _portalSet = false;
 
     private Animator _anim;
     private int _isAttackingHash;
@@ -32,6 +32,9 @@ public class AbyssalController : MonoBehaviour
 
     [SerializeField] GameObject ps;
     [SerializeField] GameObject ps2;
+
+    public AudioClip hit;
+    public AudioClip growl;
 
     // Start is called before the first frame update
     void Start()
@@ -160,6 +163,7 @@ public class AbyssalController : MonoBehaviour
 
     void Attack()
     {
+        GetComponent<AudioSource>().clip = hit;
         GetComponent<AudioSource>().Play();
 
         if (_inRange && !_shield._shieldPressed)
@@ -211,6 +215,9 @@ public class AbyssalController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         _health -= damage;
+
+        GetComponent<AudioSource>().clip = growl;
+        GetComponent<AudioSource>().Play();
 
         SetDamageColor();
 
