@@ -17246,7 +17246,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7698672591784055969}
   m_LocalRotation: {x: 0.13052616, y: -0, z: -0, w: 0.9914449}
-  m_LocalPosition: {x: -1.04, y: 3.026379, z: -13.368517}
+  m_LocalPosition: {x: -1.0400004, y: 3.0263796, z: -13.368515}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7698672590436668383}
@@ -17317,7 +17317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bde7956ce653ed247b2caa5b46e0c2bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Intensity: 0.98
+  Intensity: 1
 --- !u!114 &3703624400934915510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20868,6 +20868,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameOver
+      objectReference: {fileID: 0}
+    - target: {fileID: 2029137687092322021, guid: c7addbb78173c2148b096f12ffb96cd6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -12.999985
       objectReference: {fileID: 0}
     - target: {fileID: 2029137688098386200, guid: c7addbb78173c2148b096f12ffb96cd6,
         type: 3}

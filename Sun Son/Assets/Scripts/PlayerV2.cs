@@ -21,6 +21,7 @@ public class PlayerV2 : MonoBehaviour
     private float _playerSpeed;
     private bool _grounded;
     private float _fixedZ;
+    private bool _isCrouched;
 
     // Fields for dash ability
     [SerializeField] float _maxDashTime = 1.0f;
@@ -61,6 +62,8 @@ public class PlayerV2 : MonoBehaviour
     private bool _dashPressed;
     private bool _jumpPressed;
     private bool _letGoPressed;
+    private bool _crouchPressed;
+
 
     // Fields for Animations
     private Animator _anim;
@@ -99,6 +102,8 @@ public class PlayerV2 : MonoBehaviour
         _input.CharacterControls.Jump.performed += ctx => _jumpPressed = ctx.ReadValueAsButton();
 
         _input.CharacterControls.Let_Go.performed += ctx => _letGoPressed = ctx.ReadValueAsButton();
+
+        _input.CharacterControls.Crouch.performed += ctx => _crouchPressed = ctx.ReadValueAsButton();
     }
 
     private void OnEnable()
@@ -168,11 +173,15 @@ public class PlayerV2 : MonoBehaviour
         if (!_grabbingWall && Time.time > _controlsAvailable)
         {
             _playerVelocity.x = 0;
-            
-            if(!_anim.GetBool("isAttacking")) handleDirection();
-            handleMovement();
-            handleJumping();
-            handleDashing();
+
+            if (!_anim.GetBool(_isAttackingHash))
+            {
+                handleDirection();
+                handleMovement();
+                handleJumping();
+                handleDashing();
+                handleCrouch();
+            }
         }
         else
         {
@@ -182,6 +191,40 @@ public class PlayerV2 : MonoBehaviour
         // Drop due to gravity after all other effects are applied
         _playerVelocity.y += _currentGravity * Time.deltaTime;
         _controller.Move(_playerVelocity * Time.deltaTime);
+    }
+
+    private void handleCrouch()
+    {
+
+        if (_crouchPressed && !_grabbingWall && _grounded && _currentDashTime >= _maxDashTime)
+        {
+            _isCrouched = !_isCrouched;
+            StartCoroutine(executeCrouch());
+
+        }
+
+        _crouchPressed = false;
+    }
+
+    private IEnumerator executeCrouch()
+    {
+        float currentTime = 0f;
+
+        while (currentTime < 0.5f)
+        {
+            if (_isCrouched)
+            {
+                _anim.SetLayerWeight(3, Mathf.Lerp(_anim.GetLayerWeight(3), 0.6f, currentTime / 0.5f));
+            }
+            else if (!_isCrouched)
+            {
+                _anim.SetLayerWeight(3, Mathf.Lerp(_anim.GetLayerWeight(3), 0.0f, currentTime / 0.5f));
+            }
+            currentTime += Time.deltaTime;
+            yield return null;
+        }
+
+        yield break;
     }
 
     private void handleAerialChecks()
@@ -245,6 +288,8 @@ public class PlayerV2 : MonoBehaviour
             _anim.SetBool(_isAirborneHash, false);
             _currentJumps = 0;
             _grabbingWall = true;
+            _isCrouched = false;
+            StartCoroutine(executeCrouch());
         }
         else if (!wGRayHit || _grounded || (_letGoPressed && (_currentMovement.x * wallGrabRay.direction.x) <= 0))
         {
@@ -312,6 +357,9 @@ public class PlayerV2 : MonoBehaviour
     void ExecuteJump() 
     {
         _controller.stepOffset = 0.0f;
+
+        _isCrouched = false;
+        StartCoroutine(executeCrouch());
 
         if (!_grounded)
             _playerVelocity.y = 0;
