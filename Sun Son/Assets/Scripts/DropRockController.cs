@@ -67,7 +67,9 @@ public class DropRockController : MonoBehaviour
 
             if (Vector3.Distance(transform.position, targetPos.position) < 5)
             {
-                Destroy(spider);
+                if (spider == null) { 
+                    Destroy(spider);
+                }
             }
         }
     }
