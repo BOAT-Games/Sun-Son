@@ -423,6 +423,11 @@ public class PlayerV2 : MonoBehaviour
         }
     }
 
+    public void setPlayerVelocity(Vector3 velocity)
+    {
+        _playerVelocity += velocity;
+        _controller.Move(_playerVelocity * Time.deltaTime);
+    } 
     public float getDashDelay() { return _dashDelay; }
     public bool getIsDashCooldown() { return _isDashCooldown; }
     public bool getCanDoubleJump() { return _canDoubleJump; }
