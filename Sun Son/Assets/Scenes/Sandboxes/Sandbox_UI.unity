@@ -212,13 +212,13 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 134048153}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 47bfa49f78802a344ad08b490c3c020c,
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 9b5c41bf8613f9c47b0b35412feae12e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.496
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1102,7 +1102,8 @@ AudioSource:
   m_GameObject: {fileID: 1626328213}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 47bfa49f78802a344ad08b490c3c020c,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 110c8261f48aa5742b384c6954cef8b6, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.834
@@ -1345,13 +1346,24 @@ PrefabInstance:
     - target: {fileID: 2029137686616908435, guid: c7addbb78173c2148b096f12ffb96cd6,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2029137687258079690, guid: c7addbb78173c2148b096f12ffb96cd6,
+        type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 1812011131
       objectReference: {fileID: 0}
     - target: {fileID: 2029137688098386200, guid: c7addbb78173c2148b096f12ffb96cd6,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1870187383}
+    - target: {fileID: 8714314854971003128, guid: c7addbb78173c2148b096f12ffb96cd6,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 47bfa49f78802a344ad08b490c3c020c,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7addbb78173c2148b096f12ffb96cd6, type: 3}
 --- !u!1001 &3027290107910607770
@@ -1568,7 +1580,7 @@ PrefabInstance:
     - target: {fileID: 3921552739440392009, guid: 876cb6f8d71605747b88817fcbb2a341,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 876cb6f8d71605747b88817fcbb2a341, type: 3}
