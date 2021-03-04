@@ -4,8 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Light
   - PickUp
+  - Shadow
+  - Weapon
+  - Light
+  - Barrier
+  - Barrier Trigger
+  - Floor
   layers:
   - Default
   - TransparentFX
@@ -15,10 +20,10 @@ TagManager:
   - UI
   - 
   - 
-  - Wall
-  - Glow
-  - No Player Collision
   - Player
+  - Ignore Player
+  - 
+  - 
   - 
   - 
   - 

@@ -11,7 +11,7 @@ public class DestructableGround : MonoBehaviour
    private System.Random rand = new System.Random();
 
    void OnTriggerEnter(Collider other) {
-      if (other.CompareTag("Player")) {
+      if (other.gameObject.tag == "Player") {
          foreach (GameObject piece in _groundPieces) {
             Rigidbody pieceRB = piece.GetComponent<Rigidbody>();
             pieceRB.useGravity = true;
