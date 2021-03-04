@@ -8050,6 +8050,41 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 144742482}
   m_PrefabAsset: {fileID: 0}
+--- !u!84 &147197149
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  serializedVersion: 3
+  m_Width: 1920
+  m_Height: 907
+  m_AntiAliasing: 2
+  m_MipCount: -1
+  m_DepthFormat: 2
+  m_ColorFormat: 8
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!4 &147842161 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1589582413631380002, guid: cfb1b542ee208da44ab14cc3771c530c,
@@ -23656,6 +23691,11 @@ PrefabInstance:
     - target: {fileID: 1276702342514209143, guid: a3927bbba75585845943eafe706863f0,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2827745114223047416, guid: a3927bbba75585845943eafe706863f0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5669467972922992085, guid: a3927bbba75585845943eafe706863f0,
@@ -56115,6 +56155,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6756539207504402010, guid: 4bfa1019a496ca049aa4aede7acfd9bd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6756539207568255532, guid: 4bfa1019a496ca049aa4aede7acfd9bd,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -59576,41 +59621,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1651751320}
   m_PrefabAsset: {fileID: 0}
---- !u!84 &2040137920
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  serializedVersion: 3
-  m_Width: 640
-  m_Height: 480
-  m_AntiAliasing: 2
-  m_MipCount: -1
-  m_DepthFormat: 2
-  m_ColorFormat: 59
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!4 &2044515220 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1589582413631380002, guid: 311d7447de0866f4fb9dde680db0e903,
