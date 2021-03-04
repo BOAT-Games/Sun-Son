@@ -832,6 +832,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SunCharacterV2
       objectReference: {fileID: 0}
+    - target: {fileID: 4908526365814590807, guid: 2b8896715792a654b975359657c760ae,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2b8896715792a654b975359657c760ae, type: 3}
 --- !u!114 &744202003 stripped
@@ -1330,7 +1335,7 @@ PrefabInstance:
       objectReference: {fileID: 138245805}
     - target: {fileID: 3921552738740597211, guid: 876cb6f8d71605747b88817fcbb2a341,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1870187383}
     - target: {fileID: 3921552739440392008, guid: 876cb6f8d71605747b88817fcbb2a341,
@@ -1442,11 +1447,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MainMenu
-      objectReference: {fileID: 0}
-    - target: {fileID: 3921552739440392009, guid: 876cb6f8d71605747b88817fcbb2a341,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 876cb6f8d71605747b88817fcbb2a341, type: 3}

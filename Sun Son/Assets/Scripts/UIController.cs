@@ -47,6 +47,10 @@ public class UIController : MonoBehaviour
 
     public void PlayGame() 
     {
+        Invoke("LoadScene", 3f);
+    }
+    private void LoadScene() 
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
