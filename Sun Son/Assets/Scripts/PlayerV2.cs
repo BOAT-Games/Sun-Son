@@ -174,10 +174,10 @@ public class PlayerV2 : MonoBehaviour
         {
             _playerVelocity.x = 0;
 
+            handleMovement();
             if (!_anim.GetBool(_isAttackingHash))
             {
-                handleDirection();
-                handleMovement();
+                handleDirection();;
                 handleJumping();
                 handleDashing();
                 handleCrouch();
@@ -315,7 +315,7 @@ public class PlayerV2 : MonoBehaviour
         if (!_movementPressed)
             _playerSpeed = 0;
 
-        if(_movementPressed)
+        if(_movementPressed && (!_anim.GetBool(_isAttackingHash) || !_grounded))
         {
             _anim.SetFloat(_moveInputValue, Mathf.Abs(_currentMovement.x));
         }

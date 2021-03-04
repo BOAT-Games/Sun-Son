@@ -8,6 +8,8 @@ public class PlayerMelee : MonoBehaviour
     private PlayerControls _input;
     private bool _attackPressed;
 
+    private CharacterController _controller;
+
     [SerializeField] GameObject _sword;
 
     private Animator _anim;
@@ -39,6 +41,8 @@ public class PlayerMelee : MonoBehaviour
         _anim = GetComponent<Animator>();
         _isMeleeHash = Animator.StringToHash("isMeleeing");
 
+        _controller = GetComponent<CharacterController>();
+
         _sword.SetActive(false);
     }
 
@@ -60,7 +64,10 @@ public class PlayerMelee : MonoBehaviour
     private void Attack()
     {
         _anim.SetTrigger(_isMeleeHash);
-        _sword.SetActive(true);
+
+        if (_controller.isGrounded)
+            _anim.SetFloat("moveInputValue", 0.0f); _sword.SetActive(true);
+
         _attackPressed = false;
         _isAttacking = true;
     }
