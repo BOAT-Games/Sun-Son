@@ -21,31 +21,39 @@ public class UIController : MonoBehaviour
         _powerups = FindObjectOfType<PowerupController>();
         _gameOver = GameObject.Find("/Player_UI_Camera_Rig/Canvas/GameOver");
         _lightBar = FindObjectOfType<LightBar>();
-
-        _maxLightPoints = _pr.getMaxLightPoints();
-        _currentLightPoints = _maxLightPoints;
-        _lightBar.SetMaxLightPoints(_currentLightPoints);
-        _lightBar.SetLightPoints(_currentLightPoints);
-        _powerups.setDashCooldown(_player.getDashDelay());
+        if (_pr != null) {
+            _maxLightPoints = _pr.getMaxLightPoints();
+            _currentLightPoints = _maxLightPoints;
+        
+            _lightBar.SetMaxLightPoints(_currentLightPoints);
+            _lightBar.SetLightPoints(_currentLightPoints);
+            _powerups.setDashCooldown(_player.getDashDelay());
+        }
         Time.timeScale = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_pr.getCurrentLightPoints() <= 0) {
-            _gameOver.SetActive(true);
-            Time.timeScale = 0;
+        if (_pr != null) {
+            if (_pr.getCurrentLightPoints() <= 0) {
+                _gameOver.SetActive(true);
+                Time.timeScale = 0;
+            }
+            _lightBar.SetLightPoints(_pr.getCurrentLightPoints());
+            _powerups.activateDashCooldown(_player.getIsDashCooldown());
+            _powerups.disableDashIcon(_pr.getCurrentLightPoints());
+            _powerups.activateDoubleJumpCooldown(_player.getHasDoubleJumped());
+            _powerups.disableDoubleJumpIcon(_pr.getCurrentLightPoints());
+            _powerups.showDoubleJump(_player.getCanDoubleJump());
         }
-        _lightBar.SetLightPoints(_pr.getCurrentLightPoints());
-        _powerups.activateDashCooldown(_player.getIsDashCooldown());
-        _powerups.disableDashIcon(_pr.getCurrentLightPoints());
-        _powerups.activateDoubleJumpCooldown(_player.getHasDoubleJumped());
-        _powerups.disableDoubleJumpIcon(_pr.getCurrentLightPoints());
-        _powerups.showDoubleJump(_player.getCanDoubleJump());
     }
 
     public void PlayGame() 
+    {
+        Invoke("LoadScene", 3f);
+    }
+    private void LoadScene() 
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
