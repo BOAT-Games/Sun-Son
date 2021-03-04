@@ -13,6 +13,8 @@ public class PlayerResources : MonoBehaviour
 
     private Camera _mainCamera;
 
+   [SerializeField] bool _haungsMode;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,10 +37,12 @@ public class PlayerResources : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        _currentLightPoints -= damage;
-        _lightBar.SetLightPoints(_currentLightPoints);
-        _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
-        _mainCamera.GetComponent<GlowComposite>().Intensity = (float)_currentLightPoints / (float)_maxLightPoints;
+      if (!_haungsMode) {
+         _currentLightPoints -= damage;
+         _lightBar.SetLightPoints(_currentLightPoints);
+         _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
+         _mainCamera.GetComponent<GlowComposite>().Intensity = (float)_currentLightPoints / (float)_maxLightPoints;
+      }
     }
 
     public bool ResourcesAvailable(int spendRequest)
