@@ -384,17 +384,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damageCost: 10
   _targetRange: 5
-  _attackRange: 0.6
+  _attackRange: 1
   _decisionDelay: 1
   _health: 1
   targets:
   - {fileID: 0}
   - {fileID: 0}
   currentState: 0
-  _swordAttacked: 0
+  currentTarget: 0
   rbody: {fileID: 8925975632076636623}
   red: {fileID: 2100000, guid: 64fc7d1a7d0eb4eee81ae97e7ee511ac, type: 2}
   ps: {fileID: 1452258673496147686, guid: b7a0e9e9bdb284b64b4265ec5c2a85cf, type: 3}
+  ps2: {fileID: 0}
+  roar: {fileID: 8300000, guid: 461c75de4bf167a4688657a9c4bd432f, type: 3}
+  die: {fileID: 8300000, guid: e8b6eabdbaacefc4d94a781dbae09fa1, type: 3}
+  bite: {fileID: 8300000, guid: 810f1dddbd4e74cbd8e42028d88c926f, type: 3}
 --- !u!195 &8804965112692039224
 NavMeshAgent:
   m_ObjectHideFlags: 0

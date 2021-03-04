@@ -6,7 +6,9 @@ public class SunBulletController : MonoBehaviour
 {
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name != "SunCharacterV2")
+        if(other.gameObject.name != "SunCharacterV2" &&
+            !other.gameObject.name.Contains("DroppingEnemy") &&
+            !other.gameObject.name.Contains("LightSource"))
             Destroy(this.gameObject);
     }
 

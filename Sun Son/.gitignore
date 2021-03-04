@@ -61,7 +61,7 @@ sysinfo.txt
 *.unitypackage
 *.zip
 
-.DS_Store
+*/.DS_Store
 Sun Son/.DS_Store
 
 # Crashlytics generated file
