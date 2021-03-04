@@ -184,7 +184,7 @@ GameObject:
   - component: {fileID: 485839587}
   - component: {fileID: 485839589}
   - component: {fileID: 485839588}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: PostProcess
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17309,7 +17309,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7698672591784055969}
   m_LocalRotation: {x: 0.13052616, y: -0, z: -0, w: 0.9914449}
-  m_LocalPosition: {x: -1.0400004, y: 3.0263796, z: -13.368515}
+  m_LocalPosition: {x: -2.1300006, y: 3.0763793, z: -13.368517}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7698672590436668383}
@@ -17431,7 +17431,7 @@ MonoBehaviour:
   volumeTrigger: {fileID: 7698672591784055980}
   volumeLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1024
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
   antialiasingMode: 2
@@ -19464,7 +19464,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8117385933260951325}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -1.04, y: -3.15, z: 5.95}
+  m_LocalPosition: {x: -2.13, y: -3.1, z: 5.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8117385933260722827}
@@ -19875,6 +19875,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxLightPoints: 100
+  _haungsMode: 0
 --- !u!114 &792075995277008988
 MonoBehaviour:
   m_ObjectHideFlags: 0

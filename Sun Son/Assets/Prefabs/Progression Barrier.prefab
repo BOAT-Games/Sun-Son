@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 4476925630529810593}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -8.038113, y: 3.3976064, z: -0.61217976}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 2.5, z: 1}
   m_Children:
   - {fileID: 4476925630782210404}
   - {fileID: 4476925631222420085}
@@ -89,10 +89,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 178b177edcea5e147a9619762f7033fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  remainingText: {fileID: 0}
   collectibles:
   - {fileID: 0}
-  totalCollectibles: 1
-  collectiblesRemaining: 1
+  - {fileID: 0}
+  - {fileID: 0}
+  totalCollectibles: 3
+  collectiblesRemaining: 3
 --- !u!1 &4476925631222420081
 GameObject:
   m_ObjectHideFlags: 0

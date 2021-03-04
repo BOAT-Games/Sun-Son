@@ -273,7 +273,7 @@ public class PlayerV2 : MonoBehaviour
     {
         RaycastHit hit;
         Ray wallGrabRay = new Ray(_wallGrabRayOrigin.position, this.transform.forward);
-        bool wGRayHit = Physics.Raycast(wallGrabRay, out hit, Mathf.Infinity, 1 << 8);
+        bool wGRayHit = Physics.Raycast(wallGrabRay, out hit, Mathf.Infinity, 1 << 11);
 
         if (wGRayHit && hit.distance > 0.4f && hit.normal.normalized == -wallGrabRay.direction.normalized)
         {
