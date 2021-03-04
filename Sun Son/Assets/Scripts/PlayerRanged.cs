@@ -7,6 +7,8 @@ public class PlayerRanged : MonoBehaviour
     private PlayerControls _input;
     private bool _attackPressed;
 
+    private CharacterController _controller;
+
     [SerializeField] Transform _ShootPoint;
     [SerializeField] GameObject _bulletPrefab;
     [SerializeField] int _shootCost = 1;
@@ -41,6 +43,8 @@ public class PlayerRanged : MonoBehaviour
         _anim = GetComponent<Animator>();
         _isFiringRangedHash = Animator.StringToHash("isFiringRanged");
 
+        _controller = GetComponent<CharacterController>();
+
         _pr = FindObjectOfType<PlayerResources>();
     }
 
@@ -62,6 +66,10 @@ public class PlayerRanged : MonoBehaviour
     void Attack()
     {
         _anim.SetTrigger(_isFiringRangedHash);
+
+        if(_controller.isGrounded)
+            _anim.SetFloat("moveInputValue", 0.0f);
+
     }
 
     public void SpawnBullet()
