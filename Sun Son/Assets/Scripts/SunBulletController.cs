@@ -8,14 +8,16 @@ public class SunBulletController : MonoBehaviour
     {
         if(other.gameObject.name != "SunCharacterV2" &&
             !other.gameObject.name.Contains("DroppingEnemy") &&
-            !other.gameObject.name.Contains("LightSource"))
+            !other.gameObject.name.Contains("LightSource") &&
+            !other.gameObject.CompareTag("Light"))
             Destroy(this.gameObject);
     }
 
     void OnCollisionEnter(Collision c)
     {
         if (c.gameObject.name != "SunCharacterV2")
-            Destroy(this.gameObject);
+            if(!c.gameObject.CompareTag("Light"))
+                Destroy(this.gameObject);
     }
 
 }
