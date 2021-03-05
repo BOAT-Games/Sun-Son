@@ -6,6 +6,8 @@ public class CrawlerBossController2 : MonoBehaviour
 {
     [SerializeField] GameObject _player;
 
+    [SerializeField] GameObject _wallL;
+    [SerializeField] GameObject _wallR;
     //animations
     private Animator _anim;
     private int _isSummoningHash;
@@ -58,7 +60,13 @@ public class CrawlerBossController2 : MonoBehaviour
     void Summon(GameObject obj)
     {
         //instantiate dropper
-        Instantiate(obj, new Vector3(_player.transform.position.x, _player.transform.position.y + 8, _player.transform.position.z),
-            Quaternion.identity);
+
+        if ((Mathf.Abs(_wallL.transform.position.x - _player.transform.position.x) > 7)
+            && (Mathf.Abs(_wallR.transform.position.x - _player.transform.position.x) > 7))
+        { 
+            Vector3 pos = new Vector3(_player.transform.position.x, Mathf.Min(transform.position.y, _player.transform.position.y + 8)
+                , _player.transform.position.z);
+            Instantiate(obj, pos, Quaternion.identity);
+        }
     }
 }
