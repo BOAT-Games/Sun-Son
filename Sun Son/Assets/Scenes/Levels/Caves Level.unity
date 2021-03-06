@@ -1747,7 +1747,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-<<<<<<< HEAD
   m_SourcePrefab: {fileID: 100100000, guid: 20e32307ca40829498f93dc7512c3f8a, type: 3}
 --- !u!4 &128842434 stripped
 Transform:
@@ -1791,10 +1790,6 @@ RenderTexture:
   m_Dimension: 2
   m_VolumeDepth: 1
 --- !u!4 &143667057 stripped
-=======
-  m_SourcePrefab: {fileID: 100100000, guid: fa3fd9c171b13dc4e9b3b29b75498e4d, type: 3}
---- !u!4 &105103267 stripped
->>>>>>> main
 Transform:
   m_CorrespondingSourceObject: {fileID: 659843358949300501, guid: 28edbe2ee71597c48b092b2c2884f3aa,
     type: 3}
@@ -3487,7 +3482,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1730445881}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 388218607}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &402509907
@@ -3575,9 +3569,6 @@ PrefabInstance:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bb2c340b4160004089149742a832f7c, type: 3}
 --- !u!1001 &405738764
-=======
---- !u!1001 &253544941
->>>>>>> main
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -26455,7 +26446,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-<<<<<<< HEAD
     - target: {fileID: 3798832220179437181, guid: 4bfa1019a496ca049aa4aede7acfd9bd,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -26481,8 +26471,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -13.368518
       objectReference: {fileID: 0}
-=======
->>>>>>> main
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa3fd9c171b13dc4e9b3b29b75498e4d, type: 3}
 --- !u!4 &1964706091 stripped
