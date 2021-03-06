@@ -363,18 +363,21 @@ public class CrawlerBossController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        _health -= damage;
-
-        wrapper.GetComponent<AudioSource>().clip = hiss2;
-        wrapper.GetComponent<AudioSource>().Play();
-
-        rbody.materials = new Material[] { red };
-
-        Invoke("ResetColor", 0.1f);
-
-        if (_health <= 0)
+        if (door.activeInHierarchy)
         {
-            Invoke(nameof(DestroyEnemy), 0.5f);
+            _health -= damage;
+
+            wrapper.GetComponent<AudioSource>().clip = hiss2;
+            wrapper.GetComponent<AudioSource>().Play();
+
+            rbody.materials = new Material[] { red };
+
+            Invoke("ResetColor", 0.1f);
+
+            if (_health <= 0)
+            {
+                Invoke(nameof(DestroyEnemy), 0.5f);
+            }
         }
     }
 
