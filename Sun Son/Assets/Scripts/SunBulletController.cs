@@ -14,8 +14,6 @@ public class SunBulletController : MonoBehaviour
 
     void OnCollisionEnter(Collision c)
     {
-        Debug.Log("he");
-
         if (c.gameObject.name != "SunCharacterV2")
             if(!c.gameObject.CompareTag("Light"))
                 Destroy(this.gameObject);
