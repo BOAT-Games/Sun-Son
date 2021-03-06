@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 161285444255951186}
   m_Layer: 0
   m_Name: AbyssalEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -186,7 +186,6 @@ MonoBehaviour:
   ps2: {fileID: 331006806237371657, guid: d061490dbe1dc4a6caa8b186d76992a8, type: 3}
   hit: {fileID: 8300000, guid: cdfae31f0b58546d3ac1015effc38f01, type: 3}
   growl: {fileID: 8300000, guid: b0d92ec96645f1f42a4168f912ab5558, type: 3}
-  ouch: {fileID: 8300000, guid: 76ccf628404201942b403e1bacf0dc17, type: 3}
 --- !u!136 &161285444255951187
 CapsuleCollider:
   m_ObjectHideFlags: 0
