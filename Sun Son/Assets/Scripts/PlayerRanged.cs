@@ -77,5 +77,6 @@ public class PlayerRanged : MonoBehaviour
         GameObject bullet = Instantiate(_bulletPrefab, _ShootPoint.position, Quaternion.identity);
         bullet.GetComponent<Rigidbody>().AddForce(this.gameObject.transform.forward * 1000);
         _pr.TakeDamage(_shootCost);
+        Destroy(bullet, 0.5f);
     }
 }
