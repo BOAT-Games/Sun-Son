@@ -13,13 +13,13 @@ public class LightPower : MonoBehaviour
 
     public void SetMaxLightPoints(int lightPoints)
     {
-        plight.range = ((float)lightPoints/100.0f) * 14;
-        plight.intensity = ((float)lightPoints / 100.0f) * 1;
+        plight.range = ((float)lightPoints/100.0f) * 20;
+        plight.intensity = ((float)lightPoints / 100.0f) * 3;
     }
 
     public void SetLightPoints(int lightPoints)
     {
-        plight.range = ((float)lightPoints / 100.0f) * 14;
-        plight.intensity = ((float)lightPoints / 100.0f) * 1;
+        plight.range = ((float)lightPoints / 100.0f) * 20;
+        plight.intensity = ((float)lightPoints / 100.0f) * 3;
     }
 }
