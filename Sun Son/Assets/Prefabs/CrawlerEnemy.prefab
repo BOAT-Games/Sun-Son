@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 8469333630440124035}
   m_Layer: 0
   m_Name: CrawlerEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -391,7 +391,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   currentState: 0
-  currentTarget: 0
   rbody: {fileID: 8925975632076636623}
   red: {fileID: 2100000, guid: 64fc7d1a7d0eb4eee81ae97e7ee511ac, type: 2}
   ps: {fileID: 1452258673496147686, guid: b7a0e9e9bdb284b64b4265ec5c2a85cf, type: 3}
@@ -528,8 +527,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4
-  m_Center: {x: 0, y: 0.33, z: 0}
+  m_Radius: 0.26314926
+  m_Center: {x: -0, y: 0.19314927, z: 0}
 --- !u!65 &2818149404233164882
 BoxCollider:
   m_ObjectHideFlags: 0
