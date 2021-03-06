@@ -28,7 +28,7 @@ public class FallingRock : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("ded");
+            _player.TakeDamage(200);
         }
     }
 }
