@@ -15,6 +15,8 @@ public class PlayerResources : MonoBehaviour
 
    [SerializeField] bool _haungsMode;
 
+    private PlayerShield _shield;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,16 +35,30 @@ public class PlayerResources : MonoBehaviour
         _pointLight.SetLightPoints(_maxLightPoints);
 
         _mainCamera.GetComponent<GlowComposite>().Intensity = (float)_currentLightPoints / (float)_maxLightPoints;
+
+        _shield = GetComponent<PlayerShield>();
     }
 
     public void TakeDamage(int damage)
     {
-      if (!_haungsMode) {
-         _currentLightPoints -= damage;
-         _lightBar.SetLightPoints(_currentLightPoints);
-         _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
-         _mainCamera.GetComponent<GlowComposite>().Intensity = (float)_currentLightPoints / (float)_maxLightPoints;
-      }
+
+        if(_shield != null && _shield._shieldPressed)
+        {
+            _shield.ShieldImpact();
+            _currentLightPoints -= Mathf.RoundToInt(damage * 0.25f);
+            _lightBar.SetLightPoints(_currentLightPoints);
+            _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
+            _mainCamera.GetComponent<GlowComposite>().Intensity = (float)_currentLightPoints / (float)_maxLightPoints;
+
+            return;
+        }
+
+        if (!_haungsMode) {
+            _currentLightPoints -= damage;
+            _lightBar.SetLightPoints(_currentLightPoints);
+            _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
+            _mainCamera.GetComponent<GlowComposite>().Intensity = (float)_currentLightPoints / (float)_maxLightPoints;
+        }
     }
 
     public bool ResourcesAvailable(int spendRequest)

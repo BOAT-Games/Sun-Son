@@ -8,6 +8,8 @@ public class PlayerShield : MonoBehaviour
     public bool _shieldPressed;
 
     [SerializeField] GameObject _shield;
+    [SerializeField] GameObject _effectPrefab;
+    [SerializeField] Transform _effectPoint;
 
     private PlayerSoundManager _psm;
     private bool _stopInitiated = false;
@@ -68,7 +70,7 @@ public class PlayerShield : MonoBehaviour
                 _stopInitiated = true;
             }
 
-            _shield.transform.localScale = Vector3.Slerp(_shield.transform.localScale, new Vector3(0, 0, 0), 0.05f);
+            _shield.transform.localScale = Vector3.Slerp(_shield.transform.localScale, new Vector3(0.1f, 0.1f, 0.1f), 0.05f);
 
 
             if (_shield.transform.localScale.x <= 0.1)
@@ -78,5 +80,11 @@ public class PlayerShield : MonoBehaviour
                 _stopInitiated = false;
             }
         }
+    }
+
+    public void ShieldImpact()
+    {
+        Instantiate(_effectPrefab, _effectPoint);
+        _psm.playShieldImpact();
     }
 }
