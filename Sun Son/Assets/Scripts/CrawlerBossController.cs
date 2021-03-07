@@ -14,9 +14,6 @@ public class CrawlerBossController : MonoBehaviour
     public Material red;
     private Material originalMaterial;
 
-    //player attacks
-    private PlayerShield _shield;
-
     //death particles
     public GameObject ps;
 
@@ -63,8 +60,6 @@ public class CrawlerBossController : MonoBehaviour
 
         _agent = GetComponent<NavMeshAgent>();
         _player = FindObjectOfType<PlayerResources>().gameObject;
-
-        _shield = _player.GetComponent<PlayerShield>();
 
         originalMaterial = rbody.material;
 
@@ -353,7 +348,7 @@ public class CrawlerBossController : MonoBehaviour
                                         transform.position.y + 0.2f,
                                         transform.position.z);
 
-        if (inRange && !_shield._shieldPressed)
+        if (inRange)
         {
             _player.GetComponent<PlayerResources>().TakeDamage(_damageCost);
             Instantiate(obj, targetPosition, Quaternion.LookRotation(transform.forward * -1, Vector3.up));

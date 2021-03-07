@@ -7,11 +7,13 @@ public class PlayerSoundManager : MonoBehaviour
     [SerializeField] AudioSource _movementAudio;
     [SerializeField] AudioSource _attackAudio;
     [SerializeField] AudioSource _shieldAudio;
+    [SerializeField] AudioSource _shieldImpact;
     [SerializeField] AudioClip[] _footstep;
     [SerializeField] AudioClip _dash;
     [SerializeField] AudioClip _meleeAttack;
     [SerializeField] AudioClip _rangedAttack;
     [SerializeField] AudioClip _shield;
+    [SerializeField] AudioClip _shieldImpactSound;
 
     void playFootstep()
     {
@@ -99,6 +101,11 @@ public class PlayerSoundManager : MonoBehaviour
         {
             StartCoroutine(fadeOutShield());
         }
+    }
+
+    public void playShieldImpact()
+    {
+        _shieldImpact.PlayOneShot(_shieldImpactSound);
     }
 
 }

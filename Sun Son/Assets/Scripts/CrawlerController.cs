@@ -20,7 +20,6 @@ public class CrawlerController : MonoBehaviour
     [SerializeField] EnemyStates currentState;
 
     private GameObject _player;
-    private PlayerShield _shield;
     private PlayerMelee _sword;
     private int currentTarget = 0;
 
@@ -57,7 +56,6 @@ public class CrawlerController : MonoBehaviour
         InvokeRepeating("SetDestination", 1.5f, _decisionDelay);
         //agent.SetDestination(targets.position);
         _player = FindObjectOfType<PlayerV2>().gameObject;
-        _shield = _player.GetComponent<PlayerShield>();
         _sword = _player.GetComponent<PlayerMelee>();
 
         if (currentState == EnemyStates.Patrolling)
@@ -144,12 +142,11 @@ public class CrawlerController : MonoBehaviour
         Vector3 targetPosition = new Vector3(transform.position.x,
                                         transform.position.y + 0.2f,
                                         transform.position.z);
-        if (!_shield._shieldPressed)
-        {
-            _player.GetComponent<PlayerResources>().TakeDamage(_damageCost);
 
-            Instantiate(obj, targetPosition, Quaternion.LookRotation(transform.forward * -1, Vector3.up));
-        }
+        _player.GetComponent<PlayerResources>().TakeDamage(_damageCost);
+
+        Instantiate(obj, targetPosition, Quaternion.LookRotation(transform.forward * -1, Vector3.up));
+
         _audio.clip = bite;
         _audio.Play();
     }

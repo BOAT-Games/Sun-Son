@@ -24,7 +24,7 @@ public class BulletController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player") && !_shield._shieldPressed)
+        if (collision.gameObject.CompareTag("Player"))
         {
             _player.GetComponent<PlayerResources>().TakeDamage(_damageCost);
         }
