@@ -149,9 +149,6 @@ agent.SetDestination(transform.position);
     {
         health -= damage;
 
-        GetComponent<AudioSource>().clip = die;
-        GetComponent<AudioSource>().Play();
-
         rhead.materials = new Material[] { red, red, red };
         rbody.materials = new Material[] { red, red };
         rlegs.materials = new Material[] { red, red };
