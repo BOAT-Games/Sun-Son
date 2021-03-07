@@ -73,7 +73,7 @@ public class PlayerShield : MonoBehaviour
             _shield.transform.localScale = Vector3.Slerp(_shield.transform.localScale, new Vector3(0.1f, 0.1f, 0.1f), 0.05f);
 
 
-            if (_shield.transform.localScale.x <= 0.1)
+            if (_shield.transform.localScale.x <= 0.15)
             {
                 _shield.SetActive(false);
                 _anim.SetBool(_isShieldingHash, false);
