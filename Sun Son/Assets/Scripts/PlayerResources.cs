@@ -61,6 +61,17 @@ public class PlayerResources : MonoBehaviour
         }
     }
 
+    public void TakeSelfDamage(int damage)
+    {
+        if (!_haungsMode)
+        {
+            _currentLightPoints -= damage;
+            _lightBar.SetLightPoints(_currentLightPoints);
+            _pointLight.GetComponent<LightPower>().SetLightPoints(_currentLightPoints);
+            _mainCamera.GetComponent<GlowComposite>().Intensity = (float)_currentLightPoints / (float)_maxLightPoints;
+        }
+    }
+
     public bool ResourcesAvailable(int spendRequest)
     {
         if (_currentLightPoints - spendRequest > 0)

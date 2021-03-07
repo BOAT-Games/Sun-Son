@@ -398,7 +398,7 @@ public class PlayerV2 : MonoBehaviour
                 _anim.SetTrigger(_isDashingHash);
                 _isDashCooldown = true;
                 _currentDashTime = 0.0f;
-                _pr.TakeDamage(_dashCost);
+                _pr.TakeSelfDamage(_dashCost);
                 _trailRenderer.enabled = true;
                 _nextDashAvailable = Time.time + _dashDelay;
             }

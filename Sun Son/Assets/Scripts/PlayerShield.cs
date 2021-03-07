@@ -8,8 +8,8 @@ public class PlayerShield : MonoBehaviour
     public bool _shieldPressed;
 
     [SerializeField] GameObject _shield;
-    [SerializeField] GameObject _effectPrefab;
-    [SerializeField] Transform _effectPoint;
+    [SerializeField] Material _baseMat;
+    [SerializeField] Material _hitMat;
 
     private PlayerSoundManager _psm;
     private bool _stopInitiated = false;
@@ -84,7 +84,13 @@ public class PlayerShield : MonoBehaviour
 
     public void ShieldImpact()
     {
-        Instantiate(_effectPrefab, _effectPoint);
+        _shield.GetComponent<MeshRenderer>().material = _hitMat;
+        Invoke("ResetShieldColor", 0.1f);
         _psm.playShieldImpact();
+    }
+
+    void ResetShieldColor()
+    {
+        _shield.GetComponent<MeshRenderer>().material = _baseMat;
     }
 }
