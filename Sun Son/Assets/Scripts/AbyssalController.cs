@@ -54,7 +54,8 @@ public class AbyssalController : MonoBehaviour
     {
 
         //always look at player...creppy
-        transform.LookAt(_player.transform.position);
+        transform.LookAt(new Vector3(_player.transform.position.x,
+           gameObject.transform.position.y, _player.transform.position.z));
 
         if (_timer <= 0)
         {
