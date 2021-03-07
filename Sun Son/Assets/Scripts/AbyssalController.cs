@@ -19,7 +19,6 @@ public class AbyssalController : MonoBehaviour
 
     //player stuff
     private GameObject _player;
-    private PlayerShield _shield;
     private PlayerMelee _sword;
 
     private Vector3 startPosition;
@@ -43,7 +42,6 @@ public class AbyssalController : MonoBehaviour
         transform.position = new Vector3(transform.position.x, transform.position.y, _player.transform.position.z);
         startPosition = transform.position;
 
-        _shield = _player.GetComponent<PlayerShield>();
         _sword = _player.GetComponent<PlayerMelee>();
 
         _anim = GetComponent<Animator>();
@@ -166,7 +164,7 @@ public class AbyssalController : MonoBehaviour
         GetComponent<AudioSource>().clip = hit;
         GetComponent<AudioSource>().Play();
 
-        if (_inRange && !_shield._shieldPressed)
+        if (_inRange)
         {
 
             _player.GetComponent<PlayerResources>().TakeDamage(_damage);

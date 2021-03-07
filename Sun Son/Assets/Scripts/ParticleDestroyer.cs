@@ -37,10 +37,7 @@ public class ParticleDestroyer : MonoBehaviour
 
             if (this.CompareTag("Shadow"))
             {
-                if (!_shield._shieldPressed)
-                {
-                    _player.GetComponent<PlayerResources>().TakeDamage(_damageCost);
-                }
+                _player.GetComponent<PlayerResources>().TakeDamage(_damageCost);
             }
             else
             {

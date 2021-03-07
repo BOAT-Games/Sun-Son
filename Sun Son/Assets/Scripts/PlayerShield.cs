@@ -8,6 +8,8 @@ public class PlayerShield : MonoBehaviour
     public bool _shieldPressed;
 
     [SerializeField] GameObject _shield;
+    [SerializeField] Material _baseMat;
+    [SerializeField] Material _hitMat;
 
     private PlayerSoundManager _psm;
     private bool _stopInitiated = false;
@@ -68,15 +70,27 @@ public class PlayerShield : MonoBehaviour
                 _stopInitiated = true;
             }
 
-            _shield.transform.localScale = Vector3.Slerp(_shield.transform.localScale, new Vector3(0, 0, 0), 0.05f);
+            _shield.transform.localScale = Vector3.Slerp(_shield.transform.localScale, new Vector3(0.1f, 0.1f, 0.1f), 0.05f);
 
 
-            if (_shield.transform.localScale.x <= 0.1)
+            if (_shield.transform.localScale.x <= 0.15)
             {
                 _shield.SetActive(false);
                 _anim.SetBool(_isShieldingHash, false);
                 _stopInitiated = false;
             }
         }
+    }
+
+    public void ShieldImpact()
+    {
+        _shield.GetComponent<MeshRenderer>().material = _hitMat;
+        Invoke("ResetShieldColor", 0.1f);
+        _psm.playShieldImpact();
+    }
+
+    void ResetShieldColor()
+    {
+        _shield.GetComponent<MeshRenderer>().material = _baseMat;
     }
 }
