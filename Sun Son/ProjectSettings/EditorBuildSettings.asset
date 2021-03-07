@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/MinesBoss.unity
     guid: 6b8757389288e45d58926c3da6deab11
+  - enabled: 1
+    path: Assets/Scenes/Levels/AltarScene2.unity
+    guid: 36503deebd5ea4f72886c8bd364c1295
   m_configObjects: {}
