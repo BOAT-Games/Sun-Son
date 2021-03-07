@@ -29,7 +29,7 @@ public class DropRockController : MonoBehaviour
     {
         if (boss == null)
         {
-            if (gTimer <= 0)
+            if (gTimer <= 0 && spider != null)
             {
                 spider.GetComponent<AudioSource>().clip = growl;
                 spider.GetComponent<AudioSource>().Play();
@@ -41,7 +41,7 @@ public class DropRockController : MonoBehaviour
                 gTimer -= Time.deltaTime;
             }
 
-            if (rootCount == 0)
+            if (rootCount == 0 && spider != null)
             {
                 if (count == 0)
                 {
