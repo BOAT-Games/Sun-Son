@@ -15,14 +15,25 @@ public class ProgressionCollectible : MonoBehaviour
     {
         if (barrier == null)
         {
-            GameObject barrierGO = GameObject.FindGameObjectWithTag("Barrier Trigger");
-            barrier = barrierGO.GetComponent<ProgressionBarrier>();
+            FindNextBarrier();
         }
     }
     private void OnTriggerEnter(Collider other) {
-      if (other.tag == "Player") {
-         barrier.DecrementRemaining();
-         Destroy(gameObject);
+        if (other.tag == "Player") {
+            if (barrier == null)
+            {
+
+                FindNextBarrier();
+            }
+
+            barrier.DecrementRemaining();
+            Destroy(gameObject);
       }
-   }
+    }
+
+    private void FindNextBarrier()
+    {
+        GameObject barrierGO = GameObject.FindGameObjectWithTag("Barrier Trigger");
+        barrier = barrierGO.GetComponent<ProgressionBarrier>();
+    }
 }
