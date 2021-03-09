@@ -286,7 +286,7 @@ public class PlayerV2 : MonoBehaviour
             _trailRenderer.enabled = false;
             _anim.SetBool(_isGrabbingWallHash, true);
             _anim.SetBool(_isAirborneHash, false);
-            _currentJumps = 0;
+            _currentJumps = 1;
             _grabbingWall = true;
             _isCrouched = false;
             StartCoroutine(executeCrouch());
@@ -340,7 +340,13 @@ public class PlayerV2 : MonoBehaviour
 
     void handleJumping()
     {
-        if (_jumpPressed && (_grounded || _grabbingWall))
+        /*
+        if (_jumpPressed && _grabbingWall) 
+        {
+            _currentJumps++;
+            ExecuteJump();
+        }*/
+        if (_jumpPressed && _grounded)
         {
             ExecuteJump();
         }
@@ -348,8 +354,9 @@ public class PlayerV2 : MonoBehaviour
         if (_jumpPressed && !_grounded && _currentJumps < _maxJumps && _canDoubleJump && _pr.ResourcesAvailable(_doubleJumpCost)) 
         {
             ExecuteJump();
-            _pr.TakeDamage(_doubleJumpCost);
+            _pr.TakeSelfDamage(_doubleJumpCost);
             _hasDoubleJumped = true;
+            _currentJumps++;
         }
 
     }
