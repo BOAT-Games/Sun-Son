@@ -139,7 +139,7 @@ agent.SetDestination(transform.position);
         //attack code here
         Rigidbody rb = Instantiate(projectile, shootPoint, Quaternion.identity).GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * 16f, ForceMode.Impulse);
-        rb.AddForce(transform.up * 4f, ForceMode.Impulse);
+        rb.AddForce(transform.up * -4f, ForceMode.Impulse);
 
         GetComponent<AudioSource>().clip = shoot;
         GetComponent<AudioSource>().Play();
@@ -148,9 +148,6 @@ agent.SetDestination(transform.position);
     public void TakeDamage(int damage)
     {
         health -= damage;
-
-        GetComponent<AudioSource>().clip = die;
-        GetComponent<AudioSource>().Play();
 
         rhead.materials = new Material[] { red, red, red };
         rbody.materials = new Material[] { red, red };
