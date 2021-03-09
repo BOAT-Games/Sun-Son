@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Playables;
+using UnityEngine.Timeline;
 
 public class CrawlerBossController : MonoBehaviour
 {
@@ -51,6 +53,9 @@ public class CrawlerBossController : MonoBehaviour
     public bool stage1 = true;
     public bool stage2 = false;
     public bool stage3 = false;
+
+    // Timeline and cutscene
+    public PlayableDirector _stage2Timeline;
 
     private void Awake()
     {
@@ -275,6 +280,7 @@ public class CrawlerBossController : MonoBehaviour
                 rock.position = Vector3.MoveTowards(rock.position, targetPos, step);
 
                 _player.GetComponent<PlayerV2>().setPlayerVelocity(new Vector3(-25, 0.5f, 0));
+                TriggerCutscene();
 
             }
             else
@@ -286,6 +292,10 @@ public class CrawlerBossController : MonoBehaviour
             }
         }
 
+    }
+
+    void TriggerCutscene() {
+        _stage2Timeline.Play();
     }
 
     void ResetPosition()

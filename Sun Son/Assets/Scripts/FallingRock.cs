@@ -5,12 +5,14 @@ using UnityEngine;
 public class FallingRock : MonoBehaviour
 {
     [SerializeField] PlayerResources _player;
+    [SerializeField] AudioSource _audio;
     public bool fall = false;
     private Vector3 targetPosition;
 
     // Start is called before the first frame update
     void Start()
     {
+        _audio = GetComponent<AudioSource>();
         _player = FindObjectOfType<PlayerResources>();
         targetPosition = new Vector3(transform.position.x, transform.position.y - 13.2f, transform.position.z);
     }
@@ -19,8 +21,17 @@ public class FallingRock : MonoBehaviour
     void Update()
     {
         if (fall)
-        { 
+        {
+            if (!_audio.isPlaying)
+            {
+                _audio.Play();
+            }
             transform.position = Vector3.Lerp(transform.position, targetPosition, .5f);
+
+            if (transform.position == targetPosition)
+            {
+                fall = false;
+            }
         }
     }
 

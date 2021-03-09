@@ -989,7 +989,7 @@ MonoBehaviour:
   ps: {fileID: 1452258673496147686, guid: b7a0e9e9bdb284b64b4265ec5c2a85cf, type: 3}
   ps2: {fileID: 331006806237371657, guid: d061490dbe1dc4a6caa8b186d76992a8, type: 3}
   shoot: {fileID: 8300000, guid: 674258a055e994b72bbb15a28eb79838, type: 3}
-  scream: {fileID: 8300000, guid: 755f7bc0c34d44155aa59ef57e07a0ac, type: 3}
+  scream: {fileID: 8300000, guid: 6f505f0b269dd4219a1d3e6b0174e5d9, type: 3}
   die: {fileID: 8300000, guid: 838045f3fab56400abe3fcf4ea976589, type: 3}
 --- !u!195 &1213850218175435675
 NavMeshAgent:
@@ -1025,7 +1025,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 674258a055e994b72bbb15a28eb79838, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0

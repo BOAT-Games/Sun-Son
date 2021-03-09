@@ -7,6 +7,7 @@ public class AbyssalController : MonoBehaviour
     [SerializeField] int _health = 30;
     [SerializeField] float _timer = 2;
     [SerializeField] int _damage = 20;
+    [SerializeField] double _attackRange = 12;
 
 
     private bool _atPlayer = false;
@@ -53,7 +54,8 @@ public class AbyssalController : MonoBehaviour
     {
 
         //always look at player...creppy
-        transform.LookAt(_player.transform.position);
+        transform.LookAt(new Vector3(_player.transform.position.x,
+           gameObject.transform.position.y, _player.transform.position.z));
 
         if (_timer <= 0)
         {
@@ -69,7 +71,7 @@ public class AbyssalController : MonoBehaviour
                 targetPos = portalClone.transform.position;
             }
 
-            if (!_portalSet && !_atPlayer && !_attacked)
+            if (!_portalSet && !_atPlayer && !_attacked && PlayerInRange())
             {
                 //set portal next to player
                 Vector3 portalPos = new Vector3(targetPos.x, targetPos.y + 0.1f, targetPos.z);
@@ -270,5 +272,10 @@ public class AbyssalController : MonoBehaviour
         Destroy(portalClone);
         Instantiate(ps, transform.position, Quaternion.identity);
         Destroy(gameObject);
+    }
+
+    private bool PlayerInRange() {
+        return Vector3.Distance(gameObject.transform.position,
+            _player.transform.position) <= _attackRange;
     }
 }
