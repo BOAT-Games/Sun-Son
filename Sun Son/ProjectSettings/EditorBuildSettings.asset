@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/AltarScene2.unity
     guid: 36503deebd5ea4f72886c8bd364c1295
+  - enabled: 1
+    path: Assets/Scenes/Levels/Surface Level.unity
+    guid: ac29cd5f154473b49b3d197e2f19ae42
   m_configObjects: {}
