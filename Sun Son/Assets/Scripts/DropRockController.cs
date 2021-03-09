@@ -41,7 +41,7 @@ public class DropRockController : MonoBehaviour
                 gTimer -= Time.deltaTime;
             }
 
-            if (rootCount == 0)
+            if (rootCount == 0 && spider != null)
             {
                 if (count == 0)
                 {
