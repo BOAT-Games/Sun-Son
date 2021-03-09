@@ -14,14 +14,16 @@ public class PlayerResources : MonoBehaviour
 
     private Camera _mainCamera;
 
-   [SerializeField] bool _haungsMode;
+    private bool _haungsMode = false;
+    private bool _haungsPressed;
+    private PlayerControls input;
 
     private PlayerShield _shield;
 
     private int _minLightPowerBrightness = 35;
 
-    // Start is called before the first frame update
-    void Start()
+   // Start is called before the first frame update
+   void Start()
     {
         _mainCamera = Camera.main;
 
@@ -40,6 +42,15 @@ public class PlayerResources : MonoBehaviour
         _mainCamera.GetComponent<GlowComposite>().Intensity = (float)_currentLightPoints / (float)_maxLightPoints;
 
         _shield = GetComponent<PlayerShield>();
+    }
+
+    void Update()
+    {
+        if(_haungsPressed)
+        {
+            _haungsMode = !_haungsMode;
+            _haungsPressed = false;
+        }
     }
 
     private void UpdateLightPoints(int damage) {
@@ -97,4 +108,18 @@ public class PlayerResources : MonoBehaviour
     public int getCurrentLightPoints() { return _currentLightPoints; }
     public int getSkillPoints() {return _skillPoints; }
     public void setSkillPoints(int points) {_skillPoints = points;}
+
+    private void Awake() {
+        input = new PlayerControls();
+        input.CharacterControls.HaungsMode.performed += ctx => _haungsPressed = ctx.ReadValueAsButton();
+        input.CharacterControls.HaungsMode.canceled += ctx => _haungsPressed = false;
+    }
+
+    private void OnEnable() {
+        input.CharacterControls.Enable();
+    }
+
+    private void OnDisable() {
+        input.CharacterControls.Disable();
+    }
 }

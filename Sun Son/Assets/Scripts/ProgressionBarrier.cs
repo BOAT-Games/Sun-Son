@@ -2,7 +2,7 @@
 
 public class ProgressionBarrier : MonoBehaviour
 {
-   private GameObject barrierGO;
+   public GameObject barrierGO;
 
    [SerializeField] TMPro.TextMeshProUGUI remainingText;
 
@@ -13,11 +13,22 @@ public class ProgressionBarrier : MonoBehaviour
    private void Start() {
       totalCollectibles = collectibles.Length;
       collectiblesRemaining = totalCollectibles;
-      barrierGO = GameObject.FindGameObjectWithTag("Barrier");
-      remainingText.text = totalCollectibles.ToString();
+      //barrierGO = GameObject.FindGameObjectWithTag("Barrier");
+        if (remainingText != null)
+        {
+            remainingText.text = totalCollectibles.ToString();
+        }
    }
 
-   private void OnTriggerEnter(Collider other) {
+    private void Update()
+    {
+        if (barrierGO == null)
+        {
+            barrierGO = GameObject.FindGameObjectWithTag("Barrier");
+        }
+    }
+
+    private void OnTriggerEnter(Collider other) {
       if (other.tag == "Player" && collectiblesRemaining == 0) {
          Destroy(barrierGO);
          Destroy(gameObject);
@@ -26,6 +37,9 @@ public class ProgressionBarrier : MonoBehaviour
 
    public void DecrementRemaining() {
       collectiblesRemaining -= 1;
-      remainingText.text = collectiblesRemaining.ToString();
+        if (remainingText != null)
+        {
+            remainingText.text = collectiblesRemaining.ToString();
+        }
    }
 }
