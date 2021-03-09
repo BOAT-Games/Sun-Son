@@ -29,7 +29,7 @@ public class DropRockController : MonoBehaviour
     {
         if (boss == null)
         {
-            if (gTimer <= 0)
+            if (spider != null && gTimer <= 0)
             {
                 spider.GetComponent<AudioSource>().clip = growl;
                 spider.GetComponent<AudioSource>().Play();
@@ -56,6 +56,7 @@ public class DropRockController : MonoBehaviour
                         GetComponent<AudioSource>().Play();
                         count++;
                     }
+
                     float step = 40 * Time.deltaTime;
                     transform.position = Vector3.MoveTowards(transform.position, targetPos.position, step);
                 }
@@ -65,7 +66,7 @@ public class DropRockController : MonoBehaviour
                 }
             }
 
-            if (Vector3.Distance(transform.position, targetPos.position) < 5)
+            if (Vector3.Distance(transform.position, targetPos.position) < 1)
             {
                 if (spider != null) { 
                     Destroy(spider);
