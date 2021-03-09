@@ -15,6 +15,7 @@ public class PlayerResources : MonoBehaviour
     private Camera _mainCamera;
 
     private bool _haungsMode = false;
+    private bool _haungsPressed;
     private PlayerControls input;
 
     private PlayerShield _shield;
@@ -41,6 +42,15 @@ public class PlayerResources : MonoBehaviour
         _mainCamera.GetComponent<GlowComposite>().Intensity = (float)_currentLightPoints / (float)_maxLightPoints;
 
         _shield = GetComponent<PlayerShield>();
+    }
+
+    void Update()
+    {
+        if(_haungsPressed)
+        {
+            _haungsMode = !_haungsMode;
+            _haungsPressed = false;
+        }
     }
 
     private void UpdateLightPoints(int damage) {
@@ -101,8 +111,8 @@ public class PlayerResources : MonoBehaviour
 
     private void Awake() {
         input = new PlayerControls();
-        input.CharacterControls.HaungsMode.performed += ctx => _haungsMode = ctx.ReadValueAsButton();
-        input.CharacterControls.HaungsMode.canceled += ctx => { };
+        input.CharacterControls.HaungsMode.performed += ctx => _haungsPressed = ctx.ReadValueAsButton();
+        input.CharacterControls.HaungsMode.canceled += ctx => _haungsPressed = false;
     }
 
     private void OnEnable() {
