@@ -12,6 +12,7 @@ TagManager:
   - Barrier Trigger
   - Floor
   - Enemy
+  - Destructable
   layers:
   - Default
   - TransparentFX
