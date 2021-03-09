@@ -139,7 +139,7 @@ agent.SetDestination(transform.position);
         //attack code here
         Rigidbody rb = Instantiate(projectile, shootPoint, Quaternion.identity).GetComponent<Rigidbody>();
         rb.AddForce(transform.forward * 16f, ForceMode.Impulse);
-        rb.AddForce(transform.up * -4f, ForceMode.Impulse);
+        rb.AddForce(transform.up * 1f, ForceMode.Impulse);
 
         GetComponent<AudioSource>().clip = shoot;
         GetComponent<AudioSource>().Play();
