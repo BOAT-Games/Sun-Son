@@ -20,7 +20,15 @@ public class ProgressionBarrier : MonoBehaviour
         }
    }
 
-   private void OnTriggerEnter(Collider other) {
+    private void Update()
+    {
+        if (barrierGO == null)
+        {
+            barrierGO = GameObject.FindGameObjectWithTag("Barrier");
+        }
+    }
+
+    private void OnTriggerEnter(Collider other) {
       if (other.tag == "Player" && collectiblesRemaining == 0) {
          Destroy(barrierGO);
          Destroy(gameObject);
