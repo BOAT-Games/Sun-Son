@@ -3791,8 +3791,7 @@ PrefabInstance:
     - target: {fileID: 2831735255655232428, guid: a24a67aa507a34cd19a09293134cec69,
         type: 3}
       propertyPath: convo.Array.data[6]
-      value: Sun you must make your way to the surface and bring light back to the
-        world!
+      value: Sun you must make your way to the surface
       objectReference: {fileID: 0}
     - target: {fileID: 2831735255655232428, guid: a24a67aa507a34cd19a09293134cec69,
         type: 3}
@@ -6601,6 +6600,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2801255032842418416, guid: c98d56511a4214e9bb6dc2249702ea20,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2801255032842418416, guid: c98d56511a4214e9bb6dc2249702ea20,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2801255032842418416, guid: c98d56511a4214e9bb6dc2249702ea20,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6581049879872834788, guid: c98d56511a4214e9bb6dc2249702ea20,
         type: 3}

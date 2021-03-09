@@ -12,6 +12,14 @@ public class SceneController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            if (SceneToLoad.Equals("Village2"))
+            {
+                _fader.specialFade();
+            }
+            else
+            {
+                _fader.normalFade();
+            }
             _fader.FadeToLevel(SceneToLoad);
         }
     }
