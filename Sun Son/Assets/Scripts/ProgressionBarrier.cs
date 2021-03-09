@@ -2,7 +2,7 @@
 
 public class ProgressionBarrier : MonoBehaviour
 {
-   private GameObject barrierGO;
+   public GameObject barrierGO;
 
    [SerializeField] TMPro.TextMeshProUGUI remainingText;
 
@@ -13,7 +13,7 @@ public class ProgressionBarrier : MonoBehaviour
    private void Start() {
       totalCollectibles = collectibles.Length;
       collectiblesRemaining = totalCollectibles;
-      barrierGO = GameObject.FindGameObjectWithTag("Barrier");
+      //barrierGO = GameObject.FindGameObjectWithTag("Barrier");
         if (remainingText != null)
         {
             remainingText.text = totalCollectibles.ToString();
