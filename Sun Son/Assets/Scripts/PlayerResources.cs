@@ -14,14 +14,15 @@ public class PlayerResources : MonoBehaviour
 
     private Camera _mainCamera;
 
-   [SerializeField] bool _haungsMode;
+    private bool _haungsMode = false;
+    private PlayerControls input;
 
     private PlayerShield _shield;
 
     private int _minLightPowerBrightness = 35;
 
-    // Start is called before the first frame update
-    void Start()
+   // Start is called before the first frame update
+   void Start()
     {
         _mainCamera = Camera.main;
 
@@ -97,4 +98,18 @@ public class PlayerResources : MonoBehaviour
     public int getCurrentLightPoints() { return _currentLightPoints; }
     public int getSkillPoints() {return _skillPoints; }
     public void setSkillPoints(int points) {_skillPoints = points;}
+
+    private void Awake() {
+        input = new PlayerControls();
+        input.CharacterControls.HaungsMode.performed += ctx => _haungsMode = ctx.ReadValueAsButton();
+        input.CharacterControls.HaungsMode.canceled += ctx => { };
+    }
+
+    private void OnEnable() {
+        input.CharacterControls.Enable();
+    }
+
+    private void OnDisable() {
+        input.CharacterControls.Disable();
+    }
 }
