@@ -340,7 +340,12 @@ public class PlayerV2 : MonoBehaviour
 
     void handleJumping()
     {
-        if (_jumpPressed && (_grounded || _grabbingWall))
+        if (_jumpPressed && _grabbingWall) 
+        {
+            _currentJumps++;
+            ExecuteJump();
+        }
+        if (_jumpPressed && _grounded)
         {
             ExecuteJump();
         }
@@ -350,6 +355,7 @@ public class PlayerV2 : MonoBehaviour
             ExecuteJump();
             _pr.TakeDamage(_doubleJumpCost);
             _hasDoubleJumped = true;
+            _currentJumps++;
         }
 
     }
