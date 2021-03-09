@@ -89,6 +89,14 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=2)""
+                },
+                {
+                    ""name"": ""HaungsMode"",
+                    ""type"": ""Button"",
+                    ""id"": ""f5abc091-b932-4457-9006-a06746422d4b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)""
                 }
             ],
             ""bindings"": [
@@ -333,6 +341,39 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                     ""action"": ""Crouch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Button With One Modifier"",
+                    ""id"": ""9fc5fcc7-f9d4-4ed6-85a8-0b6b6b5da14e"",
+                    ""path"": ""ButtonWithOneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HaungsMode"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""e5da3c90-1967-435b-881c-fba37d6c77b2"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HaungsMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""button"",
+                    ""id"": ""8185f43e-28f8-4a08-8fdc-de426f20ebb7"",
+                    ""path"": ""<Keyboard>/h"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HaungsMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -350,6 +391,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         m_CharacterControls_Shield = m_CharacterControls.FindAction("Shield", throwIfNotFound: true);
         m_CharacterControls_PauseGame = m_CharacterControls.FindAction("PauseGame", throwIfNotFound: true);
         m_CharacterControls_Crouch = m_CharacterControls.FindAction("Crouch", throwIfNotFound: true);
+        m_CharacterControls_HaungsMode = m_CharacterControls.FindAction("HaungsMode", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -408,6 +450,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
     private readonly InputAction m_CharacterControls_Shield;
     private readonly InputAction m_CharacterControls_PauseGame;
     private readonly InputAction m_CharacterControls_Crouch;
+    private readonly InputAction m_CharacterControls_HaungsMode;
     public struct CharacterControlsActions
     {
         private @PlayerControls m_Wrapper;
@@ -421,6 +464,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         public InputAction @Shield => m_Wrapper.m_CharacterControls_Shield;
         public InputAction @PauseGame => m_Wrapper.m_CharacterControls_PauseGame;
         public InputAction @Crouch => m_Wrapper.m_CharacterControls_Crouch;
+        public InputAction @HaungsMode => m_Wrapper.m_CharacterControls_HaungsMode;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -457,6 +501,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Crouch.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnCrouch;
                 @Crouch.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnCrouch;
                 @Crouch.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnCrouch;
+                @HaungsMode.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnHaungsMode;
+                @HaungsMode.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnHaungsMode;
+                @HaungsMode.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnHaungsMode;
             }
             m_Wrapper.m_CharacterControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -488,6 +535,9 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 @Crouch.started += instance.OnCrouch;
                 @Crouch.performed += instance.OnCrouch;
                 @Crouch.canceled += instance.OnCrouch;
+                @HaungsMode.started += instance.OnHaungsMode;
+                @HaungsMode.performed += instance.OnHaungsMode;
+                @HaungsMode.canceled += instance.OnHaungsMode;
             }
         }
     }
@@ -503,5 +553,6 @@ public class @PlayerControls : IInputActionCollection, IDisposable
         void OnShield(InputAction.CallbackContext context);
         void OnPauseGame(InputAction.CallbackContext context);
         void OnCrouch(InputAction.CallbackContext context);
+        void OnHaungsMode(InputAction.CallbackContext context);
     }
 }
