@@ -30,10 +30,10 @@ public class PlayerResources : MonoBehaviour
 
         _currentLightPoints = _maxLightPoints;
         _currentLightPoints = _maxLightPoints;
-
-        _lightBar.SetMaxLightPoints(_maxLightPoints);
-        _lightBar.SetLightPoints(_maxLightPoints);
-
+        if (_lightBar != null) {
+            _lightBar.SetMaxLightPoints(_maxLightPoints);
+            _lightBar.SetLightPoints(_maxLightPoints);
+        }
         _pointLight.SetMaxLightPoints(_currentLightPoints);
         _pointLight.SetLightPoints(_maxLightPoints);
 
