@@ -14,7 +14,10 @@ public class ProgressionBarrier : MonoBehaviour
       totalCollectibles = collectibles.Length;
       collectiblesRemaining = totalCollectibles;
       barrierGO = GameObject.FindGameObjectWithTag("Barrier");
-      remainingText.text = totalCollectibles.ToString();
+        if (remainingText != null)
+        {
+            remainingText.text = totalCollectibles.ToString();
+        }
    }
 
    private void OnTriggerEnter(Collider other) {
@@ -26,6 +29,9 @@ public class ProgressionBarrier : MonoBehaviour
 
    public void DecrementRemaining() {
       collectiblesRemaining -= 1;
-      remainingText.text = collectiblesRemaining.ToString();
+        if (remainingText != null)
+        {
+            remainingText.text = collectiblesRemaining.ToString();
+        }
    }
 }
