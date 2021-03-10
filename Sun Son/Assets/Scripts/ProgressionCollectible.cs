@@ -7,8 +7,8 @@ public class ProgressionCollectible : MonoBehaviour
    public ProgressionBarrier barrier;
 
    private void Start() {
-      //GameObject barrierGO = GameObject.FindGameObjectWithTag("Barrier Trigger");
-      //barrier = barrierGO.GetComponent<ProgressionBarrier>();
+       GameObject barrierGO = GameObject.FindGameObjectWithTag("Barrier Trigger");
+       barrier = barrierGO.GetComponent<ProgressionBarrier>();
    }
 
     private void Update()

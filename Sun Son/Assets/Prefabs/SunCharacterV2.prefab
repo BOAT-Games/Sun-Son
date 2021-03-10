@@ -2600,7 +2600,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.4
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2696,7 +2696,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2792,7 +2792,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2899,7 +2899,6 @@ MonoBehaviour:
   _dashDelay: 2
   _dashCost: 20
   _doubleJumpCost: 10
-  _maxJumps: 2
   _wallGrabRayOrigin: {fileID: 1983121037}
   _wallJumpControlsDelay: 0.2
   _wallJumpPower: 6
@@ -2933,6 +2932,7 @@ MonoBehaviour:
   _movementAudio: {fileID: 8115352972049962100}
   _attackAudio: {fileID: 3521228485039191388}
   _shieldAudio: {fileID: 6037629213556138096}
+  _shieldImpact: {fileID: 0}
   _footstep:
   - {fileID: 8300000, guid: c87c3a812abe2fc4baa1fe54b4b77172, type: 3}
   - {fileID: 8300000, guid: ee6a6c12e92b76347881600e494ea047, type: 3}
@@ -2946,6 +2946,7 @@ MonoBehaviour:
   _meleeAttack: {fileID: 8300000, guid: 1d68bd41048afe048bcaa317c25c33d5, type: 3}
   _rangedAttack: {fileID: 8300000, guid: 652dd7b699aa8f34c9f11ebea1c375c1, type: 3}
   _shield: {fileID: 8300000, guid: ae0e60cf90489d34da12bb3596f11c6f, type: 3}
+  _shieldImpactSound: {fileID: 0}
 --- !u!114 &53909862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2960,6 +2961,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shieldPressed: 0
   _shield: {fileID: 1285217098}
+  _baseMat: {fileID: 0}
+  _hitMat: {fileID: 0}
 --- !u!114 &53909863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2967,7 +2970,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4908526365814590807}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5302ed08f0c6d73459252fb575f3b6d8, type: 3}
   m_Name: 
@@ -2975,7 +2978,6 @@ MonoBehaviour:
   _ShootPoint: {fileID: 1588091037}
   _bulletPrefab: {fileID: 6338572496772102318, guid: 20fb101326bbb8240991955d2b824d47,
     type: 3}
-  _attackRate: 2
   _shootCost: 1
   _isAttacking: 0
 --- !u!114 &53909873
@@ -2985,14 +2987,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4908526365814590807}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9fb42a6e9a84b3949853e853068394eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _sword: {fileID: 3800542895778950088}
-  _attackRate: 2
   _isAttacking: 0
+  _hit: 0
 --- !u!1 &4908526365814590815
 GameObject:
   m_ObjectHideFlags: 0
