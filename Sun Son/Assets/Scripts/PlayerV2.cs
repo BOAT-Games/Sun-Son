@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerV2 : MonoBehaviour
 {
+    // Spaghetti
+    [SerializeField] bool _surface = false;
 
     // Fields for movement characteristics
     [SerializeField] float _jumpHeight = 1;
@@ -140,7 +142,7 @@ public class PlayerV2 : MonoBehaviour
         _hasDashAbility = false;
         _hasDoubleJumpAbility = false;
 
-        _fixedZ = transform.position.z;
+        _fixedZ = _surface ? 6.6f : transform.position.z;
 
         _trailRenderer.enabled = false;
 
