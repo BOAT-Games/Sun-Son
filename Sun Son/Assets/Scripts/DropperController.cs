@@ -63,7 +63,7 @@ public class DropperController : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (collision.gameObject.CompareTag("Player") && _drop)
+        if (collision.gameObject.CompareTag("Player"))
         {
             Vector3 targetPosition = new Vector3(transform.position.x,
                                        transform.position.y - 3.5f, transform.position.z);
