@@ -18,20 +18,21 @@ public class ProgressionCollectible : MonoBehaviour
             FindNextBarrier();
         }*/
     }
-    private void OnTriggerEnter(Collider other) {
-        if (other.tag == "Player") {
-            /*if (barrier == null)
-            {
 
-                FindNextBarrier();
-            }*/
+   private void OnTriggerStay(Collider other) {
+      if (other.tag == "Player") {
+         /*if (barrier == null)
+         {
 
-            barrier.DecrementRemaining();
-            Destroy(gameObject);
+             FindNextBarrier();
+         }*/
+
+         barrier.DecrementRemaining();
+         Destroy(gameObject);
       }
-    }
+   }
 
-    private void FindNextBarrier()
+   private void FindNextBarrier()
     {
         GameObject barrierGO = GameObject.FindGameObjectWithTag("Barrier Trigger");
         barrier = barrierGO.GetComponent<ProgressionBarrier>();
