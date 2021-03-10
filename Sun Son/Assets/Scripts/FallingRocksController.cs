@@ -26,7 +26,7 @@ public class FallingRocksController : MonoBehaviour
                 child.fall = true;
                 curChild++;
             }
-            _timer = 1f;
+            _timer = 1.2f;
         }
         else
         {
