@@ -14,6 +14,7 @@ public class DoubleJump : MonoBehaviour
     private void OnTriggerEnter(Collider other) 
     {
         if (other.gameObject.CompareTag("Player")) {
+            PlayerPrefs.SetInt("doubleJump", 1);
             _player.setCanDoubleJump(true);
             _player.setHasDoubleJumpAbility(true);
             Destroy(gameObject);
