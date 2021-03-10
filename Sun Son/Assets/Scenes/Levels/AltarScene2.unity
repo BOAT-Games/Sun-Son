@@ -283,7 +283,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -982,7 +982,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1358365959}
   m_PrefabAsset: {fileID: 0}
---- !u!84 &1447924331
+--- !u!84 &1428405819
 RenderTexture:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -995,8 +995,8 @@ RenderTexture:
   m_ForcedFallbackFormat: 4
   m_DownscaleFallback: 0
   serializedVersion: 3
-  m_Width: 1195
-  m_Height: 672
+  m_Width: 1684
+  m_Height: 947
   m_AntiAliasing: 2
   m_MipCount: -1
   m_DepthFormat: 2
