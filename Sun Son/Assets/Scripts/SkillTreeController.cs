@@ -38,7 +38,10 @@ public class SkillTreeController : MonoBehaviour
     public void enableSword() {
         if (_pr.getSkillPoints() > 0 & !_gunSkill) {
             _pr.setSkillPoints(_pr.getSkillPoints() - 1);
-            _player.GetComponent<PlayerMelee>().enabled = true;
+            PlayerPrefs.SetInt("melee", 1);
+            PlayerPrefs.SetInt("ranged", 0);
+            GetComponent<PlayerMelee>().enabled = true;
+            GetComponent<PlayerRanged>().enabled = false;
             _swordSkill = true;
             _swordBranch1.gameObject.SetActive(true);
         }
@@ -46,7 +49,10 @@ public class SkillTreeController : MonoBehaviour
     public void enableGun() {
         if (_pr.getSkillPoints() > 0 & !_swordSkill) {
             _pr.setSkillPoints(_pr.getSkillPoints() - 1);
-            _player.GetComponent<PlayerRanged>().enabled = true;
+            PlayerPrefs.SetInt("melee", 0);
+            PlayerPrefs.SetInt("ranged", 1);
+            GetComponent<PlayerMelee>().enabled = false;
+            GetComponent<PlayerRanged>().enabled = true;
             _gunSkill = true;
             _gunBranch1.gameObject.SetActive(true);
         }
