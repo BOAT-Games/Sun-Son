@@ -152,6 +152,11 @@ PrefabInstance:
       propertyPath: targets.Array.data[1]
       value: 
       objectReference: {fileID: 3633331503879150622}
+    - target: {fileID: 8804965112692039226, guid: 484d562b740264fed888da1ab0af3083,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 8804965112692039231, guid: 484d562b740264fed888da1ab0af3083,
         type: 3}
       propertyPath: m_Name
