@@ -14,6 +14,7 @@ public class SceneController : MonoBehaviour
         {
             if (SceneToLoad.Equals("Village2"))
             {
+                PlayerPrefs.SetInt("dash", 1);
                 _fader.specialFade();
             }
             else

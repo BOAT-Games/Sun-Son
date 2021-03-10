@@ -137,11 +137,58 @@ public class PlayerV2 : MonoBehaviour
 
         _currentGravity = _gravityValue;
         
-        _hasDashAbility = true;
+        _hasDashAbility = false;
         _hasDoubleJumpAbility = false;
 
         _fixedZ = transform.position.z;
-    }
+
+        _trailRenderer.enabled = false;
+
+        if (PlayerPrefs.GetInt("melee", 0) == 1) {
+            GetComponent<PlayerMelee>().enabled = true;
+            GetComponent<PlayerRanged>().enabled = false;
+        }
+        else {
+            GetComponent<PlayerMelee>().enabled = false;
+        }
+
+        if (PlayerPrefs.GetInt("ranged", 0) == 1) {
+            GetComponent<PlayerMelee>().enabled = false;
+            GetComponent<PlayerRanged>().enabled = true;
+        }
+        else {
+            GetComponent<PlayerRanged>().enabled = false;
+        }
+
+        if (PlayerPrefs.GetInt("dash", 0) == 1) {
+            _hasDashAbility = true;
+        }
+        else {
+            _hasDashAbility = false;
+        }
+
+        if (PlayerPrefs.GetInt("doubleJump", 0) == 1) {
+            _canDoubleJump = true;
+            _hasDoubleJumpAbility = true;
+        }
+        else {
+            _canDoubleJump = false;
+            _hasDoubleJumpAbility = false;
+        }
+        
+        if (PlayerPrefs.GetInt("moreHealth", 0) == 1) {
+        }
+        
+        if (PlayerPrefs.GetInt("fartherDash", 0) == 1) {
+        }
+        
+        if (PlayerPrefs.GetInt("shield", 0) == 1) {
+            GetComponent<PlayerShield>().enabled = true;
+        }
+        else { 
+            GetComponent<PlayerShield>().enabled = false;
+        }
+   }
 
     // Update is called once per frame
     void Update()
@@ -177,9 +224,11 @@ public class PlayerV2 : MonoBehaviour
             handleMovement();
             if (!_anim.GetBool(_isAttackingHash))
             {
-                handleDirection();;
+                handleDirection();
                 handleJumping();
-                handleDashing();
+                if (_hasDashAbility) {
+                    handleDashing();
+                }
                 handleCrouch();
             }
         }
