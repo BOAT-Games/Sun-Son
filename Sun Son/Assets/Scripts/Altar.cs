@@ -12,10 +12,12 @@ public class Altar : MonoBehaviour
         }
     }
     public void setActiveSkillWindow() {
+        Time.timeScale = 0;
         _skillWindow.gameObject.SetActive(true);
     }
 
     public void setInactiveSkillWindow() {
+        Time.timeScale = 1;
         _skillWindow.gameObject.SetActive(false);
     }
 }
