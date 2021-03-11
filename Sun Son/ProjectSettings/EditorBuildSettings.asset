@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Caves Level.unity
     guid: eb9989f668d986f49b176ccbb7726692
   - enabled: 1
+    path: Assets/Scenes/Levels/CavesBossIntro.unity
+    guid: 0115831f3161afd44b8a93939d25a97f
+  - enabled: 1
     path: Assets/Scenes/Levels/CavesBoss.unity
     guid: 81c8a7fa9a5ff4e41a1ac77ebdac6d06
   - enabled: 1
