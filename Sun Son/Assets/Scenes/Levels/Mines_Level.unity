@@ -1044,6 +1044,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1518506072}
     m_Modifications:
+    - target: {fileID: 64175506561874502, guid: b47d1603c16e90949861e070dda12855,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: b47d1603c16e90949861e070dda12855,
         type: 3}
       propertyPath: m_Name
@@ -1057,7 +1062,7 @@ PrefabInstance:
     - target: {fileID: 4721141641724724387, guid: b47d1603c16e90949861e070dda12855,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.922886
+      value: 11.67
       objectReference: {fileID: 0}
     - target: {fileID: 4721141641724724387, guid: b47d1603c16e90949861e070dda12855,
         type: 3}
@@ -1356,6 +1361,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1518506072}
     m_Modifications:
+    - target: {fileID: 64572291289314352, guid: 19770e24c11a16b4e80d11d0249929d3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: 19770e24c11a16b4e80d11d0249929d3,
         type: 3}
       propertyPath: m_Name
@@ -2308,6 +2318,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stalagmite 1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4721141641724369028, guid: 35262a96759ee6d4588ce6e50b936888,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724724387, guid: 35262a96759ee6d4588ce6e50b936888,
         type: 3}
       propertyPath: m_RootOrder
@@ -2894,6 +2909,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2084302985}
     m_Modifications:
+    - target: {fileID: 64497896592692876, guid: e0bfea4840ff49b4eb75e6a8ca28d5fe,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: e0bfea4840ff49b4eb75e6a8ca28d5fe,
         type: 3}
       propertyPath: m_Name
@@ -4340,6 +4360,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stalagmite 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4721141641724369028, guid: 35262a96759ee6d4588ce6e50b936888,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724724387, guid: 35262a96759ee6d4588ce6e50b936888,
         type: 3}
       propertyPath: m_RootOrder
@@ -4951,6 +4976,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1518506072}
     m_Modifications:
+    - target: {fileID: 64175506561874502, guid: b47d1603c16e90949861e070dda12855,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: b47d1603c16e90949861e070dda12855,
         type: 3}
       propertyPath: m_Name
@@ -5778,6 +5808,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stalagmite 1 (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4721141641724369028, guid: 35262a96759ee6d4588ce6e50b936888,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724724387, guid: 35262a96759ee6d4588ce6e50b936888,
         type: 3}
       propertyPath: m_RootOrder
@@ -6042,6 +6077,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1518506072}
     m_Modifications:
+    - target: {fileID: 64931406206307534, guid: fa3fd9c171b13dc4e9b3b29b75498e4d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: fa3fd9c171b13dc4e9b3b29b75498e4d,
         type: 3}
       propertyPath: m_Name
@@ -6164,6 +6204,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1518506072}
     m_Modifications:
+    - target: {fileID: 64931406206307534, guid: fa3fd9c171b13dc4e9b3b29b75498e4d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: fa3fd9c171b13dc4e9b3b29b75498e4d,
         type: 3}
       propertyPath: m_Name
@@ -6466,6 +6511,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1907228926}
     m_Modifications:
+    - target: {fileID: 64026302926485834, guid: 6e9412a95d5b55041bbf0de09e4c8f60,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: 6e9412a95d5b55041bbf0de09e4c8f60,
         type: 3}
       propertyPath: m_Name
@@ -6703,41 +6753,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 334019115}
   m_Mesh: {fileID: 4300000, guid: 26f07fb2e712386478d402c9c85df04b, type: 3}
---- !u!84 &334686766
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  serializedVersion: 3
-  m_Width: 588
-  m_Height: 542
-  m_AntiAliasing: 2
-  m_MipCount: -1
-  m_DepthFormat: 2
-  m_ColorFormat: 59
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &338555153
 GameObject:
   m_ObjectHideFlags: 0
@@ -7191,6 +7206,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1518506072}
     m_Modifications:
+    - target: {fileID: 64931406206307534, guid: fa3fd9c171b13dc4e9b3b29b75498e4d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: fa3fd9c171b13dc4e9b3b29b75498e4d,
         type: 3}
       propertyPath: m_Name
@@ -7291,6 +7311,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stalagmite 1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4721141641724369028, guid: 35262a96759ee6d4588ce6e50b936888,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4721141641724724387, guid: 35262a96759ee6d4588ce6e50b936888,
         type: 3}
@@ -8470,6 +8495,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1907228926}
     m_Modifications:
+    - target: {fileID: 64931406206307534, guid: fa3fd9c171b13dc4e9b3b29b75498e4d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: fa3fd9c171b13dc4e9b3b29b75498e4d,
         type: 3}
       propertyPath: m_Name
@@ -8560,6 +8590,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2143015076}
     m_Modifications:
+    - target: {fileID: 64572291289314352, guid: 19770e24c11a16b4e80d11d0249929d3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: 19770e24c11a16b4e80d11d0249929d3,
         type: 3}
       propertyPath: m_Name
@@ -8907,6 +8942,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2084302985}
     m_Modifications:
+    - target: {fileID: 64497896592692876, guid: e0bfea4840ff49b4eb75e6a8ca28d5fe,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: e0bfea4840ff49b4eb75e6a8ca28d5fe,
         type: 3}
       propertyPath: m_Name
@@ -9781,6 +9821,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2084302985}
     m_Modifications:
+    - target: {fileID: 64175506561874502, guid: b47d1603c16e90949861e070dda12855,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: b47d1603c16e90949861e070dda12855,
         type: 3}
       propertyPath: m_Name
@@ -10213,6 +10258,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2084302985}
     m_Modifications:
+    - target: {fileID: 64026302926485834, guid: 6e9412a95d5b55041bbf0de09e4c8f60,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: 6e9412a95d5b55041bbf0de09e4c8f60,
         type: 3}
       propertyPath: m_Name
@@ -10551,6 +10601,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1518506072}
     m_Modifications:
+    - target: {fileID: 64931406206307534, guid: fa3fd9c171b13dc4e9b3b29b75498e4d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: fa3fd9c171b13dc4e9b3b29b75498e4d,
         type: 3}
       propertyPath: m_Name
@@ -10658,6 +10713,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2084302985}
     m_Modifications:
+    - target: {fileID: 64175506561874502, guid: b47d1603c16e90949861e070dda12855,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: b47d1603c16e90949861e070dda12855,
         type: 3}
       propertyPath: m_Name
@@ -11307,6 +11367,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stalagmite 1 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 4721141641724369028, guid: 35262a96759ee6d4588ce6e50b936888,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724724387, guid: 35262a96759ee6d4588ce6e50b936888,
         type: 3}
       propertyPath: m_RootOrder
@@ -11330,7 +11395,7 @@ PrefabInstance:
     - target: {fileID: 4721141641724724387, guid: 35262a96759ee6d4588ce6e50b936888,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.26
+      value: 11.922
       objectReference: {fileID: 0}
     - target: {fileID: 4721141641724724387, guid: 35262a96759ee6d4588ce6e50b936888,
         type: 3}
@@ -11340,7 +11405,7 @@ PrefabInstance:
     - target: {fileID: 4721141641724724387, guid: 35262a96759ee6d4588ce6e50b936888,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.23
+      value: -0.81
       objectReference: {fileID: 0}
     - target: {fileID: 4721141641724724387, guid: 35262a96759ee6d4588ce6e50b936888,
         type: 3}
@@ -11927,6 +11992,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1765008247}
     m_Modifications:
+    - target: {fileID: 64572291289314352, guid: 19770e24c11a16b4e80d11d0249929d3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: 19770e24c11a16b4e80d11d0249929d3,
         type: 3}
       propertyPath: m_Name
@@ -12966,6 +13036,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stalagmite 1 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4721141641724369028, guid: 35262a96759ee6d4588ce6e50b936888,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4721141641724724387, guid: 35262a96759ee6d4588ce6e50b936888,
         type: 3}
@@ -14087,6 +14162,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1518506072}
     m_Modifications:
+    - target: {fileID: 64572291289314352, guid: 19770e24c11a16b4e80d11d0249929d3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: 19770e24c11a16b4e80d11d0249929d3,
         type: 3}
       propertyPath: m_Name
@@ -14604,6 +14684,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1518506072}
     m_Modifications:
+    - target: {fileID: 64497896592692876, guid: e0bfea4840ff49b4eb75e6a8ca28d5fe,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: e0bfea4840ff49b4eb75e6a8ca28d5fe,
         type: 3}
       propertyPath: m_Name
@@ -15209,6 +15294,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2084302985}
     m_Modifications:
+    - target: {fileID: 64175506561874502, guid: b47d1603c16e90949861e070dda12855,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: b47d1603c16e90949861e070dda12855,
         type: 3}
       propertyPath: m_Name
@@ -15583,6 +15673,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1907228926}
     m_Modifications:
+    - target: {fileID: 64182844476891954, guid: 48688df9dc83a6444ba0efeac4a5f7c3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: 48688df9dc83a6444ba0efeac4a5f7c3,
         type: 3}
       propertyPath: m_Name
@@ -15678,6 +15773,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stalagmite 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4721141641724369028, guid: 35262a96759ee6d4588ce6e50b936888,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724724387, guid: 35262a96759ee6d4588ce6e50b936888,
         type: 3}
       propertyPath: m_RootOrder
@@ -15686,7 +15786,7 @@ PrefabInstance:
     - target: {fileID: 4721141641724724387, guid: 35262a96759ee6d4588ce6e50b936888,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.719936
+      value: 8.35
       objectReference: {fileID: 0}
     - target: {fileID: 4721141641724724387, guid: 35262a96759ee6d4588ce6e50b936888,
         type: 3}
@@ -16401,6 +16501,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1518506072}
     m_Modifications:
+    - target: {fileID: 64182844476891954, guid: 48688df9dc83a6444ba0efeac4a5f7c3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: 48688df9dc83a6444ba0efeac4a5f7c3,
         type: 3}
       propertyPath: m_Name
@@ -16970,6 +17075,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1907228926}
     m_Modifications:
+    - target: {fileID: 64026302926485834, guid: 6e9412a95d5b55041bbf0de09e4c8f60,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: 6e9412a95d5b55041bbf0de09e4c8f60,
         type: 3}
       propertyPath: m_Name
@@ -17241,6 +17351,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2084302985}
     m_Modifications:
+    - target: {fileID: 64026302926485834, guid: 6e9412a95d5b55041bbf0de09e4c8f60,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: 6e9412a95d5b55041bbf0de09e4c8f60,
         type: 3}
       propertyPath: m_Name
@@ -17589,6 +17704,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stalagmite 1 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4721141641724369028, guid: 35262a96759ee6d4588ce6e50b936888,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724724387, guid: 35262a96759ee6d4588ce6e50b936888,
         type: 3}
       propertyPath: m_RootOrder
@@ -17742,6 +17862,11 @@ PrefabInstance:
     - target: {fileID: 1720272442771111466, guid: 4d63d6f73b4f1644e8bb126f3912cf8c,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1720272442771137029, guid: 4d63d6f73b4f1644e8bb126f3912cf8c,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1720272442771137034, guid: 4d63d6f73b4f1644e8bb126f3912cf8c,
@@ -18765,6 +18890,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1518506072}
     m_Modifications:
+    - target: {fileID: 64175506561874502, guid: b47d1603c16e90949861e070dda12855,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: b47d1603c16e90949861e070dda12855,
         type: 3}
       propertyPath: m_Name
@@ -18859,6 +18989,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stalagmite 1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4721141641724369028, guid: 35262a96759ee6d4588ce6e50b936888,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4721141641724724387, guid: 35262a96759ee6d4588ce6e50b936888,
         type: 3}
@@ -19550,6 +19685,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2084302985}
     m_Modifications:
+    - target: {fileID: 64026302926485834, guid: 6e9412a95d5b55041bbf0de09e4c8f60,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: 6e9412a95d5b55041bbf0de09e4c8f60,
         type: 3}
       propertyPath: m_Name
@@ -20154,6 +20294,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stalagmite 1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4721141641724369028, guid: 35262a96759ee6d4588ce6e50b936888,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4721141641724724387, guid: 35262a96759ee6d4588ce6e50b936888,
         type: 3}
@@ -21331,6 +21476,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2143015076}
     m_Modifications:
+    - target: {fileID: 64182844476891954, guid: 48688df9dc83a6444ba0efeac4a5f7c3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: 48688df9dc83a6444ba0efeac4a5f7c3,
         type: 3}
       propertyPath: m_Name
@@ -22231,6 +22381,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stalagmite 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4721141641724369028, guid: 35262a96759ee6d4588ce6e50b936888,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724724387, guid: 35262a96759ee6d4588ce6e50b936888,
         type: 3}
       propertyPath: m_RootOrder
@@ -22652,6 +22807,41 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 529fe8b9c37a54f1d82d91eef804f655, type: 3}
+--- !u!84 &1205762364
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  serializedVersion: 3
+  m_Width: 640
+  m_Height: 480
+  m_AntiAliasing: 2
+  m_MipCount: -1
+  m_DepthFormat: 2
+  m_ColorFormat: 59
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_EnableCompatibleFormat: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1001 &1207187974
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22659,6 +22849,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1518506072}
     m_Modifications:
+    - target: {fileID: 64182844476891954, guid: 48688df9dc83a6444ba0efeac4a5f7c3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: 48688df9dc83a6444ba0efeac4a5f7c3,
         type: 3}
       propertyPath: m_Name
@@ -23012,6 +23207,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2143015076}
     m_Modifications:
+    - target: {fileID: 64931406206307534, guid: fa3fd9c171b13dc4e9b3b29b75498e4d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: fa3fd9c171b13dc4e9b3b29b75498e4d,
         type: 3}
       propertyPath: m_Name
@@ -24777,6 +24977,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2084302985}
     m_Modifications:
+    - target: {fileID: 64497896592692876, guid: e0bfea4840ff49b4eb75e6a8ca28d5fe,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: e0bfea4840ff49b4eb75e6a8ca28d5fe,
         type: 3}
       propertyPath: m_Name
@@ -27744,6 +27949,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stalagmite 1 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4721141641724369028, guid: 35262a96759ee6d4588ce6e50b936888,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724724387, guid: 35262a96759ee6d4588ce6e50b936888,
         type: 3}
       propertyPath: m_RootOrder
@@ -28346,6 +28556,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1907228926}
     m_Modifications:
+    - target: {fileID: 64931406206307534, guid: fa3fd9c171b13dc4e9b3b29b75498e4d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: fa3fd9c171b13dc4e9b3b29b75498e4d,
         type: 3}
       propertyPath: m_Name
@@ -30306,6 +30521,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2143015076}
     m_Modifications:
+    - target: {fileID: 64175506561874502, guid: b47d1603c16e90949861e070dda12855,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: b47d1603c16e90949861e070dda12855,
         type: 3}
       propertyPath: m_Name
@@ -31278,6 +31498,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock 19 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7247914361283485210, guid: 80a03acd9efbeb54d8a98ac96450438a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7247914361283838521, guid: 80a03acd9efbeb54d8a98ac96450438a,
         type: 3}
@@ -32484,6 +32709,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1518506072}
     m_Modifications:
+    - target: {fileID: 64572291289314352, guid: 19770e24c11a16b4e80d11d0249929d3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: 19770e24c11a16b4e80d11d0249929d3,
         type: 3}
       propertyPath: m_Name
@@ -32574,6 +32804,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1518506072}
     m_Modifications:
+    - target: {fileID: 64175506561874502, guid: b47d1603c16e90949861e070dda12855,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: b47d1603c16e90949861e070dda12855,
         type: 3}
       propertyPath: m_Name
@@ -35588,7 +35823,7 @@ PrefabInstance:
     - target: {fileID: 7698672591784055980, guid: 4bfa1019a496ca049aa4aede7acfd9bd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.2200003
+      value: -2.2200005
       objectReference: {fileID: 0}
     - target: {fileID: 7698672591784055980, guid: 4bfa1019a496ca049aa4aede7acfd9bd,
         type: 3}
@@ -36729,6 +36964,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2084302985}
     m_Modifications:
+    - target: {fileID: 64931406206307534, guid: fa3fd9c171b13dc4e9b3b29b75498e4d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: fa3fd9c171b13dc4e9b3b29b75498e4d,
         type: 3}
       propertyPath: m_Name
@@ -36804,6 +37044,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1518506072}
     m_Modifications:
+    - target: {fileID: 64497896592692876, guid: e0bfea4840ff49b4eb75e6a8ca28d5fe,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: e0bfea4840ff49b4eb75e6a8ca28d5fe,
         type: 3}
       propertyPath: m_Name
@@ -37380,6 +37625,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1518506072}
     m_Modifications:
+    - target: {fileID: 64572291289314352, guid: 19770e24c11a16b4e80d11d0249929d3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: 19770e24c11a16b4e80d11d0249929d3,
         type: 3}
       propertyPath: m_Name
@@ -37455,6 +37705,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1907228926}
     m_Modifications:
+    - target: {fileID: 64182844476891954, guid: 48688df9dc83a6444ba0efeac4a5f7c3,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4721141641724369027, guid: 48688df9dc83a6444ba0efeac4a5f7c3,
         type: 3}
       propertyPath: m_Name
@@ -39262,7 +39517,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &2091276507
 Light:
   m_ObjectHideFlags: 0
@@ -40138,6 +40393,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stalagmite 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4721141641724369028, guid: 35262a96759ee6d4588ce6e50b936888,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4721141641724724387, guid: 35262a96759ee6d4588ce6e50b936888,
         type: 3}
