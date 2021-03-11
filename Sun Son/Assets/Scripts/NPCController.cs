@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NPCController : MonoBehaviour
 {
-    public bool canTalk = false;
+    [SerializeField] TalkController _talk;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +22,7 @@ public class NPCController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<PlayerV2>().setCanTalk(true);
+            _talk.playerInRange = true;
         }
     }
 
@@ -30,6 +31,7 @@ public class NPCController : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.GetComponent<PlayerV2>().setCanTalk(false);
+            _talk.playerInRange = false;
         }
     }
 }
