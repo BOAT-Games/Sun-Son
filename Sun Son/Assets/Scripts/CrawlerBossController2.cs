@@ -64,8 +64,8 @@ public class CrawlerBossController2 : MonoBehaviour
         if ((Mathf.Abs(_wallL.transform.position.x - _player.transform.position.x) > 7)
             && (Mathf.Abs(_wallR.transform.position.x - _player.transform.position.x) > 7))
         { 
-            Vector3 pos = new Vector3(_player.transform.position.x, Mathf.Min(transform.position.y, _player.transform.position.y + 8)
-                , _player.transform.position.z);
+            Vector3 pos = new Vector3(_player.transform.position.x, transform.position.y,
+                 _player.transform.position.z);
             Instantiate(obj, pos, Quaternion.identity);
         }
     }

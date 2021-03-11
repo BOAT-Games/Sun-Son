@@ -6983,32 +6983,32 @@ PrefabInstance:
     - target: {fileID: 2831735255655232428, guid: a24a67aa507a34cd19a09293134cec69,
         type: 3}
       propertyPath: convo.Array.data[0]
-      value: Hello Son
+      value: Hello Son [E]
       objectReference: {fileID: 0}
     - target: {fileID: 2831735255655232428, guid: a24a67aa507a34cd19a09293134cec69,
         type: 3}
       propertyPath: convo.Array.data[1]
-      value: We have a problem...
+      value: We have a problem... [E]
       objectReference: {fileID: 0}
     - target: {fileID: 2831735255655232428, guid: a24a67aa507a34cd19a09293134cec69,
         type: 3}
       propertyPath: convo.Array.data[2]
-      value: Our village flashlight was lost
+      value: Our village flashlight was lost [E]
       objectReference: {fileID: 0}
     - target: {fileID: 2831735255655232428, guid: a24a67aa507a34cd19a09293134cec69,
         type: 3}
       propertyPath: convo.Array.data[3]
-      value: and we need you to retrieve it.
+      value: and we need you to retrieve it. [E]
       objectReference: {fileID: 0}
     - target: {fileID: 2831735255655232428, guid: a24a67aa507a34cd19a09293134cec69,
         type: 3}
       propertyPath: convo.Array.data[4]
-      value: Last I heard someone took it to
+      value: Last I heard someone took it to [E]
       objectReference: {fileID: 0}
     - target: {fileID: 2831735255655232428, guid: a24a67aa507a34cd19a09293134cec69,
         type: 3}
       propertyPath: convo.Array.data[5]
-      value: ' explore the caves and never came back'
+      value: ' explore the caves and never came back [E]'
       objectReference: {fileID: 0}
     - target: {fileID: 2831735255655232428, guid: a24a67aa507a34cd19a09293134cec69,
         type: 3}

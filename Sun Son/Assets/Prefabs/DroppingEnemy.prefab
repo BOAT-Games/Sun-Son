@@ -182,7 +182,7 @@ SphereCollider:
   m_GameObject: {fileID: 712505267671314302}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -283,8 +283,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.68952125, y: 1.1171068, z: 0.6957321}
-  m_Center: {x: 0.0027367591, y: -1.0915357, z: 0.13730164}
+  m_Size: {x: 0.68952125, y: 0.9178133, z: 0.6957321}
+  m_Center: {x: 0.0027367591, y: -0.99188894, z: 0.13730164}
 --- !u!114 &4702226806795352967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,8 +330,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.25980765, y: 0.46331713, z: 0.22500001}
-  m_Center: {x: 0.000000011920929, y: -0.20195122, z: 0.037500005}
+  m_Size: {x: 0.25980765, y: 0.46331713, z: 0.34589455}
+  m_Center: {x: 0.000000011920929, y: -0.20195122, z: 0.3393534}
 --- !u!82 &6288038779454156375
 AudioSource:
   m_ObjectHideFlags: 0
@@ -345,7 +345,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 78556585b04c8984a8b4ce0bc11262cf, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.18
+  m_Volume: 0.7
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -611,7 +611,7 @@ SphereCollider:
   m_GameObject: {fileID: 7709430980294785988}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
