@@ -11,9 +11,10 @@ public class TalkController : MonoBehaviour
     private PlayerControls _input;
     private bool _interactPressed;
 
-    private bool convoStarted = false;
-    private int convCount = 0;
-    private bool _wasPressed = false;
+    public bool convoStarted = false;
+    public int convCount = 0;
+    public bool _wasPressed = false;
+    public bool playerInRange = false;
 
     public string[] convo;
 
@@ -32,7 +33,7 @@ public class TalkController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_interactPressed && !_wasPressed && convoStarted && _playerV2.getCanTalk())
+        if (playerInRange && _interactPressed && !_wasPressed && convoStarted && _playerV2.getCanTalk())
         {
             if (convCount == convo.Length)
             {
@@ -50,11 +51,11 @@ public class TalkController : MonoBehaviour
             }
             _wasPressed = true;
         }
-        if (!_interactPressed && _wasPressed)
+        if (playerInRange && !_interactPressed && _wasPressed)
         {
             _wasPressed = false;
         }
-        else if (_playerV2.getCanTalk() && !convoStarted && convCount != convo.Length)
+        else if (playerInRange && _playerV2.getCanTalk() && !convoStarted && convCount != convo.Length)
         {
             _talkText.updateText("Press E to talk.");
             convoStarted = true;

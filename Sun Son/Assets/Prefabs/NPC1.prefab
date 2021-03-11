@@ -638,7 +638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c137fc936480d4135a64368b26bc7284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canTalk: 0
+  _talk: {fileID: 2831735255655232428}
 --- !u!1 &1832981840890276609
 GameObject:
   m_ObjectHideFlags: 0
@@ -2253,8 +2253,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _talkText: {fileID: 2831735256567216357}
   _playerV2: {fileID: 0}
+  convoStarted: 0
+  convCount: 0
+  _wasPressed: 0
+  playerInRange: 0
   convo:
-  - Bruh
+  - Hello Son [E]
+  - We have a problem... [E]
+  - Our village flashlight was lost [E]
+  - and we need you to retrieve it. [E]
+  - Last I heard someone took it to [E]
+  - ' explore the caves and never came back [E]'
+  - please make way to the caves!
 --- !u!1 &2831735256567216359
 GameObject:
   m_ObjectHideFlags: 0
@@ -2329,8 +2339,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4294243583
+  m_fontColor: {r: 1, g: 0.9575472, b: 0.9575472, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
