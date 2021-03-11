@@ -55,7 +55,6 @@ public class DropperController : MonoBehaviour
 
     void OnCollisionStay(Collision collision)
     {
-        Debug.Log("hit");
         if (collision.gameObject.CompareTag("Floor") && _drop)
         {
             Vector3 targetPosition = new Vector3(transform.position.x,
@@ -70,6 +69,10 @@ public class DropperController : MonoBehaviour
                                        transform.position.y - 3.5f, transform.position.z);
             Instantiate(ps, targetPosition, Quaternion.identity);
             Destroy(gameObject);
+        }
+        else
+        {
+            Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>(), true);
         }
     }
 
