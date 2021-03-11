@@ -18,6 +18,8 @@ public class PlayerMelee : MonoBehaviour
     public bool _isAttacking = false;
     public bool _hit = false;
 
+    private PlayerV2 _player;
+
     void Awake()
     {
         _input = new PlayerControls();
@@ -44,17 +46,20 @@ public class PlayerMelee : MonoBehaviour
         _controller = GetComponent<CharacterController>();
 
         _sword.SetActive(false);
+        _player = gameObject.GetComponent<PlayerV2>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if (_anim.GetBool("CanAttack"))
+        if (!_player.areControlsLocked())
         {
-            if (_attackPressed && !_anim.GetBool("isGrabbingWall") && !_anim.GetBool("isShielding"))
+            if (_anim.GetBool("CanAttack"))
             {
-                Attack();
+                if (_attackPressed && !_anim.GetBool("isGrabbingWall") && !_anim.GetBool("isShielding"))
+                {
+                    Attack();
+                }
             }
         }
 

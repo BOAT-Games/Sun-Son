@@ -12,12 +12,12 @@ public class Altar : MonoBehaviour
         }
     }
     public void setActiveSkillWindow() {
-        Time.timeScale = 0;
+        FindObjectOfType<PlayerV2>().lockControls(9999999f);
         _skillWindow.gameObject.SetActive(true);
     }
 
     public void setInactiveSkillWindow() {
-        Time.timeScale = 1;
+        FindObjectOfType<PlayerV2>().unlockControls();
         _skillWindow.gameObject.SetActive(false);
     }
 }

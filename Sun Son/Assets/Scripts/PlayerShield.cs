@@ -17,6 +17,8 @@ public class PlayerShield : MonoBehaviour
     private Animator _anim;
     private int _isShieldingHash;
 
+    private PlayerV2 _player;
+
     void Awake()
     {
         _input = new PlayerControls();
@@ -46,38 +48,43 @@ public class PlayerShield : MonoBehaviour
         _shield.transform.localScale = new Vector3(0f, 0f, 0f);
 
         _psm = GetComponent<PlayerSoundManager>();
+
+        _player = gameObject.GetComponent<PlayerV2>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(_shieldPressed)
+        if (!_player.areControlsLocked())
         {
-            if (!_shield.activeInHierarchy)
+            if (_shieldPressed)
             {
-                _shield.SetActive(true);
-                _anim.SetBool(_isShieldingHash, true);
-                _psm.playShield();
+                if (!_shield.activeInHierarchy)
+                {
+                    _shield.SetActive(true);
+                    _anim.SetBool(_isShieldingHash, true);
+                    _psm.playShield();
+                }
+
+                _shield.transform.localScale = Vector3.Slerp(_shield.transform.localScale, new Vector3(1, 3, 3), 0.05f);
             }
-
-            _shield.transform.localScale = Vector3.Slerp(_shield.transform.localScale, new Vector3(1, 3, 3), 0.05f);
-        }
-        else if(_shield.activeInHierarchy)
-        {
-            if (!_stopInitiated)
+            else if (_shield.activeInHierarchy)
             {
-                _psm.stopShield();
-                _stopInitiated = true;
-            }
+                if (!_stopInitiated)
+                {
+                    _psm.stopShield();
+                    _stopInitiated = true;
+                }
 
-            _shield.transform.localScale = Vector3.Slerp(_shield.transform.localScale, new Vector3(0.1f, 0.1f, 0.1f), 0.05f);
+                _shield.transform.localScale = Vector3.Slerp(_shield.transform.localScale, new Vector3(0.1f, 0.1f, 0.1f), 0.05f);
 
 
-            if (_shield.transform.localScale.x <= 0.15)
-            {
-                _shield.SetActive(false);
-                _anim.SetBool(_isShieldingHash, false);
-                _stopInitiated = false;
+                if (_shield.transform.localScale.x <= 0.15)
+                {
+                    _shield.SetActive(false);
+                    _anim.SetBool(_isShieldingHash, false);
+                    _stopInitiated = false;
+                }
             }
         }
     }
