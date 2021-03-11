@@ -103,7 +103,7 @@ public class AbyssalController : MonoBehaviour
             {
                 _anim.SetBool(_isAttackingHash, true);
                 _attacked = true;
-                _timer = 1;
+                _timer = 1.5f;
 
             }
             else if (!_portalSet && _atPlayer && _attacked)
@@ -133,7 +133,7 @@ public class AbyssalController : MonoBehaviour
                 _atPlayer = false;
                 _attacked = false;
                 _portalSet = false;
-                _timer = 1;
+                _timer = 1.5f;
             }
         }
         else
