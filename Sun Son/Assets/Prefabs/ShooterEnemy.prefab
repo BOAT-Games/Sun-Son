@@ -975,10 +975,10 @@ MonoBehaviour:
   agent: {fileID: 1213850218175435675}
   player: {fileID: 0}
   health: 15
-  timeBetweenAttacks: 1.5
+  timeBetweenAttacks: 1
   projectile: {fileID: 7248486601484364845, guid: e20fb677b55f948b1bb7835ab2bbc99d,
     type: 3}
-  sightRange: 9
+  sightRange: 12
   attackRange: 5
   playerInSightRange: 0
   playerInAttackRange: 0
@@ -1121,8 +1121,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.2306538, y: 1.6807883, z: 1.1730164}
-  m_Center: {x: -0.042107582, y: 1.0197564, z: 0.018407166}
+  m_Size: {x: 2.3204308, y: 1.6337965, z: 1.8927513}
+  m_Center: {x: -0.051548004, y: 0.9962605, z: -0.08890945}
 --- !u!1 &1213850218175435678
 GameObject:
   m_ObjectHideFlags: 0

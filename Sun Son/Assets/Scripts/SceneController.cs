@@ -8,7 +8,13 @@ public class SceneController : MonoBehaviour
     [SerializeField] string SceneToLoad;
     [SerializeField] SceneFader _fader;
 
-    private void OnTriggerEnter(Collider other)
+   private void Start() {
+      if (SceneToLoad.Equals("Tutorial_Level")) {
+         PlayerPrefs.DeleteAll();
+      }
+   }
+
+   private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {

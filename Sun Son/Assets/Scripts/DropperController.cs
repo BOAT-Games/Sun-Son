@@ -53,7 +53,7 @@ public class DropperController : MonoBehaviour
         
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Floor") && _drop)
         {
@@ -63,12 +63,16 @@ public class DropperController : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (collision.gameObject.CompareTag("Player") && _drop)
+        else if (collision.gameObject.CompareTag("Player"))
         {
             Vector3 targetPosition = new Vector3(transform.position.x,
                                        transform.position.y - 3.5f, transform.position.z);
             Instantiate(ps, targetPosition, Quaternion.identity);
             Destroy(gameObject);
+        }
+        else
+        {
+            Physics.IgnoreCollision(gameObject.GetComponent<Collider>(), collision.gameObject.GetComponent<Collider>(), true);
         }
     }
 
