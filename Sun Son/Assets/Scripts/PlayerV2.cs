@@ -496,6 +496,22 @@ public class PlayerV2 : MonoBehaviour
     public bool getHasDashAbility() {return _hasDashAbility;}
     public bool getHasDoubleJumpAbility() {return _hasDoubleJumpAbility;}
     public void setHasDoubleJumpAbility(bool hasDoubleJump) { _hasDoubleJumpAbility = hasDoubleJump;}
+
+    public void lockControls(float time)
+    {
+        _controlsAvailable = Time.time + time;
+    }
+
+    public void unlockControls()
+    {
+        _controlsAvailable = Time.time;
+    }
+
+    public bool areControlsLocked()
+    {
+        return Time.time < _controlsAvailable;
+    }
+
     void OnDrawGizmosSelected()
     {
         // Draws a 5 unit long red line in front of the object

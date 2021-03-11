@@ -20,6 +20,8 @@ public class PlayerRanged : MonoBehaviour
 
     public bool _isAttacking = false;
 
+    private PlayerV2 _player;
+
     void Awake()
     {
         _input = new PlayerControls();
@@ -46,20 +48,24 @@ public class PlayerRanged : MonoBehaviour
         _controller = GetComponent<CharacterController>();
 
         _pr = FindObjectOfType<PlayerResources>();
+
+        _player = gameObject.GetComponent<PlayerV2>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
-        if (_anim.GetBool("CanAttack"))
+        if (!_player.areControlsLocked())
         {
-            if (_attackPressed && !_anim.GetBool("isGrabbingWall") && !_anim.GetBool("isShielding"))
+            if (_anim.GetBool("CanAttack"))
             {
-                Attack();
+                if (_attackPressed && !_anim.GetBool("isGrabbingWall") && !_anim.GetBool("isShielding"))
+                {
+                    Attack();
+                }
             }
         }
-
         _attackPressed = false;
     }
 
