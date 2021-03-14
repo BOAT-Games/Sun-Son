@@ -9,7 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/MainMenu.unity
     guid: c13db1208eeea884cad85a469d65feb2
   - enabled: 1
-    path: Assets/Scenes/Sandboxes/Intro_Scene.unity
+    path: Assets/Scenes/Levels/CutScene_Intro.unity
+    guid: f90be66e49d0c464ea632b4f7f1211b3
+  - enabled: 1
+    path: Assets/Scenes/Levels/Intro_Scene.unity
     guid: 5c290c88676be054cafc89e5e313708b
   - enabled: 1
     path: Assets/Scenes/Levels/Tutorial_Level.unity
