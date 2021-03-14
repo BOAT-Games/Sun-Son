@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/Tutorial_Level.unity
     guid: 610298925bedeb24abfeebe8c818b7de
   - enabled: 1
+    path: Assets/Scenes/Levels/CelestialScene.unity
+    guid: a7fd2105c5cf8a248a7ee8beafda27fb
+  - enabled: 1
     path: Assets/Scenes/Levels/Village2.unity
     guid: 44a98cc76c01b41f49555650249e1941
   - enabled: 1
