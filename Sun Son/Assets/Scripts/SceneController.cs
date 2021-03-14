@@ -26,6 +26,10 @@ public class SceneController : MonoBehaviour
                 PlayerPrefs.SetInt("dash", 1);
                 _fader.specialFade();
             }
+            else if(SceneToLoad.Equals("CelestialScene"))
+            {
+                _fader.specialFade();
+            }
             else
             {
                 _fader.normalFade();
@@ -42,6 +46,10 @@ public class SceneController : MonoBehaviour
             if (SceneToLoad.Equals("Village2"))
             {
                 PlayerPrefs.SetInt("dash", 1);
+                _fader.specialFade();
+            }
+            else if (SceneToLoad.Equals("CelestialScene"))
+            {
                 _fader.specialFade();
             }
             else

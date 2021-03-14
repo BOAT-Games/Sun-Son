@@ -2103,7 +2103,7 @@ PrefabInstance:
     - target: {fileID: 6581049879872834810, guid: c98d56511a4214e9bb6dc2249702ea20,
         type: 3}
       propertyPath: SceneToLoad
-      value: Village2
+      value: CelestialScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c98d56511a4214e9bb6dc2249702ea20, type: 3}
@@ -31961,7 +31961,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3703624401526480567}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.00000023841858, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3703624402080041970}
@@ -32089,7 +32089,7 @@ MonoBehaviour:
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
   m_UpdateMethod: 0
-  m_BlendUpdateMethod: 0
+  m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
     m_Time: 2
@@ -33314,7 +33314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bde7956ce653ed247b2caa5b46e0c2bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Intensity: 1
+  Intensity: 0.53
 --- !u!81 &7698672590942528278
 AudioListener:
   m_ObjectHideFlags: 0
