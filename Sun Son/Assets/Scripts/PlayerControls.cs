@@ -356,7 +356,7 @@ public class @PlayerControls : IInputActionCollection, IDisposable
                 {
                     ""name"": ""modifier"",
                     ""id"": ""e5da3c90-1967-435b-881c-fba37d6c77b2"",
-                    ""path"": ""<Keyboard>/g"",
+                    ""path"": ""<Keyboard>/m"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
