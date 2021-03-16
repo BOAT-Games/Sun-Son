@@ -47,4 +47,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/Surface Level.unity
     guid: ac29cd5f154473b49b3d197e2f19ae42
+  - enabled: 1
+    path: Assets/Scenes/Levels/End Cutscene.unity
+    guid: 1518710946fb2ed48b6d6cdd7d6bc529
   m_configObjects: {}
