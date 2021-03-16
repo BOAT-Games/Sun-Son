@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FAEnergyBallController : MonoBehaviour
 {
@@ -8,10 +9,8 @@ public class FAEnergyBallController : MonoBehaviour
     {
         if (other.CompareTag("Weapon"))
         {
-            // Trigger end cutscene here
-
+            SceneManager.LoadScene("End Cutscene");
             Destroy(gameObject);
-            Destroy(other.gameObject);
         }
     }
 }
