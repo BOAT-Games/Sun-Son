@@ -296,6 +296,7 @@ public class CrawlerBossController : MonoBehaviour
 
     void TriggerCutscene() {
         _stage2Timeline.Play();
+        _player.GetComponent<PlayerV2>().lockControls(10f);
     }
 
     void ResetPosition()
